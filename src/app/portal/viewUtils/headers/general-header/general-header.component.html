@@ -1,0 +1,24 @@
+<div>
+    <!-- Header -->
+    <div class="header-container" >
+        <h1> {{ txtTitle }} </h1>
+
+        <div>
+            <form class="input-search" [formGroup]="searchGroupForm" *ngIf="flagSearch" >
+                <span matPrefix>
+                    <mat-icon>search</mat-icon>
+                </span>
+                <input
+                placeholder="{{ searchLabel }}"
+                [formControl]="searchInput">
+            </form>
+        </div>
+
+        <div>
+            <button (click)="openDialog()" mat-raised-button *ngIf="flagButton" > 
+                {{ searchButtonLabel }} 
+            </button>
+        </div>
+
+    </div>
+</div>

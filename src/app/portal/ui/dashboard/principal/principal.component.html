@@ -1,0 +1,42 @@
+<mat-drawer-container >
+    <!-- Menu -->
+    <mat-drawer mode="side" opened>
+
+        <img class="img-small-logo" src="{{ logoNaAT }}" alt="LogoNaAT" />
+
+        <!-- Imagen de perfil y nombre de usuario -->
+        <div class="profile-container" >
+            <img>
+
+            <div>
+                <p class="txt-color-title txt-description" > {{ menuTxt.WELCOME_TITLE }} </p>
+                <p class="txt-color-title txt-description text-container " > 
+                    {{ menuTxt.DEFAULT_USER }} 
+                    <span>
+                        <mat-icon class="icon-accent-color">expand_more</mat-icon>
+                    </span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Menu -->
+        <ul>
+            <li routerLinkActive="active" *ngFor="let item of menuTxt.ITEMS" >
+                <a [routerLink]="item.PATH_PAGE" >
+                    <span >
+                        <mat-icon> {{ item.ICON_ITEM }} </mat-icon>
+                    </span>
+                    <p class="p18-left" > {{ item.TITLE }} </p>
+                </a>
+            </li>
+        </ul>
+
+    </mat-drawer>
+
+    <!-- Contenido del menu -->
+    <mat-drawer-content>
+        <div class="router-container">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

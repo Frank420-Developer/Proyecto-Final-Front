@@ -1,0 +1,71 @@
+<div>
+    <span class="close-modal-style" >
+        <mat-icon mat-dialog-close class="txt-accent" >close</mat-icon>
+    </span>
+
+    <p class="txt-title-dialog"> 
+        {{ textES.TITLE }} 
+    </p>
+
+    <!-- Inputs -->
+    <div class="general-input-container" >
+        <form [formGroup]="addProjectForm" >
+            <div class="inputs-container" >
+                <div>
+                    <p class="txt-description txt-color-description"> {{ textES.CLIENT }} </p>
+                    <mat-form-field class="input-search">
+                        <mat-select [formControl]="clientSelected" name="client" >
+                            <mat-option *ngFor="let client of clientList" [value]="client" >
+                                {{ client.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+    
+                <div>
+                    <p class="txt-description txt-color-description"> {{ textES.PROJECT_NAME }} </p>
+                    <mat-form-field class="input-search">
+                        <input matInput [formControl]="projectName" type="text" >
+                        <mat-error *ngIf="!projectName.valid && projectName.value !== '' " >
+                            {{ txtError.INPUT_INVALID_FORMAT }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Add More Projects Button -->
+    <div>
+        <button 
+            (click)="addNewProject()" 
+            [disabled]="!addProjectForm.valid || flagLengthList" 
+            class="txt-accent txt-description" 
+            mat-button > 
+            {{ txtAddButton }} 
+        </button>
+    </div>
+
+    <!-- Projects List -->
+    <div class="inputs-container" *ngIf="addProjectList.length != 0" >
+        <p class="txt-description txt-color-title"> {{ textES.CLIENT }} </p>
+        <p class="txt-description txt-color-title"> {{ textES.PROJECT_NAME }} </p>
+    </div>
+
+    <div class="inputs-container" *ngFor="let item of addProjectList">
+        <div>
+            <p class="txt-description txt-color-description" > {{ item.clientName }} </p>
+        </div>
+        <div>
+            <p class="txt-description txt-color-description" > {{ item.newProject.name }} </p>
+        </div>
+    </div>
+
+    <!-- Add new projects button -->
+    <div class="add-project-container" >
+        <button (click)="createNewProjects()" [disabled]="flagActiveSendProjects" mat-raised-button> 
+            {{ textButtons.ADD }} 
+        </button>
+    </div>
+
+</div>

@@ -1,0 +1,40 @@
+<div>
+
+    <!-- Header -->
+    <div class="header-proyectos-container" >
+        <div class="title-control-container" >
+            <span matPrefix>
+                <a>
+                    <mat-icon class="icon-back" >chevron_left</mat-icon>
+                </a>
+            </span>
+            <h1> {{ textEs.TITLE_DETAIL }} </h1>
+        </div>
+
+        <div class="header-columns-detail-container txt-description txt-color-title" >
+            <div>
+                <p> {{ textEs.CLIENT }} </p>
+            </div>
+            <div>
+                <p> {{ textEs.PROJECT }} </p>
+            </div>
+            <div>
+                <p> {{ textEs.TOTAL_HOURS }} </p>
+            </div>
+        </div>
+
+        <div>
+            <form class="input-search" [formGroup]="searchGroupForm">
+                <span matPrefix>
+                    <mat-icon class="txt-color-description" >search</mat-icon>
+                </span>
+                <input
+                 placeholder="{{ searchLabel }}"
+                 (blur)="searchValue()"
+                 [formControl]="searchInput">
+            </form>
+        </div>
+
+    </div>
+    
+</div>
