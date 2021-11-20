@@ -1,0 +1,15 @@
+@import '../../../../../theme.scss';
+
+table {
+    margin: 10px 16px;
+    padding-left: 20px;
+}
+
+.img-news {
+    box-sizing: border-box;
+    height: 106px;
+    width: 106px;
+    border: 1px solid $color-backgroud-border;
+    border-radius: 4px;
+    background-color: $color-background-secundary;
+}

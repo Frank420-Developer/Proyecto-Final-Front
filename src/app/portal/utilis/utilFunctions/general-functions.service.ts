@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 /* Importaciones de constantes */
-import { TIME_SNACK_BAR } from '../ConstantsApp';
+import { SLASH, TIME_SNACK_BAR } from '../ConstantsApp';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,13 @@ export class GeneralFunctionsService {
     this.snackBar.open(message, txtBtnAction, {
       duration: TIME_SNACK_BAR
     });
+  }
+
+
+  public getFormatDate(date: string): string {
+    const dateSplit = date.split('T');
+    const dateSplitFormat = dateSplit[0].split('-');
+    return dateSplitFormat[2] + SLASH + dateSplitFormat[1] + SLASH + dateSplitFormat[0];
   }
 
 }

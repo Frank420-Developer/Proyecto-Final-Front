@@ -21,7 +21,7 @@ export class NewsApiService {
   constructor( private http: HttpClient ) { }
 
 
-  public getNewsListService() {
-    return this.http.get( this.microServicioPath.news ).pipe( timeout(TIME_OUT) );
+  public getNewsListService( params: any ) {
+    return this.http.get( this.microServicioPath.news, params ).pipe( timeout(TIME_OUT) );
   }
 }
