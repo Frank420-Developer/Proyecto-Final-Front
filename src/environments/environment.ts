@@ -17,6 +17,7 @@ export const environment = {
   msPath: {
     clients: 'clients/',
     news: 'news/',
+    activities: 'activities/',
   }
 };
 

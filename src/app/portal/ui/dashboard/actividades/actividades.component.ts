@@ -1,5 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+
+/* importaciones de http */
+import { HttpParams } from '@angular/common/http';
+
+/* Models */
 import { HeaderModel } from 'src/app/data/models/local/InputsModels';
+import { ActivityListModel } from 'src/app/data/models/response/activities/ActivityResponse';
+
+/* Services */
+import { ActivitiesApiService } from 'src/app/data/network/activities/activities-api.service';
+
+/* Constants and utilities */
 import { ACTIVITIES, INPUTS } from 'src/app/portal/utilis/TextsConstantsES';
 
 @Component({
@@ -14,7 +25,9 @@ export class ActividadesComponent implements OnInit {
   private txtPlaceholder = INPUTS;
   public dataToSend: HeaderModel;
 
-  constructor() { }
+  constructor( private api: ActivitiesApiService ) {
+    this.getActivitiesList(0, 10);
+  }
 
   ngOnInit(): void {
     this.dataToSend = {
@@ -25,6 +38,19 @@ export class ActividadesComponent implements OnInit {
       FLAG_ACTIVE_BUTTON: false,
       COMPONENT_DIALOG: ''
     };
+  }
+
+
+  private getActivitiesList(page: number, size: number) {
+    const params = new HttpParams()
+                    .set('page', page.toString())
+                    .set('size', size.toString());
+
+    this.api.getActivitiesListService(params).subscribe( (data: ActivityListModel[]) => {
+      try {
+        //
+      } catch (err) {}
+    }, errorResponse => {});
   }
 
 }
