@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 /* Models */
 import { HeaderModel } from '../models/local/InputsModels';
+import { DataTableModel } from '../models/local/TableModels';
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +27,26 @@ export class GeneralStructsService {
       COMPONENT_DIALOG: component
     };
   }
+
+
+  public createStructTable(
+    headerList: string[],
+    dataList: any,
+    activeImage: boolean,
+    activeButton: boolean,
+    activeTwoButtons: boolean,
+    tableLength?: number): DataTableModel {
+
+    return {
+      HEADER_TITLES: headerList,
+      LIST_TABLE: dataList,
+      ACTIVE_IMAGE: activeImage,
+      ACTIVE_BUTTON: activeButton,
+      ACTIVE_TWO_BUTTONS: activeTwoButtons,
+      TABLE_LENGTH: tableLength
+    };
+
+  }
+
+
 }

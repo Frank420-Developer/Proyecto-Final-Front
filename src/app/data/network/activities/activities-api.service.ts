@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /* Internet */
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 
 /* RXJs */
 import { Observable } from 'rxjs';
@@ -24,8 +24,11 @@ export class ActivitiesApiService {
   constructor( private http: HttpClient ) { }
 
 
-  public getActivitiesListService( params: HttpParams ): Observable<ActivityListModel[]> {
-    return this.http.get<ActivityListModel[]>(this.microServicioPath, { params })
+  public getActivitiesListService( paramsRequest: HttpParams ): Observable<HttpResponse<ActivityListModel[]>> {
+    return this.http.get<ActivityListModel[]>(this.microServicioPath, {
+      params: paramsRequest,
+      observe: 'response'
+    })
     .pipe(timeout(TIME_OUT))
     .pipe( map( response => {
       return response;

@@ -48,7 +48,7 @@ export class GeneralTableComponent implements OnInit, DoCheck {
     this.activeImage = this.dataInput.ACTIVE_IMAGE;
     this.activeButton = this.dataInput.ACTIVE_BUTTON;
     this.activeTwoButtons = this.dataInput.ACTIVE_TWO_BUTTONS;
-    this.lenghtDataTable = 20;
+    this.lenghtDataTable = (this.dataInput.TABLE_LENGTH !== undefined) ? this.dataInput.TABLE_LENGTH : 20;
   }
 
   public changePageTable(event: any) {

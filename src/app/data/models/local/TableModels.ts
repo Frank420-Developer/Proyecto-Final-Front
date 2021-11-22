@@ -4,6 +4,7 @@ export interface DataTableModel {
     ACTIVE_IMAGE: boolean;
     ACTIVE_BUTTON: boolean;
     ACTIVE_TWO_BUTTONS: boolean;
+    TABLE_LENGTH?: number;
 }
 
 export interface StructDataTableModel {
