@@ -87,7 +87,10 @@ export const NEWS = {
 };
 
 export const CLIENTS = {
-    TITLE: 'Clientes'
+    TITLE: 'Clientes',
+    TABLE_HEADERS: [
+        'Cliente', 'Fecha de registro', 'Agregado por', 'Proyectos', 'Detalle'
+    ],
 };
 
 export const USERS = {

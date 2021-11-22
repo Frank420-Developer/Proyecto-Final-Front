@@ -3,12 +3,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 /* Importaciones de formulario */
 import { FormGroup, AbstractControl, Validators, FormBuilder } from '@angular/forms';
 
+/* Importaciones de http */
+import { HttpResponse } from '@angular/common/http';
+
 /* Interfaces */
 import { Client } from 'src/app/data/models/response/clients/ClientsResponse';
 
 /* Constants */
-import { PLUS } from 'src/app/portal/utilis/ConstantsApp';
-import { SPACE } from 'src/app/portal/utilis/ConstantsApp';
+import { SPACE, PLUS } from 'src/app/portal/utilis/ConstantsApp';
 import * as TextES from '../../../utilis/TextsConstantsES';
 
 /* Service */
@@ -74,8 +76,8 @@ export class DialogAddProjectComponent implements OnInit {
 
   private getClientsList() {
 
-    this.clientApi.getClientsListApi().subscribe( (data: Client[]) => {
-      this.clientList = data;
+    this.clientApi.getClientsListApi().subscribe( (data: HttpResponse<Client[]>) => {
+      this.clientList = data.body;
     }, errorResponse => {
       console.error('Error en el respuesta ', errorResponse);
     });

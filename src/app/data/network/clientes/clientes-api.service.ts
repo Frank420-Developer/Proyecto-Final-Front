@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 
 /* Http */
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 
 /* RxJs */
 import { Observable } from 'rxjs';
-import { timeout } from 'rxjs/operators';
+import { map, timeout } from 'rxjs/operators';
 
 /* Interfaces */
 import { Client } from '../../models/response/clients/ClientsResponse';
@@ -26,7 +26,15 @@ export class ClientesApiService {
   constructor( private http: HttpClient ) { }
 
 
-  public getClientsListApi(): Observable<Client[]> {
-    return this.http.get<Client[]>(this.microServicioPath.clients).pipe(timeout(TIME_OUT));
+  public getClientsListApi( paramsRequest?: HttpParams ): Observable<HttpResponse<Client[]>> {
+    return this.http.get<Client[]>(this.microServicioPath.clients, {
+      params: paramsRequest,
+      observe: 'response'
+    })
+    .pipe(timeout(TIME_OUT))
+    .pipe( map( response => {
+      return response;
+    })
+    );
   }
 }

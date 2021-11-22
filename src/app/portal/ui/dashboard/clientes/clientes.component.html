@@ -1,1 +1,6 @@
 <app-general-header [dataInput]="dataToSend" ></app-general-header>
+
+
+<app-general-table 
+    [dataInput]="tableDataToSend" (changePage)="changePageTable($event)" >
+</app-general-table>
