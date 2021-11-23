@@ -73,9 +73,7 @@ export class ProyectosComponent implements OnInit {
   }
 
   public changePageTable( event: any ) {
-    console.log('Datos del paginador ', event);
     this.pageTable = event.pageIndex;
-    console.log('Pagina actual ', this.pageTable);
     this.projectList = [];
     this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable);
   }
@@ -87,8 +85,6 @@ export class ProyectosComponent implements OnInit {
 
     this.projectService.getListProjects(clientID, paramsRequest).subscribe( (data) => {
       try {
-        console.log('Body', data.body);
-        console.log('Headers', data.headers.get('total-elements') );
         this.lenghtDataTable = parseInt(data.headers.get('total-elements'), 10);
 
         /*this.projectList = data.body;
@@ -167,7 +163,6 @@ export class ProyectosComponent implements OnInit {
     } );
 
     openDialog.afterClosed().subscribe( (result: ProjectDetail[]) => {
-      console.log(result);
       this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable);
     });
 

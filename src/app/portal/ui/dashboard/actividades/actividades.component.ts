@@ -61,8 +61,6 @@ export class ActividadesComponent implements OnInit {
     this.api.getActivitiesListService(params).subscribe(
       (data: HttpResponse<ActivityListModel[]>) => {
       try {
-        console.log('Header ', data.headers.get('total-elements'));
-        console.log('Body ', data.body);
         const lista = data.body;
 
         lista.forEach( (item: ActivityListModel) => {

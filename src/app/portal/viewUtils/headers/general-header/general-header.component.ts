@@ -52,8 +52,6 @@ export class GeneralHeaderComponent implements OnInit {
 
     this.flagButton = this.dataInput.FLAG_ACTIVE_BUTTON;
     this.flagSearch = this.dataInput.FLAG_ACTIVE_SEARCH;
-
-    console.log('Datos recibidos ', this.dataInput);
   }
 
   public openDialog() {

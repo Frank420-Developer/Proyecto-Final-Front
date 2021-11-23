@@ -41,7 +41,6 @@ export class GeneralTableComponent implements OnInit, DoCheck {
   }
 
   private prepareData() {
-    console.log('Datos', this.dataInput);
     this.flag = this.dataInput;
     this.headersList = this.dataInput.HEADER_TITLES;
     this.listTable = this.dataInput.LIST_TABLE;

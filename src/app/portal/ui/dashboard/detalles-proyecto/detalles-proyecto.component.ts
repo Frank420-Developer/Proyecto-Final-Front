@@ -44,8 +44,6 @@ export class DetallesProyectoComponent implements OnInit {
   }
 
   public searchValue() {
-    console.log('Contenido del controlador del input', this.searchInput);
-    console.log('¿Es válido el input?', this.searchInput.valid);
   }
 
   private getProjectDetail( clientID: string, id: string, position: number ) {

@@ -66,8 +66,6 @@ export class DialogAddProjectComponent implements OnInit {
 
     this.clientSelected = this.addProjectForm.controls.clientSelectedGroup;
     this.projectName = this.addProjectForm.controls.projectName;
-
-    console.log('Datos recibidos: ', this.dataReceived );
   }
 
   ngOnInit(): void {

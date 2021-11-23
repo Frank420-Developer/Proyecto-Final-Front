@@ -18,6 +18,7 @@ export const environment = {
     clients: 'clients/',
     news: 'news/',
     activities: 'activities/',
+    workTeam: 'workteam/'
   }
 };
 
