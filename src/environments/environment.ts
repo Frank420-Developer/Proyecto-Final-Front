@@ -12,6 +12,8 @@ export const environment = {
     login: 'auth/login',
     refreshToken: 'auth/refresh',
     projects: '/projects',
+    notificationToSend: 'toSend',
+    notificationSent: 'sent'
   },
 
   msPath: {
@@ -20,6 +22,7 @@ export const environment = {
     activities: 'activities/',
     workTeam: 'workteam/',
     users: 'users/',
+    notification: 'notification/'
   }
 };
 

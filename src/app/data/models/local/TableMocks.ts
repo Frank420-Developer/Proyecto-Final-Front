@@ -1,3 +1,5 @@
+/* Importación de Modelos */
+import { NotificationToSendModel, NotificationSentModel } from '../response/notifications/NotificationsResponse';
 import { WorkTeamListResponse } from '../response/workTeam/WorkTeamResponse';
 
 export const WORK_TEAM: WorkTeamListResponse[] = [
@@ -49,7 +51,7 @@ export const WORK_TEAM: WorkTeamListResponse[] = [
     }
 ];
 
-export const NOTIFICATION_TO_SEND = [
+export const NOTIFICATION_TO_SEND: NotificationToSendModel[] = [
     {
         title: '¡Registra tus horas!',
         description: 'Ya casi acaba el día, no olvides registrar tus horas.',
@@ -70,7 +72,7 @@ export const NOTIFICATION_TO_SEND = [
     }
 ];
 
-export const NOTIFICATION_SENT = [
+export const NOTIFICATION_SENT: NotificationSentModel[] = [
     {
         title: 'Actividades Semanales',
         description: '¿Ya te registraste para las sesiones de seguridad?',

@@ -101,7 +101,15 @@ export const USERS = {
 };
 
 export const NOTIFICATIONS = {
-    TITLE: 'Notificaciones'
+    TITLE: 'Notificaciones',
+    TITLE_TABLE_ONE: 'POR ENVIAR',
+    TABLE_HEADERS: [
+        'Titulo', 'Descripción', 'Programado', 'Concurrente', 'Detalles', 'Acciones'
+    ],
+    TITLE_TABLE_TWO: 'ENVIADOS',
+    TABLE_HEADERS_TWO: [
+        'Titulo', 'Descripción', 'Agregado por', 'Enviado', 'Acciones'
+    ]
 };
 
 export const DIALOG_PROJECTS = {
