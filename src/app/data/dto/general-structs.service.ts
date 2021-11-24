@@ -35,7 +35,8 @@ export class GeneralStructsService {
     activeImage: boolean,
     activeButton: boolean,
     activeTwoButtons: boolean,
-    tableLength?: number): DataTableModel {
+    tableLength?: number,
+    sixColum?: boolean ): DataTableModel {
 
     return {
       HEADER_TITLES: headerList,
@@ -43,7 +44,8 @@ export class GeneralStructsService {
       ACTIVE_IMAGE: activeImage,
       ACTIVE_BUTTON: activeButton,
       ACTIVE_TWO_BUTTONS: activeTwoButtons,
-      TABLE_LENGTH: tableLength
+      TABLE_LENGTH: tableLength,
+      SIX_COLUMN: sixColum
     };
 
   }

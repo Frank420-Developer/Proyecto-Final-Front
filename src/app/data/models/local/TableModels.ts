@@ -5,6 +5,7 @@ export interface DataTableModel {
     ACTIVE_BUTTON: boolean;
     ACTIVE_TWO_BUTTONS: boolean;
     TABLE_LENGTH?: number;
+    SIX_COLUMN?: boolean;
 }
 
 export interface StructDataTableModel {
@@ -13,5 +14,6 @@ export interface StructDataTableModel {
     COLUMN_THREE: string;
     COLUMN_FOUR: string;
     COLUMN_FIVE: string;
+    COLUMN_SIX?: string;
     ID?: string;
 }

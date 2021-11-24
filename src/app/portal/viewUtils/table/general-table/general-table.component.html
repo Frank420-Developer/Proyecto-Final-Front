@@ -44,6 +44,14 @@
                 </td>
             </ng-container>
 
+            <ng-container matColumnDef="{{ headersList[5] }}" 
+                *ngIf="dataInput.SIX_COLUMN !== undefined">
+                <th scope="col"  mat-header-cell *matHeaderCellDef> {{ headersList[5] }} </th>
+                <td mat-cell *matCellDef="let item" >
+                    <p *ngIf="!activeImage" > {{ item.COLUMN_SIX }} </p>
+                </td>
+            </ng-container>
+
             <tr mat-header-row *matHeaderRowDef="headersList"></tr>
             <tr mat-row *matRowDef="let row; columns: headersList;"></tr>
         </table>

@@ -94,7 +94,10 @@ export const CLIENTS = {
 };
 
 export const USERS = {
-    TITLE: 'Usuarios'
+    TITLE: 'Usuarios',
+    TABLE_HEADERS: [
+        'Nombre', 'Correo', 'Agregado', 'Permisos', 'Estatus', 'Acciones'
+    ],
 };
 
 export const NOTIFICATIONS = {
@@ -125,6 +128,7 @@ export const BUTTONS = {
     ADD: 'Agregar',
     ADD_MORE: 'Agregar otro',
     OK: 'Ok',
+    DELETE_INACTIVE: 'Suspender | Eliminar'
 };
 
 export const STATUS = {
