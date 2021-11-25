@@ -33,6 +33,15 @@ h2 {
     line-height: 17px;
 }
 
+.txt-title-table {
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 22px;
+    color: $color-text-title;
+    text-align: left;
+}
+
 .center-txt {
     text-align: center;
 }
@@ -88,7 +97,30 @@ td.mat-cell {
 }
 
 /* Tables */
-td.mat-cell {
+table {
+    margin: 10px 16px;
+    padding-left: 20px;
+    width: 100%;
+    background-color: $color-background-secundary;
+    border-spacing: 0;
+}
+
+th {
+    color: $color-text-description;
+    font-family: "SFUIDisplayRegular", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 24px;
+}
+
+td {
+    color: $color-text-title;
+    font-size: 14px;
+    border-bottom: 1px solid $color-inactive;
+}
+
+td.mat-cell, td {
     padding: 20px 0px!important;
 }
 
@@ -196,6 +228,18 @@ input {
     color: $color-text-white;
     background-color: $color-background-tabs;
     border-radius: 5px;
+}
+
+/*
+    Dimens
+*/
+.m-tb-20 {
+    margin: 20px 0px;
+}
+
+.p-tb-20 {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* 

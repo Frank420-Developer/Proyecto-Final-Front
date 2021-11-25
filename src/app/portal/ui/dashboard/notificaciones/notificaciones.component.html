@@ -1,6 +1,45 @@
 <app-general-header [dataInput]="dataToSend" ></app-general-header>
 
+<p class="txt-title-table" >
+    {{ textEs.TITLE_TABLE_ONE }}
+</p>
 
 <app-general-table 
     [dataInput]="tableDataToSend" (changePage)="changePageTable($event)" >
 </app-general-table>
+
+<div>
+    <table>
+        <caption class="txt-title-table m-tb-20" > 
+            {{ textEs.TITLE_TABLE_TWO }} 
+        </caption>
+        <thead>
+            <tr>
+                <th scope="tableHead" class="p-tb-20" *ngFor="let title of textEs.TABLE_HEADERS_TWO" >
+                    {{ title }}
+                </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            <tr *ngFor="let item of dataTableListLocal" >
+                <td > 
+                    <p> {{ item.COLUMN_ONE }} </p>
+                </td>
+                <td>
+                    <p> {{ item.COLUMN_TWO }} </p>
+                </td>
+                <td>
+                    <p> {{ item.COLUMN_THREE }} </p>
+                </td>
+                <td>
+                    <p> {{ item.COLUMN_FOUR }} </p>
+                </td>
+                <td>
+                    <p> {{ item.COLUMN_FIVE }} </p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</div>

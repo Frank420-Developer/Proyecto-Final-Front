@@ -37,6 +37,9 @@ export class NotificacionesComponent implements OnInit {
   private dataTableList: StructDataTableModel[];
   private dataTable: StructDataTableModel;
 
+  public dataTableListLocal: StructDataTableModel[];
+  private dataTableLocal: StructDataTableModel;
+
 
   constructor( private dto: GeneralStructsService,
                private api: NotificationsApiService,
@@ -44,9 +47,11 @@ export class NotificacionesComponent implements OnInit {
 
     // Inicializaciones
     this.dataTableList = [];
+    this.dataTableListLocal = [];
     this.validateNotificationToSend();
     this.validateNotificationSent();
     this.getNotificationsToSend(0, 10);
+    this.getNotificationsSent(0, 10);
   }
 
   ngOnInit(): void {
@@ -104,6 +109,22 @@ export class NotificacionesComponent implements OnInit {
       parseInt('10', 10),
       true
     );
+
+  }
+
+
+  private getNotificationsSent(page: number, size: number) {
+
+    NOTIFICATION_SENT.forEach( (item: NotificationSentModel) => {
+      this.dataTableLocal = {
+        COLUMN_ONE: item.title,
+        COLUMN_TWO: item.description,
+        COLUMN_THREE: item.addedBy,
+        COLUMN_FOUR: this.utilities.getFormatDate(item.sent) + PIPE + this.utilities.getFormatHour(item.sent),
+        COLUMN_FIVE: this.txtButton.DELETE_INACTIVE
+      };
+      this.dataTableListLocal.push(this.dataTableLocal);
+    });
 
   }
 
