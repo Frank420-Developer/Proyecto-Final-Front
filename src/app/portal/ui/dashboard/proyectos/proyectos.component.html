@@ -1,4 +1,9 @@
 <div>
+
+    <div *ngIf="activeSpinner" class="spinner-container" >
+        <mat-spinner ></mat-spinner>
+    </div>
+
     <!-- Header -->
     <div class="header-proyectos-container" >
         <h1> {{ textEs.TITLE }} </h1>
@@ -65,7 +70,7 @@
                 </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="headersList"></tr>
+            <tr mat-header-row *matHeaderRowDef="headersList; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: headersList;"></tr>
         </table>
 

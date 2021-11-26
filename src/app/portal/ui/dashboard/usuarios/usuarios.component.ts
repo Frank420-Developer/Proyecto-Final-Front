@@ -37,6 +37,9 @@ export class UsuariosComponent implements OnInit {
   private dataTableList: StructDataTableModel[];
   private dataTable: StructDataTableModel;
 
+  // Flags
+  public activeSpinner = true;
+
   constructor( private dto: GeneralStructsService,
                private api: UsersApiService,
                private utils: GeneralFunctionsService ) {
@@ -86,9 +89,14 @@ export class UsuariosComponent implements OnInit {
           true
         );
 
+        this.activeSpinner = false;
+
       } catch (err) {
+        this.activeSpinner = false;
       }
-    }, errorResponse => {});
+    }, errorResponse => {
+      this.activeSpinner = false;
+    });
 
   }
 

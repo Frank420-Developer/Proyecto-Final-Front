@@ -51,6 +51,9 @@ export class ProyectosComponent implements OnInit {
   public lenghtDataTable: number;
   private pageTable = 0;
 
+  // Flags
+  public activeSpinner = true;
+
   constructor( private projectService: ProjectListServiceService,
                private formBuilder: FormBuilder,
                private dialogController: MatDialog, ) {
@@ -81,7 +84,7 @@ export class ProyectosComponent implements OnInit {
   private getProjectList(clientID: string, page: number) {
     const paramsRequest = new HttpParams()
                           .set('page', page.toString() )
-                          .set('size', '5');
+                          .set('size', '10');
 
     this.projectService.getListProjects(clientID, paramsRequest).subscribe( (data) => {
       try {
@@ -97,10 +100,14 @@ export class ProyectosComponent implements OnInit {
           this.getProjectDetail(clientID, this.projectList[position].id, position);
         });
 
+        this.activeSpinner = false;
+
       } catch (err) {
+        this.activeSpinner = false;
       }
     }, errorResponse => {
       console.error('Error en el respuesta ', errorResponse);
+      this.activeSpinner = false;
     });
   }
 

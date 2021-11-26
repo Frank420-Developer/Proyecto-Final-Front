@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 /* Importacion de elementos para Form */
@@ -86,6 +87,7 @@ import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas
     MatSnackBarModule,
     MatPaginatorModule,
     MatTabsModule,
+    MatProgressSpinnerModule,
   ],
   entryComponents: [
     DialogAddProjectComponent, // se deja como referencia de implementacion para versiones

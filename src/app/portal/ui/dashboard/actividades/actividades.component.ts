@@ -34,6 +34,9 @@ export class ActividadesComponent implements OnInit {
   private dataTableList: StructDataTableModel[];
   private dataTable: StructDataTableModel;
 
+  // Flags
+  public activeSpinner = true;
+
   constructor( private api: ActivitiesApiService,
                private dto: GeneralStructsService,
                private utilities: GeneralFunctionsService, ) {
@@ -82,12 +85,15 @@ export class ActividadesComponent implements OnInit {
           false,
           parseInt(data.headers.get('total-elements'), 10)
         );
+        this.activeSpinner = false;
 
       } catch (err) {
         this.utilities.onAlertMessage('Error ' + err, '');
+        this.activeSpinner = false;
       }
     }, errorResponse => {
       this.utilities.onAlertMessage('Error ' + errorResponse, '');
+      this.activeSpinner = false;
     });
   }
 

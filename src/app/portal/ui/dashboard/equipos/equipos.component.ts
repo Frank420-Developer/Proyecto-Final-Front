@@ -37,6 +37,9 @@ export class EquiposComponent implements OnInit {
   private dataTableList: StructDataTableModel[];
   private dataTable: StructDataTableModel;
 
+  // Flags
+  public activeSpinner = true;
+
   constructor( private dto: GeneralStructsService,
                private api: WorkteamApiService ) {
 
@@ -77,6 +80,8 @@ export class EquiposComponent implements OnInit {
       true,
       false,
       parseInt('10', 10) );
+
+    this.activeSpinner = false;
   }
 
   public changePageTable(page: number) {

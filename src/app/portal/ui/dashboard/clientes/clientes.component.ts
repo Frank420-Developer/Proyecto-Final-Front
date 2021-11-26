@@ -28,6 +28,9 @@ export class ClientesComponent implements OnInit {
   private txtPlaceholder = INPUTS;
   private txtButton = BUTTONS;
 
+  // Flags
+  public activeSpinner = true;
+
   // Table
   public dataToSend: HeaderModel;
   public tableDataToSend: DataTableModel;
@@ -81,8 +84,14 @@ export class ClientesComponent implements OnInit {
           parseInt(data.headers.get('total-elements'), 10)
         );
 
-      } catch (err) {}
-    }, errorResponse => {});
+        this.activeSpinner = false;
+
+      } catch (err) {
+        this.activeSpinner = false;
+      }
+    }, errorResponse => {
+      this.activeSpinner = false;
+    });
   }
 
 

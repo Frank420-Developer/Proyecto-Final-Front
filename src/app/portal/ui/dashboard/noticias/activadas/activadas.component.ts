@@ -30,6 +30,9 @@ export class ActivadasComponent implements OnInit {
   // List
   private newsList: ListNewsResponse[];
 
+  // Flags
+  public activeSpinner = true;
+
   constructor( private newsApi: NewsApiService ) {
     this.getNewsList(0, 10);
   }
@@ -57,8 +60,14 @@ export class ActivadasComponent implements OnInit {
           ACTIVE_BUTTON: false,
           ACTIVE_TWO_BUTTONS: true
         };
-      } catch (err) {}
-    }, errorResponse => {});
+
+        this.activeSpinner = false;
+      } catch (err) {
+        this.activeSpinner = false;
+      }
+    }, errorResponse => {
+      this.activeSpinner = false;
+    });
   }
 
 

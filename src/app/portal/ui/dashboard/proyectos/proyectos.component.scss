@@ -4,6 +4,8 @@
 .table-container {
     background-color: $color-background-secundary;
     padding: 25px;
+    max-height: 674px;
+    overflow: auto;
 }
 
 .header-proyectos-container {
