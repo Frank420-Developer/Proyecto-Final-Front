@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/* Importación de router */
+import { Router } from '@angular/router';
+
 /* Constants and images */
 import * as Image from '../../../utilis/ImagesRoutes';
 import * as TextsES from '../../../utilis/TextsConstantsES';
@@ -16,10 +19,17 @@ export class PrincipalComponent implements OnInit {
 
   // Texts
   public menuTxt = TextsES.MENU;
+  public buttonsTxt = TextsES.BUTTONS;
 
-  constructor() { }
+  constructor( private router: Router ) { }
 
   ngOnInit(): void {
+  }
+
+
+  public logaoutSession() {
+    localStorage.clear();
+    this.router.navigate(['login']);
   }
 
 }

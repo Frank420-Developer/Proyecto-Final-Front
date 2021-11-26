@@ -136,7 +136,8 @@ export const BUTTONS = {
     ADD: 'Agregar',
     ADD_MORE: 'Agregar otro',
     OK: 'Ok',
-    DELETE_INACTIVE: 'Suspender | Eliminar'
+    DELETE_INACTIVE: 'Suspender | Eliminar',
+    LOGOUT: 'Cerrar sesión'
 };
 
 export const STATUS = {
