@@ -1,13 +1,5 @@
 @import '../../../../../theme.scss';
 
-/* Containers */
-.table-container {
-    background-color: $color-background-secundary;
-    padding: 25px;
-    max-height: 674px;
-    overflow: auto;
-}
-
 .header-proyectos-container {
     display: grid;
     grid-template-columns: 50% 25% 25%;

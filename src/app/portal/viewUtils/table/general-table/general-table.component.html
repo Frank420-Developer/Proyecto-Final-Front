@@ -52,15 +52,15 @@
                 </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="headersList"></tr>
+            <tr mat-header-row *matHeaderRowDef="headersList; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: headersList;"></tr>
         </table>
-
-        <mat-paginator 
-            [pageSizeOptions]="[5, 10, 20]"
-            [length]="lenghtDataTable"
-            (page)="changePageTable($event)"
-            showFirstLastButtons >
-        </mat-paginator>
     </div>
+
+    <mat-paginator 
+        [pageSizeOptions]="[5, 10, 20]"
+        [length]="lenghtDataTable"
+        (page)="changePageTable($event)"
+        showFirstLastButtons >
+    </mat-paginator>
 </div>

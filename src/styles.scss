@@ -105,6 +105,12 @@ table {
     border-spacing: 0;
 }
 
+.table-container {
+    background-color: $color-background-secundary;
+    max-height: 674px;
+    overflow: auto;
+}
+
 th {
     color: $color-text-description;
     font-family: "SFUIDisplayRegular", sans-serif;
