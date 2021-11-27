@@ -118,6 +118,17 @@ export const DIALOG_PROJECTS = {
     PROJECT_NAME: 'Nombre del proyecto'
 };
 
+export const DIALOG_WORK_TEAMS = {
+    TITLE: 'Agregar equipo de trabajo',
+    SECOND_TITLE: 'Colaboradores',
+    AREA: 'Área',
+    EMAIL_LEAD: 'Correo electrónico del líder',
+    ADD_COLLABORATORS: 'Agregar colaboradores',
+    ADD_ACTIVITIES: 'Agregar las actividades',
+    ADDED_COLLABORATORS: 'Colaboradores agregados',
+    ADDED_ACTIVITIES: 'Actividades agregadas'
+};
+
 export const INPUTS = {
     SEARCH: 'Buscar',
     SEARCH_PROJECT: 'proyecto',

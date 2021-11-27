@@ -45,7 +45,7 @@ export class EquiposComponent implements OnInit {
 
     // Inicilizacion
     this.dataTableList = [];
-    this.getWorkTeamList(0, 10);
+    this.validateWorkTeamsData();
   }
 
   ngOnInit(): void {
@@ -82,10 +82,34 @@ export class EquiposComponent implements OnInit {
       parseInt('10', 10) );
 
     this.activeSpinner = false;
+    localStorage.setItem('workTeamsList', JSON.stringify(this.dataTableList));
   }
 
   public changePageTable(page: number) {
     this.getWorkTeamList(page, 10);
+  }
+
+
+  /**
+   * @description Método que valida si ya se obtuvo la información del servicio
+   */
+  private validateWorkTeamsData(): void {
+    if ( localStorage.getItem('workTeamsList') === null ) {
+      this.getWorkTeamList(0, 10);
+    } else {
+      this.dataTableList = JSON.parse(localStorage.getItem('workTeamsList'));
+
+      this.tableDataToSend = this.dto.createStructTable(
+        this.textEs.TABLE_HEADERS,
+        this.dataTableList,
+        false,
+        true,
+        false,
+        parseInt('10', 10) );
+
+      this.activeSpinner = false;
+    }
+
   }
 
 }

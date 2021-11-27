@@ -22,6 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 /* Importacion de elementos para Form */
@@ -90,6 +91,7 @@ import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas
     MatTabsModule,
     MatProgressSpinnerModule,
     MatMenuModule,
+    MatAutocompleteModule,
   ],
   entryComponents: [
     DialogAddProjectComponent, // se deja como referencia de implementacion para versiones

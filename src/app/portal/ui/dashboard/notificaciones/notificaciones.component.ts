@@ -70,8 +70,8 @@ export class NotificacionesComponent implements OnInit {
    * la sección de notificaciones por enviar.
    */
   private validateNotificationToSend() {
-    if ( localStorage.getItem('listToSend') === null ) {
-      localStorage.setItem('listToSend', JSON.stringify(NOTIFICATION_TO_SEND) );
+    if ( localStorage.getItem('listToSendNotifications') === null ) {
+      localStorage.setItem('listToSendNotifications', JSON.stringify(NOTIFICATION_TO_SEND) );
     }
   }
 
@@ -80,8 +80,8 @@ export class NotificacionesComponent implements OnInit {
    * la sección de notificaciones enviadas.
    */
   private validateNotificationSent() {
-    if ( localStorage.getItem('listSent') === null ) {
-      localStorage.setItem('listSent', JSON.stringify(NOTIFICATION_SENT));
+    if ( localStorage.getItem('listSentNotifications') === null ) {
+      localStorage.setItem('listSentNotifications', JSON.stringify(NOTIFICATION_SENT));
     }
   }
 

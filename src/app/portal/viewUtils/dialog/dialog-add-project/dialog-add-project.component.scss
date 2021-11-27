@@ -1,22 +1,5 @@
 @import '../../../../../theme.scss';
 
-/* Contenedores */
-.general-input-container {
-    margin-top: 40px;
-    margin-bottom: 20px;
-}
-
-.inputs-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-
-.add-project-container {
-    margin: 20px;
-    display: grid;
-    justify-items: center;
-}
-
 /* Buttons */
 .mat-raised-button {
     background: $color-gradient-button;
