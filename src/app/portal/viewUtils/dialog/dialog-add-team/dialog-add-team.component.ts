@@ -15,6 +15,10 @@ import { DIALOG_WORK_TEAMS, ERROR_MESSAGE, BUTTONS } from 'src/app/portal/utilis
 
 /* Importacion de mocks */
 import { COLLABORATORS_LIST_MOCK } from 'src/app/data/models/local/GeneralMocks';
+import { LIST_WORK_TEAMS } from 'src/app/portal/utilis/ConstantsApp';
+
+/* Importaciones de angular material */
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-team',
@@ -45,7 +49,8 @@ export class DialogAddTeamComponent implements OnInit {
   // Table
   private dataTableLocal: StructDataTableModel;
 
-  constructor( private fromBuild: FormBuilder ) {
+  constructor( private fromBuild: FormBuilder,
+               private dialog: MatDialogRef<DialogAddTeamComponent> ) {
 
     // Construccion del formulario
     this.addForm = this.fromBuild.group({
@@ -130,6 +135,9 @@ export class DialogAddTeamComponent implements OnInit {
    * @description Método encargado de agregar datos a nuestra lista de equipos de trabajo
    */
   public addValues(): void {
+
+    const valuesList = (localStorage.getItem(LIST_WORK_TEAMS) === null) ? [] : JSON.parse(localStorage.getItem(LIST_WORK_TEAMS));
+
     this.dataTableLocal = {
       COLUMN_ONE: this.area.value,
       COLUMN_TWO: this.emailLead.value,
@@ -137,6 +145,11 @@ export class DialogAddTeamComponent implements OnInit {
       COLUMN_FOUR: this.addedActivities.length.toString(),
       COLUMN_FIVE: this.textButtons.VIEW
     };
+
+    valuesList.push(this.dataTableLocal);
+    localStorage.setItem(LIST_WORK_TEAMS, valuesList);
+    this.dialog.close();
+
   }
 
 }

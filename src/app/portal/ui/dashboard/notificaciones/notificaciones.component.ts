@@ -7,7 +7,7 @@ import { NotificationToSendModel, NotificationSentModel } from 'src/app/data/mod
 
 /* Constants & utils */
 import { NOTIFICATIONS, BUTTONS } from 'src/app/portal/utilis/TextsConstantsES';
-import { PIPE, SPACE } from 'src/app/portal/utilis/ConstantsApp';
+import { LIST_NOTIFICATIONS_TO_SEND, LIST_SENT_NOTIFICATIONS, PIPE, SPACE } from 'src/app/portal/utilis/ConstantsApp';
 
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
 import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
@@ -70,8 +70,8 @@ export class NotificacionesComponent implements OnInit {
    * la sección de notificaciones por enviar.
    */
   private validateNotificationToSend() {
-    if ( localStorage.getItem('listToSendNotifications') === null ) {
-      localStorage.setItem('listToSendNotifications', JSON.stringify(NOTIFICATION_TO_SEND) );
+    if ( localStorage.getItem(LIST_NOTIFICATIONS_TO_SEND) === null ) {
+      localStorage.setItem(LIST_NOTIFICATIONS_TO_SEND, JSON.stringify(NOTIFICATION_TO_SEND) );
     }
   }
 
@@ -80,8 +80,8 @@ export class NotificacionesComponent implements OnInit {
    * la sección de notificaciones enviadas.
    */
   private validateNotificationSent() {
-    if ( localStorage.getItem('listSentNotifications') === null ) {
-      localStorage.setItem('listSentNotifications', JSON.stringify(NOTIFICATION_SENT));
+    if ( localStorage.getItem(LIST_SENT_NOTIFICATIONS) === null ) {
+      localStorage.setItem(LIST_SENT_NOTIFICATIONS, JSON.stringify(NOTIFICATION_SENT));
     }
   }
 

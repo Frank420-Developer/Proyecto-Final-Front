@@ -7,7 +7,7 @@ import { WorkTeamListResponse } from 'src/app/data/models/response/workTeam/Work
 
 /* Importacion de utilidades, constantes y servicios */
 import { WORK_TEAM, BUTTONS, INPUTS } from 'src/app/portal/utilis/TextsConstantsES';
-import { PLUS, SPACE } from 'src/app/portal/utilis/ConstantsApp';
+import { LIST_WORK_TEAMS, PLUS, SPACE } from 'src/app/portal/utilis/ConstantsApp';
 
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
 import { WorkteamApiService } from 'src/app/data/network/workteam/workteam-api.service';
@@ -82,7 +82,7 @@ export class EquiposComponent implements OnInit {
       parseInt('10', 10) );
 
     this.activeSpinner = false;
-    localStorage.setItem('workTeamsList', JSON.stringify(this.dataTableList));
+    localStorage.setItem(LIST_WORK_TEAMS, JSON.stringify(this.dataTableList));
   }
 
   public changePageTable(page: number) {
@@ -94,10 +94,10 @@ export class EquiposComponent implements OnInit {
    * @description Método que valida si ya se obtuvo la información del servicio
    */
   private validateWorkTeamsData(): void {
-    if ( localStorage.getItem('workTeamsList') === null ) {
+    if ( localStorage.getItem(LIST_WORK_TEAMS) === null ) {
       this.getWorkTeamList(0, 10);
     } else {
-      this.dataTableList = JSON.parse(localStorage.getItem('workTeamsList'));
+      this.dataTableList = JSON.parse(localStorage.getItem(LIST_WORK_TEAMS));
 
       this.tableDataToSend = this.dto.createStructTable(
         this.textEs.TABLE_HEADERS,

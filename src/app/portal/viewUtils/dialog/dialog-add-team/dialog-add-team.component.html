@@ -49,7 +49,7 @@
                                 matSuffix 
                                 mat-icon-button 
                                 (click)="addCollaborator()"
-                                [disabled]="!collaboratorsAutoComplete.valid">
+                                [disabled]="!collaboratorsAutoComplete.valid || addedCollaborator.length > 4">
                                 <mat-icon> add_circle_outline </mat-icon>
                             </button>
                         <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
@@ -65,7 +65,7 @@
                     <mat-form-field class="input-search">
                         <input matInput [formControl]="activities" type="text" >
                         <button 
-                            [disabled]="!activities.valid" 
+                            [disabled]="!activities.valid || addedActivities.length > 4" 
                             matSuffix 
                             mat-icon-button 
                             (click)="addActivity()" >
@@ -112,7 +112,7 @@
     <div class="add-dialog-button-container" >
         <button 
             (click)="addValues()" 
-            [disabled]="!addForm.valid && !collaboratorsAutoComplete.valid" 
+            [disabled]="!addForm.valid || addedCollaborator.length === 0 || addedActivities.length === 0" 
             mat-raised-button> 
             {{ textButtons.ADD }} 
         </button>

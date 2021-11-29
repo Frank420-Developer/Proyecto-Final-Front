@@ -8,3 +8,8 @@ export const PLUS = '+';
 export const SPACE = ' ';
 export const COLONS = ':';
 export const PIPE = '|';
+
+// LocalStorage
+export const LIST_WORK_TEAMS = 'workTeamsList';
+export const LIST_SENT_NOTIFICATIONS = 'listSentNotifications';
+export const LIST_NOTIFICATIONS_TO_SEND = 'listToSendNotifications';
