@@ -48,6 +48,7 @@ import { DialogAddTeamComponent } from './portal/viewUtils/dialog/dialog-add-tea
 import { ActivadasComponent } from './portal/ui/dashboard/noticias/activadas/activadas.component';
 import { BorradoresComponent } from './portal/ui/dashboard/noticias/borradores/borradores.component';
 import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas/suspendidas.component';
+import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas
     DialogAddTeamComponent,
     ActivadasComponent,
     BorradoresComponent,
-    SuspendidasComponent
+    SuspendidasComponent,
+    DialogAddClientComponent
   ],
   imports: [
     FormsModule,

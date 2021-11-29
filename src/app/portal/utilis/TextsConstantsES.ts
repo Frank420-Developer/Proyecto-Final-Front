@@ -129,6 +129,11 @@ export const DIALOG_WORK_TEAMS = {
     ADDED_ACTIVITIES: 'Actividades agregadas'
 };
 
+export const DIALOG_CLIENT = {
+    TITLE: 'Agregar cliente',
+    CLIENT_NAME: 'Cliente'
+};
+
 export const INPUTS = {
     SEARCH: 'Buscar',
     SEARCH_PROJECT: 'proyecto',

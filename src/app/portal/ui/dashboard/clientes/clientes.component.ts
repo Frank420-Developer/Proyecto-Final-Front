@@ -15,6 +15,7 @@ import { ClientesApiService } from 'src/app/data/network/clientes/clientes-api.s
 import { CLIENTS, BUTTONS, INPUTS } from 'src/app/portal/utilis/TextsConstantsES';
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
 import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
+import { DialogAddClientComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
 
 @Component({
   selector: 'app-clientes',
@@ -52,7 +53,7 @@ export class ClientesComponent implements OnInit {
       this.txtButton.ADD_CLIENT,
       true,
       true,
-      '');
+      DialogAddClientComponent);
   }
 
 

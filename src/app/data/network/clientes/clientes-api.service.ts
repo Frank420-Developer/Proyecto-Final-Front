@@ -14,6 +14,7 @@ import { Client } from '../../models/response/clients/ClientsResponse';
 import { TIME_OUT, SLASH } from 'src/app/portal/utilis/ConstantsApp';
 import { environment } from 'src/environments/environment';
 import * as ServiceConst from '../../../portal/utilis/ConstantsService';
+import { NewClient } from '../../models/request/clients/ClientesRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +36,16 @@ export class ClientesApiService {
     .pipe( map( response => {
       return response;
     })
+    );
+  }
+
+
+  public postCreateClientApi(body: NewClient) {
+    return this.http.post(this.microServicioPath.clients, body)
+      .pipe( timeout(TIME_OUT) )
+      .pipe( map( response => {
+        return response;
+      })
     );
   }
 }
