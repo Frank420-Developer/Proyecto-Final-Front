@@ -12,6 +12,7 @@ import { HeaderModel } from 'src/app/data/models/local/InputsModels';
 import { WORK_TEAM } from 'src/app/portal/utilis/TextsConstantsES';
 
 import { DialogAddTeamComponent } from '../../dialog/dialog-add-team/dialog-add-team.component';
+import { DIALOG_WIDTH_XL } from 'src/app/portal/utilis/ConstantsApp';
 
 @Component({
   selector: 'app-general-header',
@@ -57,7 +58,7 @@ export class GeneralHeaderComponent implements OnInit {
   public openDialog() {
     const dialog = this.dialogController.open(this.dataInput.COMPONENT_DIALOG, {
       disableClose: true,
-      width: '635px',
+      width: ( this.dataInput.WIDTH_DIALOG === null ) ? DIALOG_WIDTH_XL : this.dataInput.WIDTH_DIALOG,
     });
   }
 

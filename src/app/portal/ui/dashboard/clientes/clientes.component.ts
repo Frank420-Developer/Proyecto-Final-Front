@@ -16,6 +16,7 @@ import { CLIENTS, BUTTONS, INPUTS } from 'src/app/portal/utilis/TextsConstantsES
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
 import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
 import { DialogAddClientComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
+import { DIALOG_WIDTH_SM } from 'src/app/portal/utilis/ConstantsApp';
 
 @Component({
   selector: 'app-clientes',
@@ -53,7 +54,9 @@ export class ClientesComponent implements OnInit {
       this.txtButton.ADD_CLIENT,
       true,
       true,
-      DialogAddClientComponent);
+      DialogAddClientComponent,
+      DIALOG_WIDTH_SM
+      );
   }
 
 

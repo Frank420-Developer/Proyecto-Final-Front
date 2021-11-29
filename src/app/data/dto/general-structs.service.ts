@@ -17,14 +17,16 @@ export class GeneralStructsService {
     txtButton: string,
     activeSearch: boolean,
     activeButton: boolean,
-    component: any): HeaderModel {
+    component: any,
+    widthDialog?: string): HeaderModel {
     return {
       TITLE: title,
       TEXT_PLACEHOLDER: txtPlaceholder,
       TEXT_ADD_BUTTON: txtButton,
       FLAG_ACTIVE_SEARCH: activeSearch,
       FLAG_ACTIVE_BUTTON: activeButton,
-      COMPONENT_DIALOG: component
+      COMPONENT_DIALOG: component,
+      WIDTH_DIALOG: widthDialog
     };
   }
 

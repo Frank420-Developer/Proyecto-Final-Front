@@ -9,6 +9,11 @@ export const SPACE = ' ';
 export const COLONS = ':';
 export const PIPE = '|';
 
+// Dimens
+export const DIALOG_WIDTH_XL = '635px';
+export const DIALOG_WIDTH_SM = '334px';
+
+
 // LocalStorage
 export const LIST_WORK_TEAMS = 'workTeamsList';
 export const LIST_SENT_NOTIFICATIONS = 'listSentNotifications';
