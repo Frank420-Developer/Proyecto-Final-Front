@@ -79,7 +79,7 @@ export class DialogAddClientComponent implements OnInit {
       this.postCreateNewClient(item);
     });
 
-    this.dialog.close();
+    this.dialog.close(false);
   }
 
 

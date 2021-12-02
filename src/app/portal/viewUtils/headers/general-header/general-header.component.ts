@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 /* Angular Material */
 import { MatDialog } from '@angular/material/dialog';
@@ -8,10 +8,6 @@ import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/fo
 
 /* Interfaces */
 import { HeaderModel } from 'src/app/data/models/local/InputsModels';
-
-import { WORK_TEAM } from 'src/app/portal/utilis/TextsConstantsES';
-
-import { DialogAddTeamComponent } from '../../dialog/dialog-add-team/dialog-add-team.component';
 import { DIALOG_WIDTH_XL } from 'src/app/portal/utilis/ConstantsApp';
 
 @Component({
@@ -21,6 +17,7 @@ import { DIALOG_WIDTH_XL } from 'src/app/portal/utilis/ConstantsApp';
 })
 export class GeneralHeaderComponent implements OnInit {
   @Input() dataInput: HeaderModel;
+  @Output() updateTable = new EventEmitter<boolean>();
 
   // Text
   public txtTitle: string;
@@ -59,6 +56,11 @@ export class GeneralHeaderComponent implements OnInit {
     const dialog = this.dialogController.open(this.dataInput.COMPONENT_DIALOG, {
       disableClose: true,
       width: ( this.dataInput.WIDTH_DIALOG === null ) ? DIALOG_WIDTH_XL : this.dataInput.WIDTH_DIALOG,
+    });
+
+
+    dialog.afterClosed().subscribe((dialogClose: boolean) => {
+      this.updateTable.emit(dialogClose);
     });
   }
 

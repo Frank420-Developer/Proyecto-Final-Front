@@ -103,4 +103,10 @@ export class ClientesComponent implements OnInit {
     this.getClientList(event, 10);
   }
 
+  public onUpdateTable(update: boolean): void {
+    if ( !update ) {
+      this.getClientList(0, 10);
+    }
+  }
+
 }
