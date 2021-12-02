@@ -23,6 +23,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 /* Importacion de elementos para Form */
@@ -49,6 +51,7 @@ import { ActivadasComponent } from './portal/ui/dashboard/noticias/activadas/act
 import { BorradoresComponent } from './portal/ui/dashboard/noticias/borradores/borradores.component';
 import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas/suspendidas.component';
 import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
+import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +74,8 @@ import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-c
     ActivadasComponent,
     BorradoresComponent,
     SuspendidasComponent,
-    DialogAddClientComponent
+    DialogAddClientComponent,
+    DialogAddNotificationComponent
   ],
   imports: [
     FormsModule,
@@ -94,6 +98,8 @@ import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-c
     MatProgressSpinnerModule,
     MatMenuModule,
     MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   entryComponents: [
     DialogAddProjectComponent, // se deja como referencia de implementacion para versiones

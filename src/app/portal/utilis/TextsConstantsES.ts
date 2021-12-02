@@ -134,6 +134,15 @@ export const DIALOG_CLIENT = {
     CLIENT_NAME: 'Cliente'
 };
 
+export const DIALOG_NOTIFICATIONS = {
+    TITLE: 'Agregar notificación',
+    TITLE_NOT: 'Título (16 caracteres máximo)',
+    DESCRIPTION: 'Descripción (27 caracteres máximo)',
+    TYPE: 'Tipo',
+    DATE_NOT: 'Fecha',
+    HOUR_NOT: 'Hora'
+};
+
 export const INPUTS = {
     SEARCH: 'Buscar',
     SEARCH_PROJECT: 'proyecto',

@@ -7,7 +7,7 @@ import { NotificationToSendModel, NotificationSentModel } from 'src/app/data/mod
 
 /* Constants & utils */
 import { NOTIFICATIONS, BUTTONS } from 'src/app/portal/utilis/TextsConstantsES';
-import { LIST_NOTIFICATIONS_TO_SEND, LIST_SENT_NOTIFICATIONS, PIPE, SPACE } from 'src/app/portal/utilis/ConstantsApp';
+import { DIALOG_WIDTH_L, LIST_NOTIFICATIONS_TO_SEND, LIST_SENT_NOTIFICATIONS, PIPE, SPACE } from 'src/app/portal/utilis/ConstantsApp';
 
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
 import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
@@ -17,6 +17,7 @@ import { NotificationsApiService } from 'src/app/data/network/notifications/noti
 
 /* Importación de Mocks */
 import { NOTIFICATION_TO_SEND, NOTIFICATION_SENT } from 'src/app/data/models/local/TableMocks';
+import { DialogAddNotificationComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
 
 @Component({
   selector: 'app-notificaciones',
@@ -61,7 +62,7 @@ export class NotificacionesComponent implements OnInit {
       this.txtButton.ADD_NOTIFICATION,
       false,
       true,
-      '');
+      DialogAddNotificationComponent);
   }
 
 

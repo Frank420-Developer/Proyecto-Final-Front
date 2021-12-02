@@ -9,8 +9,12 @@ export const SPACE = ' ';
 export const COLONS = ':';
 export const PIPE = '|';
 
+// Date
+export const DATE_FORMAT = 'es';
+
 // Dimens
 export const DIALOG_WIDTH_XL = '635px';
+export const DIALOG_WIDTH_L = '419px';
 export const DIALOG_WIDTH_SM = '334px';
 
 
