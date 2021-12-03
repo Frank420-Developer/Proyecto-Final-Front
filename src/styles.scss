@@ -13,6 +13,14 @@ h1 {
   margin: 0px;
 }
 
+h3 {
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 17px;
+    text-align: center;
+    color: $color-text-title;
+}
+
 h2 {
     font-size: 20px;
     letter-spacing: 0;
@@ -47,6 +55,14 @@ h2 {
     line-height: 22px;
     color: $color-text-title;
     text-align: left;
+}
+
+.txt-upload {
+  font-size: 8px;
+  letter-spacing: 0;
+  line-height: 8px;
+  text-align: center;
+  color: $color-text-description;
 }
 
 .center-txt {
@@ -86,6 +102,10 @@ td.mat-cell {
 .principal-background {
     background-color: $color-background-principal;
     height: 100vh;
+}
+
+.principal-background-general {
+    background-color: $color-background-principal;
 }
 
 .secundary-background {
@@ -226,6 +246,16 @@ input {
     grid-gap: 20px;
 }
 
+input[type="file"] {
+    display: none;
+}
+.input-draganddrop-zone {
+    border: 2.13px dashed $color-backgroud-border-accent;
+    height: 100%;
+    display: grid;
+    align-content: center;
+}
+
 /* Autocomplete */
 .mat-autocomplete-panel {
     background-color: $color-background-secundary;
@@ -237,16 +267,29 @@ input {
     display: grid;
     justify-items: center;
 }
-
 .added-items-container {
     background-color: $color-background-principal;
     padding-left: 14px;
     padding-right: 14px;
 }
-
 .three-comlumns {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+.dropzone-container {
+    background: rgba($color: $color-background-accent, $alpha: 0.05);
+    padding: 10px;
+}
+
+.img-sm-container {
+    width: 100px;
+    height: 100px;
+}
+
+.img-l-container {
+    width: 525px;
+    height: 160px;
 }
 
 /* Buttons */
@@ -289,6 +332,10 @@ input {
 */
 .m-tb-20 {
     margin: 20px 0px;
+}
+
+.m-t-20 {
+    margin-top: 20px;
 }
 
 .p-tb-20 {

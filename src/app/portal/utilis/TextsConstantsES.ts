@@ -143,6 +143,18 @@ export const DIALOG_NOTIFICATIONS = {
     HOUR_NOT: 'Hora'
 };
 
+export const DIALOG_NEWS = {
+    TITLE: 'Agregar noticia',
+    TITLE_NEWS: 'Título',
+    DESCRIPTION: 'Descripción',
+    IMG_THUMB_TITLE: 'Thumb',
+    IMG_PRINCIPAL_TITLE: 'Imagen principal',
+    IMG_DESCRIPTION_UPLOAD: 'Sube',
+    IMG_DESCRIPTION: 'o arrastra la imagen formato .PNG .JPG',
+    IMG_SIZE_SM: '166px de ancho máximo',
+    IMG_SIZE_L: '656px de ancho máximo'
+};
+
 export const INPUTS = {
     SEARCH: 'Buscar',
     SEARCH_PROJECT: 'proyecto',
@@ -158,11 +170,14 @@ export const BUTTONS = {
     ADD_CLIENT: '+ Agregar cliente',
     ADD_USER: '+ Agregar usuario',
     ADD_NOTIFICATION: '+ Agregar notificacion',
+    ADD_NEWS: 'Agregar noticia',
     ADD: 'Agregar',
     ADD_MORE: 'Agregar otro',
     OK: 'Ok',
     DELETE_INACTIVE: 'Suspender | Eliminar',
-    LOGOUT: 'Cerrar sesión'
+    LOGOUT: 'Cerrar sesión',
+    PUBLISH: 'Publicar',
+    SAVE_DRAFT: 'Guardar borrador'
 };
 
 export const STATUS = {

@@ -52,6 +52,7 @@ import { BorradoresComponent } from './portal/ui/dashboard/noticias/borradores/b
 import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas/suspendidas.component';
 import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
 import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
+import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-news/dialog-add-news.component';
 
 @NgModule({
   declarations: [
@@ -75,7 +76,8 @@ import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog
     BorradoresComponent,
     SuspendidasComponent,
     DialogAddClientComponent,
-    DialogAddNotificationComponent
+    DialogAddNotificationComponent,
+    DialogAddNewsComponent
   ],
   imports: [
     FormsModule,
