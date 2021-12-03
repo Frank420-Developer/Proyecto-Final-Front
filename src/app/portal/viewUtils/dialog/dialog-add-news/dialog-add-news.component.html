@@ -39,15 +39,18 @@
 
         <!-- 2nd section -->
         <div class="principal-background-general m-t-20" >
-            <div class="dropzone-container img-l-container" >
+            <div 
+                class="dropzone-container img-l-container" 
+                (dragover)="dragOverHandler($event)" 
+                (drop)="dropHandler($event)" >
                 <div class="input-draganddrop-zone" >
                     <h3> {{ textES.IMG_PRINCIPAL_TITLE }} </h3>
-                    <p class="txt-upload" >
+                    <label for="imgUpload" class="txt-upload" >
                         <strong class="txt-accent" > {{ textES.IMG_DESCRIPTION_UPLOAD }} </strong> {{ textES.IMG_DESCRIPTION }}
                         <br>
                         {{ textES.IMG_SIZE_L }}
-                    </p>
-                    <input type="file" >
+                    </label>
+                    <input id="imgUpload" type="file" (change)="uploadByInput($event)" >
                 </div>
             </div>
 

@@ -187,5 +187,6 @@ export const STATUS = {
 
 export const ERROR_MESSAGE = {
     PROJECTS_LIST_COMPLETE: 'No puedes ingresar otro proyecto, sólo se permite la carga de 5 proyectos nuevos.',
-    INPUT_INVALID_FORMAT: 'No se permite el uso de caracteres especiales y números.'
+    INPUT_INVALID_FORMAT: 'No se permite el uso de caracteres especiales y números.',
+    INVALID_FILE_FORMAT: 'Formato de archivo invalido, sólo se permite la carga de imagenes JPG o PNG.'
 };

@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 
 /* Importaciones de constantes y utilidades */
 import { DIALOG_NEWS, BUTTONS, ERROR_MESSAGE } from 'src/app/portal/utilis/TextsConstantsES';
+import { JPG_FORMAT, PNG_FORMAT } from 'src/app/portal/utilis/ConstantsApp';
+import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
 
 @Component({
   selector: 'app-dialog-add-news',
@@ -23,7 +25,12 @@ export class DialogAddNewsComponent implements OnInit {
   public title: AbstractControl;
   public description: AbstractControl;
 
-  constructor( private formBuilder: FormBuilder ) {
+  // Images
+  private imgLargeName: string;
+  private generalFormData = new FormData();
+
+  constructor( private formBuilder: FormBuilder,
+               private utils: GeneralFunctionsService ) {
 
     // Construccion del formulario
     this.addForm = this.formBuilder.group({
@@ -38,6 +45,42 @@ export class DialogAddNewsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+
+  /**
+   * @description Método encargado de procesar eventos inesperados al momento de la carga de la imagen.
+   * @param imageFile Imagen adjunta
+   */
+  public dragOverHandler( imageFile: any ): void {
+    imageFile.preventDefault();
+    imageFile.stopPropagation();
+  }
+
+
+  /**
+   * @description Método para la captura de imagen por medio del método drag and drop.
+   * @param event Imagen adjunta
+   */
+  public dropHandler(event: any): void {
+    event.preventDefault();
+    console.log('Drag And Drop', event);
+  }
+
+
+  /**
+   * @description Método para la captura de la imagen por medio de un input.
+   * @param event Imagen adjunta por medio del modal de Input
+   */
+  public uploadByInput(event: any) {
+    if ( event.target.files[0].type === PNG_FORMAT || event.target.files[0].type === JPG_FORMAT ) {
+      this.imgLargeName = event.target.files[0].name;
+
+      this.generalFormData.append('banner', event.target.files[0], this.imgLargeName);
+    } else {
+      this.utils.onAlertMessage( this.txtError.INVALID_FILE_FORMAT, this.textButtons.OK );
+    }
+
   }
 
   public saveItem(): void {}

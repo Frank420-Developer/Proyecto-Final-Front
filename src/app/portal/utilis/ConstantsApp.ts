@@ -12,6 +12,10 @@ export const PIPE = '|';
 // Date
 export const DATE_FORMAT = 'es';
 
+// Image Format
+export const PNG_FORMAT = 'image/png';
+export const JPG_FORMAT = 'image/jpg';
+
 // Dimens
 export const DIALOG_WIDTH_XL = '635px';
 export const DIALOG_WIDTH_L = '419px';
