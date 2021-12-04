@@ -39,16 +39,19 @@
 
         <!-- 2nd section -->
         <div class="principal-background-general m-t-20" >
-            <div 
-                class="dropzone-container img-l-container" 
-                (dragover)="dragOverHandler($event)" 
-                (drop)="dropHandler($event)" >
+            <div class="dropzone-container img-l-container" 
+                 (dragover)="dragOverHandler($event)" 
+                 appDragAndDropZone
+                 (uploadedFiles)="dropHandler($event)" >
                 <div class="input-draganddrop-zone" >
-                    <h3> {{ textES.IMG_PRINCIPAL_TITLE }} </h3>
+                    <h3 *ngIf="!imageURL" > {{ textES.IMG_PRINCIPAL_TITLE }} </h3>
                     <label for="imgUpload" class="txt-upload" >
-                        <strong class="txt-accent" > {{ textES.IMG_DESCRIPTION_UPLOAD }} </strong> {{ textES.IMG_DESCRIPTION }}
-                        <br>
-                        {{ textES.IMG_SIZE_L }}
+                        <div *ngIf="!imageURL" >
+                            <strong class="txt-accent" > {{ textES.IMG_DESCRIPTION_UPLOAD }} </strong> {{ textES.IMG_DESCRIPTION }}
+                            <br>
+                            {{ textES.IMG_SIZE_L }}
+                        </div>
+                        <img class="img-l-container" alt="banner" [src]="imageURL" *ngIf="imageURL" >
                     </label>
                     <input id="imgUpload" type="file" (change)="uploadByInput($event)" >
                 </div>

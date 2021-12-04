@@ -53,6 +53,7 @@ import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas
 import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
 import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
 import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-news/dialog-add-news.component';
+import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and-drop-zone.directive';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,8 @@ import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-new
     SuspendidasComponent,
     DialogAddClientComponent,
     DialogAddNotificationComponent,
-    DialogAddNewsComponent
+    DialogAddNewsComponent,
+    DragAndDropZoneDirective
   ],
   imports: [
     FormsModule,

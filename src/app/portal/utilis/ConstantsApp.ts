@@ -15,6 +15,7 @@ export const DATE_FORMAT = 'es';
 // Image Format
 export const PNG_FORMAT = 'image/png';
 export const JPG_FORMAT = 'image/jpg';
+export const JPEG_FORMAT = 'image/jpeg';
 
 // Dimens
 export const DIALOG_WIDTH_XL = '635px';

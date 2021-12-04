@@ -22,6 +22,11 @@ export class NewsApiService {
   constructor( private http: HttpClient ) { }
 
 
+  /**
+   * @description Método para obtener el listado de noticias.
+   * @param params (HttpParams) Página y tamaño de la lista
+   * @returns (ListNewsResponse[]) Lista con las noticias
+   */
   public getNewsListService( params: HttpParams ): Observable<ListNewsResponse[]> {
     return this.http.get<ListNewsResponse[]>( this.microServicioPath.news, { params } )
     .pipe( timeout(TIME_OUT) )
@@ -31,8 +36,23 @@ export class NewsApiService {
   }
 
 
+  /**
+   * @description Método que obtiene los detalles de la noticia.
+   * @param idNews (string) ID de la noticia de la que se desea obtener los detalles.
+   * @returns (NewsDetailResponse) Objeto con los detalles de la noticia
+   */
   public getNewsDetailService(idNews: string): Observable<NewsDetailResponse> {
     return this.http.get<NewsDetailResponse>( this.microServicioPath.news + idNews ).pipe(timeout(TIME_OUT));
+  }
+
+
+  public postCreateNews(news) {
+    return this.http.post(this.microServicioPath.news, news)
+           .pipe( timeout(TIME_OUT) )
+           .pipe( map( response => {
+              return response;
+            })
+           );
   }
 
 }

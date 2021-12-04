@@ -5,9 +5,12 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 
 /* Importaciones de constantes y utilidades */
 import { DIALOG_NEWS, BUTTONS, ERROR_MESSAGE } from 'src/app/portal/utilis/TextsConstantsES';
-import { JPG_FORMAT, PNG_FORMAT } from 'src/app/portal/utilis/ConstantsApp';
+import { CREATE_NEWS_CONSTANTS } from 'src/app/portal/utilis/ConstantsService';
+import { JPEG_FORMAT, JPG_FORMAT, PNG_FORMAT } from 'src/app/portal/utilis/ConstantsApp';
 import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
 
+/* Importación de API's */
+import { NewsApiService } from 'src/app/data/network/news/news-api.service';
 @Component({
   selector: 'app-dialog-add-news',
   templateUrl: './dialog-add-news.component.html',
@@ -28,9 +31,14 @@ export class DialogAddNewsComponent implements OnInit {
   // Images
   private imgLargeName: string;
   private generalFormData = new FormData();
+  public imageURL: any;
+
+  // Flag
+  private readyToSend: boolean;
 
   constructor( private formBuilder: FormBuilder,
-               private utils: GeneralFunctionsService ) {
+               private utils: GeneralFunctionsService,
+               private api: NewsApiService ) {
 
     // Construccion del formulario
     this.addForm = this.formBuilder.group({
@@ -63,8 +71,7 @@ export class DialogAddNewsComponent implements OnInit {
    * @param event Imagen adjunta
    */
   public dropHandler(event: any): void {
-    event.preventDefault();
-    console.log('Drag And Drop', event);
+    this.onProcessImage(event[0]);
   }
 
 
@@ -73,18 +80,61 @@ export class DialogAddNewsComponent implements OnInit {
    * @param event Imagen adjunta por medio del modal de Input
    */
   public uploadByInput(event: any) {
-    if ( event.target.files[0].type === PNG_FORMAT || event.target.files[0].type === JPG_FORMAT ) {
-      this.imgLargeName = event.target.files[0].name;
 
-      this.generalFormData.append('banner', event.target.files[0], this.imgLargeName);
-    } else {
-      this.utils.onAlertMessage( this.txtError.INVALID_FILE_FORMAT, this.textButtons.OK );
+    if ( event.target.files[0] !== undefined ) {
+      this.onProcessImage(event.target.files[0]);
     }
 
   }
 
   public saveItem(): void {}
 
-  public publishNews(): void {}
+  public publishNews(): void {
+
+    if ( this.addForm.valid && this.readyToSend ) {
+      this.generalFormData.append(CREATE_NEWS_CONSTANTS.HEADLINE, this.title.value);
+      this.generalFormData.append(CREATE_NEWS_CONSTANTS.SUMMARY, this.description.value);
+      this.generalFormData.append(CREATE_NEWS_CONSTANTS.BODY, this.description.value);
+
+      this.api.postCreateNews(this.generalFormData).subscribe( (data) => {
+        try {
+          console.log(data);
+        } catch (err) {
+          this.utils.onAlertMessage(this.txtError.BAD_INSERT, this.textButtons.OK);
+        }
+      }, errorResponse => {
+        this.utils.onAlertMessage(this.txtError.BAD_REQUEST, this.textButtons.OK);
+      });
+    }
+
+  }
+
+
+  /**
+   * @description Método encargado de procesar la imagen para almacenar en la variable de FormData
+   * MultiPart y renderizarla en una etiqueta img de nuestro HTML
+   * @param image Imagen adjunta
+   */
+  private onProcessImage(image: any): void {
+
+    if ( image.type === PNG_FORMAT || image.type === JPG_FORMAT || image.type === JPEG_FORMAT ) {
+      // Asignacion de nombre de la imagen a nuestra variable
+      this.imgLargeName = image.name;
+
+      // Inserción de datos para FormData y activación de bandera
+      this.generalFormData.append(CREATE_NEWS_CONSTANTS.IMAGE, image, this.imgLargeName);
+      this.readyToSend = true;
+
+      // Procesamiento de imagen cargada para poderla visualizar
+      const imageRender = new FileReader();
+      imageRender.readAsDataURL(image);
+
+      imageRender.onload = () => {
+        this.imageURL = imageRender.result;
+      };
+    } else {
+      this.utils.onAlertMessage( this.txtError.INVALID_FILE_FORMAT, this.textButtons.OK );
+    }
+  }
 
 }
