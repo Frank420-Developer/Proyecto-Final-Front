@@ -11,6 +11,9 @@ import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/gen
 
 /* Importación de API's */
 import { NewsApiService } from 'src/app/data/network/news/news-api.service';
+
+/* Importaciones de Angular Material */
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-dialog-add-news',
   templateUrl: './dialog-add-news.component.html',
@@ -38,7 +41,8 @@ export class DialogAddNewsComponent implements OnInit {
 
   constructor( private formBuilder: FormBuilder,
                private utils: GeneralFunctionsService,
-               private api: NewsApiService ) {
+               private api: NewsApiService,
+               private dialog: MatDialogRef<DialogAddNewsComponent> ) {
 
     // Construccion del formulario
     this.addForm = this.formBuilder.group({
@@ -98,7 +102,7 @@ export class DialogAddNewsComponent implements OnInit {
 
       this.api.postCreateNews(this.generalFormData).subscribe( (data) => {
         try {
-          console.log(data);
+          this.dialog.close(false);
         } catch (err) {
           this.utils.onAlertMessage(this.txtError.BAD_INSERT, this.textButtons.OK);
         }

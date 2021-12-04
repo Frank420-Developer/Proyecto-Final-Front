@@ -46,8 +46,8 @@ export class NewsApiService {
   }
 
 
-  public postCreateNews(news) {
-    return this.http.post(this.microServicioPath.news, news)
+  public postCreateNews(news): Observable<NewsDetailResponse> {
+    return this.http.post<NewsDetailResponse>(this.microServicioPath.news, news)
            .pipe( timeout(TIME_OUT) )
            .pipe( map( response => {
               return response;
