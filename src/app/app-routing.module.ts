@@ -12,6 +12,7 @@ import { ClientesComponent } from './portal/ui/dashboard/clientes/clientes.compo
 import { UsuariosComponent } from './portal/ui/dashboard/usuarios/usuarios.component';
 import { NotificacionesComponent } from './portal/ui/dashboard/notificaciones/notificaciones.component';
 import { DetallesProyectoComponent } from './portal/ui/dashboard/detalles-proyecto/detalles-proyecto.component';
+import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/proyectos-principal/proyectos-principal.component';
 
 
 const routes: Routes = [
@@ -23,10 +24,19 @@ const routes: Routes = [
     component: PrincipalComponent,
     children: [{
         path: 'proyectos',
-        component: ProyectosComponent
-      },{
-        path: 'detalleProyecto',
-        component: DetallesProyectoComponent
+        component: ProyectosComponent,
+        children: [{
+          path: 'proyectosPrincipal',
+          component: ProyectosPrincipalComponent
+        }, {
+          path: 'detalleProyecto',
+          component: DetallesProyectoComponent
+        }, {
+          path: '',
+          redirectTo: 'proyectosPrincipal',
+          pathMatch: 'full'
+        }
+      ]
       }, {
         path: 'equipos',
         component: EquiposComponent

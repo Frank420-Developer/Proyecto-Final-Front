@@ -54,6 +54,8 @@ import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-c
 import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
 import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-news/dialog-add-news.component';
 import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and-drop-zone.directive';
+import { SecondHeaderComponent } from './portal/viewUtils/headers/second-header/second-header.component';
+import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/proyectos-principal/proyectos-principal.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and
     DialogAddClientComponent,
     DialogAddNotificationComponent,
     DialogAddNewsComponent,
-    DragAndDropZoneDirective
+    DragAndDropZoneDirective,
+    SecondHeaderComponent,
+    ProyectosPrincipalComponent
   ],
   imports: [
     FormsModule,
