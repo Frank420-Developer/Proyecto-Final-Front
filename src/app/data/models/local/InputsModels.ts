@@ -7,3 +7,19 @@ export interface HeaderModel {
     COMPONENT_DIALOG: any;
     WIDTH_DIALOG?: string;
 }
+
+export interface SecondHeaderModel {
+    TITLE: string;
+    COLUMN_ONE: ColumnDescriptionModel;
+    COLUMN_TWO: ColumnDescriptionModel;
+    COLUMN_THREE?: ColumnDescriptionModel;
+    COLUMN_FOUR?: ColumnDescriptionModel;
+    ACTIVE_ALL_COLUMNS: boolean;
+    ACTIVE_COLUMN_FOUR: boolean;
+    PREVIEW_PAGE: string;
+}
+
+interface ColumnDescriptionModel {
+    TITLE: string;
+    DESCRIPTION?: string;
+}

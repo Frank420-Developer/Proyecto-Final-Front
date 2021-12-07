@@ -41,7 +41,7 @@ import { NoticiasComponent } from './portal/ui/dashboard/noticias/noticias.compo
 import { ClientesComponent } from './portal/ui/dashboard/clientes/clientes.component';
 import { UsuariosComponent } from './portal/ui/dashboard/usuarios/usuarios.component';
 import { NotificacionesComponent } from './portal/ui/dashboard/notificaciones/notificaciones.component';
-import { DetallesProyectoComponent } from './portal/ui/dashboard/detalles-proyecto/detalles-proyecto.component';
+import { DetallesProyectoComponent } from './portal/ui/dashboard/proyectos/detalles-proyecto/detalles-proyecto.component';
 import { DialogAddProjectComponent } from './portal/viewUtils/dialog/dialog-add-project/dialog-add-project.component';
 import { GeneralTableComponent } from './portal/viewUtils/table/general-table/general-table.component';
 import { SimpleTableComponent } from './portal/viewUtils/table/simple-table/simple-table.component';

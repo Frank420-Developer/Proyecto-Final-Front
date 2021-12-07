@@ -11,7 +11,7 @@ import { NoticiasComponent } from './portal/ui/dashboard/noticias/noticias.compo
 import { ClientesComponent } from './portal/ui/dashboard/clientes/clientes.component';
 import { UsuariosComponent } from './portal/ui/dashboard/usuarios/usuarios.component';
 import { NotificacionesComponent } from './portal/ui/dashboard/notificaciones/notificaciones.component';
-import { DetallesProyectoComponent } from './portal/ui/dashboard/detalles-proyecto/detalles-proyecto.component';
+import { DetallesProyectoComponent } from './portal/ui/dashboard/proyectos/detalles-proyecto/detalles-proyecto.component';
 import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/proyectos-principal/proyectos-principal.component';
 
 
@@ -29,7 +29,7 @@ const routes: Routes = [
           path: 'proyectosPrincipal',
           component: ProyectosPrincipalComponent
         }, {
-          path: 'detalleProyecto',
+          path: 'detalleProyecto/:id',
           component: DetallesProyectoComponent
         }, {
           path: '',

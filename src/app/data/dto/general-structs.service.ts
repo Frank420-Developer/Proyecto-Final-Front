@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /* Models */
-import { HeaderModel } from '../models/local/InputsModels';
+import { HeaderModel, SecondHeaderModel } from '../models/local/InputsModels';
 import { DataTableModel } from '../models/local/TableModels';
 
 @Injectable({
@@ -51,6 +51,36 @@ export class GeneralStructsService {
     };
 
   }
+
+
+  public createSecondStructHeader(  title: string, titleC1: string, descriptionC1: string,
+                                    titleC2: string, descriptionC2: string,
+                                    activeAllColumns: boolean, activeColumnFour: boolean,
+                                    previewPAge: string,
+                                    titleC3?: string, descriptionC3?: string, titleC4?: string, descriptionC4?: string): SecondHeaderModel {
+      return {
+        TITLE: title,
+        COLUMN_ONE: {
+          TITLE: titleC1,
+          DESCRIPTION: descriptionC1
+        },
+        COLUMN_TWO: {
+          TITLE: titleC2,
+          DESCRIPTION: descriptionC2
+        },
+        COLUMN_THREE: {
+          TITLE: titleC3,
+          DESCRIPTION: descriptionC3
+        },
+        COLUMN_FOUR: {
+          TITLE: titleC4,
+          DESCRIPTION: descriptionC4
+        },
+        ACTIVE_ALL_COLUMNS: activeAllColumns,
+        ACTIVE_COLUMN_FOUR: activeColumnFour,
+        PREVIEW_PAGE: previewPAge
+      };
+    }
 
 
 }

@@ -48,7 +48,7 @@
             <ng-container matColumnDef="{{ headersList[3] }}">
                 <th scope="col" mat-header-cell *matHeaderCellDef> {{ headersList[3] }} </th>
                 <td mat-cell *matCellDef="let item"> 
-                    <a [routerLink]="['../detalleProyecto']" >
+                    <a [routerLink]="['../detalleProyecto', item.name]" >
                         {{ buttonsText.VIEW }}
                     </a>
                 </td>

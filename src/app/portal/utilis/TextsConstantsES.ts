@@ -52,6 +52,8 @@ export const PROJECTS = {
     ],
     SUBMENU: {
         TITLE_DETAIL: 'Detalle proyecto',
+        ROUTE_PROJECTS: '../proyectosPrincipal',
+        ROUTE_DETAIL: '../detalleProyecto',
         TITLE_ACTIVITY: 'Actividades',
         CLIENT: 'Cliente',
         PROJECT: 'Proyecto',

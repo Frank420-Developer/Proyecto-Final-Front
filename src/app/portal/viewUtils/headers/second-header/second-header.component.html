@@ -1,1 +1,49 @@
-<p>second-header works!</p>
+<!-- Header -->
+<div class="second-header-container" >
+    <div class="title-control-container" >
+        <span matPrefix>
+            <a [routerLink]="dataHeaderInput.PREVIEW_PAGE" >
+                <mat-icon class="icon-back" >chevron_left</mat-icon>
+            </a>
+        </span>
+        <h1> {{ dataHeaderInput.TITLE }} </h1>
+    </div>
+
+    <div 
+        class="header-columns-detail-container txt-description txt-color-title"
+        *ngIf="dataHeaderInput.ACTIVE_ALL_COLUMNS" >
+        <div>
+            <p> {{ dataHeaderInput.COLUMN_ONE.TITLE }} </p>
+            <p class="txt-bold" > {{ dataHeaderInput.COLUMN_ONE.DESCRIPTION }} </p>
+        </div>
+        <div>
+            <p> {{ dataHeaderInput.COLUMN_TWO.TITLE }} </p>
+            <p class="txt-bold"> {{ dataHeaderInput.COLUMN_TWO.DESCRIPTION }} </p>
+        </div>
+        <div>
+            <p> {{ dataHeaderInput.COLUMN_THREE.TITLE }} </p>
+            <p class="txt-bold"> {{ dataHeaderInput.COLUMN_THREE.DESCRIPTION }} </p>
+        </div>
+        <div>
+            <form class="input-search" [formGroup]="searchGroupForm" 
+                *ngIf="dataHeaderInput.ACTIVE_COLUMN_FOUR" >
+                <span matPrefix>
+                    <mat-icon class="txt-color-description" >search</mat-icon>
+                </span>
+                <input
+                 placeholder="{{ dataHeaderInput.COLUMN_FOUR.TITLE }}"
+                 (blur)="searchValue()"
+                 [formControl]="searchInput">
+            </form>
+            <div *ngIf="!dataHeaderInput.ACTIVE_COLUMN_FOUR">
+                <p> {{ dataHeaderInput.COLUMN_FOUR.TITLE }} </p>
+                <p class="txt-bold"> {{ dataHeaderInput.COLUMN_FOUR.DESCRIPTION }} </p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!dataHeaderInput.ACTIVE_ALL_COLUMNS">
+    </div>
+
+
+</div>
