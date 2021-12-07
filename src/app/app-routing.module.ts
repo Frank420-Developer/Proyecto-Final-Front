@@ -29,7 +29,7 @@ const routes: Routes = [
           path: 'proyectosPrincipal',
           component: ProyectosPrincipalComponent
         }, {
-          path: 'detalleProyecto/:id',
+          path: 'detalleProyecto/:client/:project',
           component: DetallesProyectoComponent
         }, {
           path: '',

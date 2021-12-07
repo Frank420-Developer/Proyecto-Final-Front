@@ -26,10 +26,10 @@ export class DetallesProyectoComponent implements OnInit {
                private route: ActivatedRoute ) {
 
     // Obteniuendo datos
-    console.log(route.snapshot.paramMap.get('id'));
-    
+
     this.headerData = this.dto.createSecondStructHeader(
-      this.textES.TITLE_DETAIL, this.textES.CLIENT, 'Cliente 1', this.textES.PROJECT, 'Proyecto 1',
+      this.textES.TITLE_DETAIL, this.textES.CLIENT, this.route.snapshot.paramMap.get('client'), this.textES.PROJECT,
+      this.route.snapshot.paramMap.get('project'),
       true, true, this.textES.ROUTE_PROJECTS, this.textES.TOTAL_HOURS, '250h', INPUTS.SEARCH
     );
   }
