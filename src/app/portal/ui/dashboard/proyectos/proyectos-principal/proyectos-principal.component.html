@@ -15,7 +15,8 @@
                 </span>
                 <input
                  placeholder="{{ searchLabel }}"
-                 [formControl]="searchInput">
+                 [formControl]="searchInput"
+                 (keydown.enter)="searchValueEnter()">
             </form>
         </div>
 

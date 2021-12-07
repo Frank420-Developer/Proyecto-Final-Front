@@ -69,19 +69,20 @@ export class ProyectosPrincipalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable);
+    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable, '');
   }
 
   public changePageTable( event: any ) {
     this.pageTable = event.pageIndex;
     this.projectList = [];
-    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable);
+    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable, '');
   }
 
-  private getProjectList(clientID: string, page: number) {
+  private getProjectList(clientID: string, page: number, name: string) {
     const paramsRequest = new HttpParams()
                           .set('page', page.toString() )
-                          .set('size', '10');
+                          .set('size', '10')
+                          .set('name', name);
 
     this.projectService.getListProjects(clientID, paramsRequest).subscribe( (data) => {
       try {
@@ -153,7 +154,7 @@ export class ProyectosPrincipalComponent implements OnInit {
 
     this.projectService.putProjectDetail(AppConst.CLIENT_ID, item.id, bodyService).subscribe(
       (data: ProjectDetail) => {
-        this.getProjectList(AppConst.CLIENT_ID, this.pageTable);
+        this.getProjectList(AppConst.CLIENT_ID, this.pageTable, '');
     });
   }
 
@@ -167,9 +168,14 @@ export class ProyectosPrincipalComponent implements OnInit {
     } );
 
     openDialog.afterClosed().subscribe( (result: ProjectDetail[]) => {
-      this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable);
+      this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable, '');
     });
 
+  }
+
+
+  public searchValueEnter(): void {
+    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', 0, this.searchInput.value);
   }
 
 }

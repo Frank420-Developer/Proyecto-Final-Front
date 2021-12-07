@@ -8,9 +8,15 @@
                 <span matPrefix>
                     <mat-icon>search</mat-icon>
                 </span>
+                <!--
+                    keyUp -- activo cuando soltamos el clic de una tecla
+                    keyDown -- cuando presionamos una tecla
+                    keyPress -- cuando presionamos una tecla de tipo caracter
+                -->
                 <input
                 placeholder="{{ searchLabel }}"
-                [formControl]="searchInput">
+                [formControl]="searchInput"
+                (keyup.enter)="searchValueEnter()">
             </form>
         </div>
 

@@ -18,6 +18,7 @@ import { DIALOG_WIDTH_XL } from 'src/app/portal/utilis/ConstantsApp';
 export class GeneralHeaderComponent implements OnInit {
   @Input() dataInput: HeaderModel;
   @Output() updateTable = new EventEmitter<boolean>();
+  @Output() searchValue = new EventEmitter<string>();
 
   // Text
   public txtTitle: string;
@@ -62,6 +63,10 @@ export class GeneralHeaderComponent implements OnInit {
     dialog.afterClosed().subscribe((dialogClose: boolean) => {
       this.updateTable.emit(dialogClose);
     });
+  }
+
+  public searchValueEnter(): void {
+    this.searchValue.emit(this.searchInput.value);
   }
 
 }
