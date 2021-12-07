@@ -402,3 +402,17 @@ input[type="file"] {
     font-family: SFUIDisplayRegular;
     src: url("./assets/fonts/SF-UI-Display-Regular.ttf") format("truetype");
 }
+
+
+@media only screen and (min-width: 360px), (max-width: 600px) {
+    h1 {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1023) {
+    h1 {
+        font-size: 20px;
+    }
+
+}

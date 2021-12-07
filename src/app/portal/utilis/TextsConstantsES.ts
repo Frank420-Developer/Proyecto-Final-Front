@@ -193,4 +193,5 @@ export const ERROR_MESSAGE = {
     INVALID_FILE_FORMAT: 'Formato de archivo invalido, sólo se permite la carga de imagenes JPG o PNG.',
     BAD_REQUEST: 'Hubo una falla al conectarse al servidor, por favor, vuelve a intentar.',
     BAD_INSERT: 'Lo sentimos, no se pudo agregar el elemento de forma satisfactoria.',
+    INVALID_SCREEN: 'El formato de pantalla no es válido para la visualización del contenido, prueba en un dispositivo diferente.',
 };

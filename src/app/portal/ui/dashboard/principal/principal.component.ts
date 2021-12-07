@@ -20,6 +20,10 @@ export class PrincipalComponent implements OnInit {
   // Texts
   public menuTxt = TextsES.MENU;
   public buttonsTxt = TextsES.BUTTONS;
+  public errorMessage = TextsES.ERROR_MESSAGE;
+
+  // Window Size
+  private windowSize: any;
 
   constructor( private router: Router ) { }
 
@@ -30,6 +34,16 @@ export class PrincipalComponent implements OnInit {
   public logaoutSession() {
     localStorage.clear();
     this.router.navigate(['login']);
+  }
+
+
+  public verifyScreen() {
+    this.windowSize = window.innerWidth;
+
+    if ( this.windowSize < 1024 ) {
+      return false;
+    }
+    return true;
   }
 
 }

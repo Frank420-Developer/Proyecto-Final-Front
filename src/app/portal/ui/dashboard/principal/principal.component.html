@@ -45,7 +45,8 @@
     <!-- Contenido del menu -->
     <mat-drawer-content>
         <div class="router-container">
-            <router-outlet></router-outlet>
+            <h1 *ngIf="!verifyScreen()"> {{ errorMessage.INVALID_SCREEN }} </h1>
+            <router-outlet *ngIf="verifyScreen()" ></router-outlet>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>
