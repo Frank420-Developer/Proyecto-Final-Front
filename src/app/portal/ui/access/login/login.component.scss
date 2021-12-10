@@ -7,8 +7,11 @@
 }
 
 .card-container {
-    width: 437px;
-    height: 195px;
+    padding: 25px 30px;
+}
+
+.grid-container {
+    display: grid;
 }
 
 /* Texts */
@@ -31,4 +34,10 @@ img {
 button {
     width: 227px;
     margin: 33px 105px 0px;
+}
+
+.mat-raised-button {
+    background: $color-gradient-button;
+    width: 200px;
+    font-family: 'SFUIDisplayRegular', sans-serif;
 }

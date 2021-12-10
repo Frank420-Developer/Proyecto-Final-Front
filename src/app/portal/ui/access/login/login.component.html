@@ -9,7 +9,25 @@
             <h2> {{ texts.TITLE }} </h2>
             <p class="txt-description center-txt txt-color-description" > {{ texts.DESCRIPTION }} </p>
 
-            <button mat-stroked-button (click)="doLogin()" > Sign In with Google </button>
+            <!-- Login Form -->
+            <div class="grid-container">
+                <form class="grid-container" [formGroup]="loginForm" >
+                    <mat-form-field>
+                        <label> {{ inputText.USER_EMAIL }}</label>
+                        <input matInput [formControl]="email" (blur)="validateEmailFormt()" (keyUp.enter)="validateEmailFormt()" >
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <label> {{ inputText.USER_PASSWORD }}</label>
+                        <input matInput [formControl]="password" type="password" >
+                    </mat-form-field>
+                </form>
+
+                <button mat-raised-button [disabled]="!loginForm.valid"  > 
+                    {{ buttonText.LOGIN_ACTION }} 
+                </button>
+                <button mat-stroked-button (click)="doLogin()" > Sign In with Google </button>
+            </div>
         </div>
     </div>
 

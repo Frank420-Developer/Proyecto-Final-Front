@@ -161,10 +161,13 @@ export const INPUTS = {
     SEARCH: 'Buscar',
     SEARCH_PROJECT: 'proyecto',
     SEARCH_NEWS: 'noticia',
-    SEARCH_USERS: 'usuarios'
+    SEARCH_USERS: 'usuarios',
+    USER_EMAIL: 'Correo',
+    USER_PASSWORD: 'Constraseña'
 };
 
 export const BUTTONS = {
+    LOGIN_ACTION: 'Iniciar sesión',
     ACTIONS_INACTIVE: 'Suspender',
     ACTIONS_ACTIVE: 'Activar',
     VIEW: 'Ver',

@@ -9,7 +9,7 @@ export const environment = {
   baseUrl: 'http://3.238.21.227:8080/',
 
   endPoint: {
-    login: 'auth/login',
+    login: 'login',
     refreshToken: 'auth/refresh',
     projects: '/projects',
     notificationToSend: 'toSend',
@@ -22,7 +22,8 @@ export const environment = {
     activities: 'activities/',
     workTeam: 'workteam/',
     users: 'users/',
-    notification: 'notification/'
+    notification: 'notification/',
+    authentication: 'auth/'
   }
 };
 
