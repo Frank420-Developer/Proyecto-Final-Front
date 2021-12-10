@@ -1,52 +1,49 @@
-<mat-drawer-container >
-    <!-- Menu -->
-    <mat-drawer mode="side" opened>
+<mat-drawer-container class="example-container">
+    <!--  ..::  MENU  ::..  -->
+    <mat-drawer mode="side" opened *ngIf="verifyScreen()">
+        <img class="img-small-logo" src="{{ logoNaatTech }}" alt="logo de NA-AT Tech">
 
-        <img class="img-small-logo" src="{{ logoNaAT }}" alt="LogoNaAT" />
-
-        <!-- Imagen de perfil y nombre de usuario -->
-        <div class="profile-container" >
-            <img>
-
-            <div>
-                <p class="txt-color-title txt-description" > {{ menuTxt.WELCOME_TITLE }} </p>
-                <p class="txt-color-title txt-description text-container " > 
-                    {{ menuTxt.DEFAULT_USER }} 
-                    <button mat-button [matMenuTriggerFor]="menu" >
-                        <span>
-                            <mat-icon class="icon-accent-color">expand_more</mat-icon>
-                        </span>
+        <!-- PROFILE IMAGE & WELCOME-->
+        <div class="profile-container">
+            <img class="user-profile" src=" {{ userProfile }}" alt="user image">
+            <div style="display: flex; flex-direction: column;">
+                <p class="txt-description txt-title-color"> {{ mensajeBievenida }} </p>
+                <p class="txt-description txt-title-color txt-container"> {{ userName }}
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon class="icon-accent-color"> {{ iconExpand }} </mat-icon>
                     </button>
 
-                    <mat-menu #menu="matMenu" >
-                        <button (click)="logaoutSession()" class="txt-color-title" mat-menu-item >
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="txt-title-color" (click)="logoutSession()">
                             <mat-icon class="icon-accent-color">logout</mat-icon>
-                            {{ buttonsTxt.LOGOUT }}
+                            {{ txtButtons.LOGOUT }}
                         </button>
                     </mat-menu>
                 </p>
             </div>
         </div>
 
-        <!-- Menu -->
+        <!--  ITEMS -->
         <ul>
-            <li routerLinkActive="active" *ngFor="let item of menuTxt.ITEMS" >
-                <a [routerLink]="item.PATH_PAGE" >
-                    <span >
+            <li routerLinkActive="active" *ngFor="let item of items">
+                <a [routerLink]=" item.PATH_PAGE ">
+                    <span>
                         <mat-icon> {{ item.ICON_ITEM }} </mat-icon>
                     </span>
-                    <p class="p18-left" > {{ item.TITLE }} </p>
+                    <p class="p18-left">{{ item.TITLE }}</p>
                 </a>
             </li>
         </ul>
 
+
     </mat-drawer>
 
-    <!-- Contenido del menu -->
+
+    <!--  ..::  CONTENIDO DEL MENU  ::..  -->
     <mat-drawer-content>
         <div class="router-container">
-            <h1 *ngIf="!verifyScreen()"> {{ errorMessage.INVALID_SCREEN }} </h1>
-            <router-outlet *ngIf="verifyScreen()" ></router-outlet>
+            <h1 *ngIf="!verifyScreen()" class="invalid-size"> {{ errorMessages.INVALID_SCREEN }} </h1>
+            <router-outlet *ngIf="verifyScreen()"></router-outlet>
         </div>
     </mat-drawer-content>
 </mat-drawer-container>

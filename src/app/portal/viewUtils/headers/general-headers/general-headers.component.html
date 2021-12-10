@@ -1,0 +1,25 @@
+<div>
+    <!--HEADER-->
+    <div class="header-container">
+        <h1> {{ txtTitle }} </h1>
+    
+        <!--BUSCADOR-->
+        <div>
+            <form class="input-search" [formGroup]='searchGroupForm' *ngIf="flagSearch">
+                <span mat-prefix>
+                    <mat-icon>search</mat-icon>
+                </span>
+                <!--
+                    keyUp -- activo cuando soltemos el click de una tecla
+                    keyDown -- cuando presionamos una tecla
+                    keyPress -- cuando presionamos una tecla de tipo caracter
+                -->
+                <input placeholder="{{ searchLabel }}" [formControl]='searchInput' (keyup)="searchValueEnter()">
+            </form>
+        </div>
+        <!--BOTON-AGREGAR-PROYECTO-->
+        <div>
+            <button mat-raised-button (click)="openDialog()" *ngIf="flagButton"> {{ searchButtonLabel }} </button>
+        </div>
+    </div>
+</div>

@@ -1,8 +1,9 @@
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
-/* Models */
-import { HeaderModel, SecondHeaderModel } from '../models/local/InputsModels';
-import { DataTableModel } from '../models/local/TableModels';
+/* MODELS */
+import { HeaderModel, SecondHeaderModel } from '../models/local/inputsModels';
+import { DataTableModel, StructDataTableModel } from '../models/local/tableModels';
 
 @Injectable({
   providedIn: 'root'
@@ -11,76 +12,80 @@ export class GeneralStructsService {
 
   constructor() { }
 
-  public createStructHeader(
-    title: string,
-    txtPlaceholder: string,
-    txtButton: string,
-    activeSearch: boolean,
-    activeButton: boolean,
-    component: any,
-    widthDialog?: string): HeaderModel {
-    return {
+  public createHeaderStruct(
+    title: string, 
+    txtPlaceholder:string, 
+    txtButton: string, 
+    activeSearch:boolean, 
+    activeBtn: boolean, 
+    componentDialog: any,
+    dialogWidth?: string):HeaderModel{
+    return { 
       TITLE: title,
       TEXT_PLACEHOLDER: txtPlaceholder,
       TEXT_ADD_BUTTON: txtButton,
+      FLAG_ACTIVE_BUTTON: activeBtn,
       FLAG_ACTIVE_SEARCH: activeSearch,
-      FLAG_ACTIVE_BUTTON: activeButton,
-      COMPONENT_DIALOG: component,
-      WIDTH_DIALOG: widthDialog
-    };
+      COMPONENT_DIALOG: componentDialog,
+      WIDTH_DIALOG: dialogWidth,
+    }
   }
 
+  public createSecondHeaderStruct(
+    title: string,
+    titleC1: string,
+    descC1: string,
+    titleC2: string,
+    decC2: string,
+    activeAllColumns: boolean,
+    activeColumnFour: boolean,
+    previousPage: string,
+    titleC3?: string,
+    descC3?: string,
+    titleC4?: string,
+    descC4?: string,
+  ):SecondHeaderModel{
+    return {
+      TITLE: title,
+      COLUMN_ONE: {
+        TITLE: titleC1,
+        DESCRIPTION: descC1
+      },
+      COLUMN_TWO: {
+        TITLE: titleC2,
+        DESCRIPTION: decC2,
+      },
+      COLUMN_THREE: {
+        TITLE: titleC3,
+        DESCRIPTION: descC3,
+      },
+      COLUMN_FOUR: {
+        TITLE: titleC4,
+        DESCRIPTION: descC4
+      },
+      ACTIVE_ALL_COLUMNS: activeAllColumns,
+      ACTIVE_COLUMN_FOUR: activeColumnFour,
+      PREVIOUS_PAGE: previousPage,
+    }
+  }
 
   public createStructTable(
-    headerList: string[],
-    dataList: any,
-    activeImage: boolean,
-    activeButton: boolean,
-    activeTwoButtons: boolean,
+    headerList: string[], 
+    dataList:any, 
+    activeImage: boolean, 
+    activeButton: boolean, 
+    activeTwoButtons: boolean, 
     tableLength?: number,
-    sixColum?: boolean ): DataTableModel {
-
+    sixColumn?: boolean): DataTableModel{
     return {
       HEADER_TITLES: headerList,
-      LIST_TABLE: dataList,
+      CONTENT_LIST_TABLE: dataList,
       ACTIVE_IMAGE: activeImage,
       ACTIVE_BUTTON: activeButton,
       ACTIVE_TWO_BUTTONS: activeTwoButtons,
       TABLE_LENGTH: tableLength,
-      SIX_COLUMN: sixColum
+      SIX_COLUMN: sixColumn,
     };
-
   }
-
-
-  public createSecondStructHeader(  title: string, titleC1: string, descriptionC1: string,
-                                    titleC2: string, descriptionC2: string,
-                                    activeAllColumns: boolean, activeColumnFour: boolean,
-                                    previewPAge: string,
-                                    titleC3?: string, descriptionC3?: string, titleC4?: string, descriptionC4?: string): SecondHeaderModel {
-      return {
-        TITLE: title,
-        COLUMN_ONE: {
-          TITLE: titleC1,
-          DESCRIPTION: descriptionC1
-        },
-        COLUMN_TWO: {
-          TITLE: titleC2,
-          DESCRIPTION: descriptionC2
-        },
-        COLUMN_THREE: {
-          TITLE: titleC3,
-          DESCRIPTION: descriptionC3
-        },
-        COLUMN_FOUR: {
-          TITLE: titleC4,
-          DESCRIPTION: descriptionC4
-        },
-        ACTIVE_ALL_COLUMNS: activeAllColumns,
-        ACTIVE_COLUMN_FOUR: activeColumnFour,
-        PREVIEW_PAGE: previewPAge
-      };
-    }
-
 
 }

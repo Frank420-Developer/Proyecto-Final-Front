@@ -1,18 +1,19 @@
-/* Colors */
-$color-background-principal: #F9F9F9;
-$color-background-secundary: #FFFFFF;
-$color-background-button-inactive: #9B9B9B;
-$color-background-accent: #FF656C;
-$color-background-tabs: #333333;
-$color-backgroud-border: #C6C6C6;
-$color-backgroud-border-accent: #FF656C; 
-$color-text-title: #333333;
-$color-text-description: #9B9B9B;
-$color-accent: #FF656C;
-$color-inactive: #C6C6C6;
-$color-status-active: #28B19B;
-$color-status-inactive: #A70635;
-$color-radius: #F2F2F2;
-$color-text-white: #FFFFFF;
+/*  ..::   COLORS ::..   */
+$color-background-principal: #f9f9f9;
+$color-secondary-background: #ffffff;
+$color-background-tabs: #333;
+$color-background-accent: #ff656c;
+$color-background-border-accent: #ff656c;
+$color-background-border: #c6c6c6;
+$color-texts-title: #333333;
+$color-text-description: #9b9b9b;
+$color-accent: #ff656c;
+$color-inactive: #c6c6c6;
+$color-status-active: #28b19b;
+$color-status-inactive: #a70635;
+$color-radius: #f2f2f2;
+$color-text-white: #fff;
+$color-background-button-disabled: #9b9b9b;
 
-$color-gradient-button: linear-gradient(140.77deg, #FF8355 0%, #FF4485 100%);
+/* GRADIENTS*/
+$color-gradient: linear-gradient(140.77deg, #ff8355 0%, #ff4585 100%);

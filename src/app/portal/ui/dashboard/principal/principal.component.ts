@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-/* Importación de router */
-import { Router } from '@angular/router';
+/* COMPONENTS & UTILS */
+import * as Images from '../../../utils/imagesRoutes';
+import * as TextsES from '../../../utils/textsConstantsES';
 
-/* Constants and images */
-import * as Image from '../../../utilis/ImagesRoutes';
-import * as TextsES from '../../../utilis/TextsConstantsES';
+/* ROUTER */
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-principal',
@@ -14,36 +14,40 @@ import * as TextsES from '../../../utilis/TextsConstantsES';
 })
 export class PrincipalComponent implements OnInit {
 
-  // Images
-  public logoNaAT = Image.LOGO_NAAT_TECH;
+  /* IMAGE */
+  public logoNaatTech = Images.LOGO_NAAT_TECH;
+  public userProfile = Images.USER_PROFILE;
 
-  // Texts
-  public menuTxt = TextsES.MENU;
-  public buttonsTxt = TextsES.BUTTONS;
-  public errorMessage = TextsES.ERROR_MESSAGE;
+  /* TEXTS ESP */
+  public mensajeBievenida = TextsES.MENU.WELCOME_TITLE;
+  public userName = TextsES.MENU.DEFAULT_USER;
+  public iconExpand = TextsES.MENU.ICON_EXPAND;
+  public items = TextsES.MENU.ITEMS;
+  public errorMessages = TextsES.ERROR_MESSAGE;
 
-  // Window Size
-  private windowSize: any;
+  /* BUTTONS */
+  public txtButtons = TextsES.BUTTONS;
 
-  constructor( private router: Router ) { }
+  /* WINDOS */
+  public windowSize: any;
+
+  constructor( private router:Router) { }
 
   ngOnInit(): void {
   }
 
-
-  public logaoutSession() {
+  public logoutSession(){
     localStorage.clear();
-    this.router.navigate(['login']);
+    this.router.navigate(['login'])
   }
 
-
-  public verifyScreen() {
+  public verifyScreen(){
     this.windowSize = window.innerWidth;
 
-    if ( this.windowSize < 1024 ) {
+    if(this.windowSize < 1024){
       return false;
     }
-    return true;
-  }
 
+    return true
+  }
 }

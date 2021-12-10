@@ -1,22 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 
-/* importaciones de http */
+/* HTTP */
 import { HttpParams, HttpResponse } from '@angular/common/http';
 
-/* Models */
-import { HeaderModel } from 'src/app/data/models/local/InputsModels';
-import { DataTableModel, StructDataTableModel } from 'src/app/data/models/local/TableModels';
-import { Client } from 'src/app/data/models/response/clients/ClientsResponse';
+/* MODELS */
+import { HeaderModel } from 'src/app/data/models/local/inputsModels';
+import { DataTableModel, StructDataTableModel } from 'src/app/data/models/local/tableModels';
+import { Client } from 'src/app/data/models/response/clients/clients';
 
-/* Service */
-import { ClientesApiService } from 'src/app/data/network/clientes/clientes-api.service';
+/* SERVICES */
+import { ClientesService } from 'src/app/data/network/clients/clientes.service';
 
-/* Constants & utils */
-import { CLIENTS, BUTTONS, INPUTS } from 'src/app/portal/utilis/TextsConstantsES';
+/* CONSTANTS & UTILS*/
+import * as TextES from '../../../utils/textsConstantsES';
+import { DIALOG_WIDTH_SM, PLUS, SPACE } from 'src/app/portal/utils/constantsApp';
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
-import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
-import { DialogAddClientComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
-import { DIALOG_WIDTH_SM } from 'src/app/portal/utilis/ConstantsApp';
+import { GeneralFunctionsService } from 'src/app/portal/utils/utilFunctions/general-functions.service';
+
+/* DIALOG */
+import { DialogAddClientComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-client/dialog-add-client/dialog-add-client.component';
 
 @Component({
   selector: 'app-clientes',
@@ -25,62 +27,57 @@ import { DIALOG_WIDTH_SM } from 'src/app/portal/utilis/ConstantsApp';
 })
 export class ClientesComponent implements OnInit {
 
-  // Text
-  public textEs = CLIENTS;
-  private txtPlaceholder = INPUTS;
-  private txtButton = BUTTONS;
+  //TEXTOS
+  public txtEs = TextES.CLIENTES;
+  public txtButtons = TextES.BUTTONS;
+  public txtInput = TextES.INPUTS;
 
-  // Flags
-  public activeSpinner = true;
-
-  // Table
+  //TABLE
   public dataToSend: HeaderModel;
   public tableDataToSend: DataTableModel;
-  private dataTableList: StructDataTableModel[];
+  public dataTableList: StructDataTableModel[];
   private dataTable: StructDataTableModel;
+  public activeSpinner = true;
+  public page = 0;
+  public size = 5;
 
-  constructor( private dto: GeneralStructsService,
-               private api: ClientesApiService,
-               private utilities: GeneralFunctionsService, ) {
-    //
-    this.getClientList(0, 10);
-    this.dataTableList = [];
+  constructor( private dto: GeneralStructsService , private api: ClientesService) { 
+    this.dataTableList= [];
+    this.getClientsList(this.page, this.size, '');
   }
 
   ngOnInit(): void {
-    this.dataToSend = this.dto.createStructHeader(
-      this.textEs.TITLE,
-      this.txtPlaceholder.SEARCH,
-      this.txtButton.ADD_CLIENT,
-      true,
-      true,
+    this.dataToSend = this.dto.createHeaderStruct(
+      this.txtEs.TITLE, 
+      this.txtInput.SEARCH, 
+      PLUS + SPACE + this.txtButtons.ADD_CLIENT, 
+      true, 
+      true, 
       DialogAddClientComponent,
-      DIALOG_WIDTH_SM
-      );
+      DIALOG_WIDTH_SM);
   }
 
-
-  private getClientList(page: number, size: number) {
+  private getClientsList(page: number, size:number, name:string){
     const params = new HttpParams()
-                    .set('page', page.toString())
-                    .set('size', size.toString());
-
-    this.api.getClientsListApi(params).subscribe( (data: HttpResponse<Client[]>) => {
+                      .set('page', page.toString())
+                      .set('size', size.toString())
+                      .set('name', name);
+    
+    this.api.getclientsList(params).subscribe( (data: HttpResponse<Client[]>) => {
       try {
-
-        data.body.forEach( (item: Client) => {
+        data.body.forEach( (item: Client) =>{
           this.dataTable = {
-            COLUMN_ONE: item.description,
-            COLUMN_TWO: item.name,
+            COLUMN_ONE: item.name,
+            COLUMN_TWO: item.description,
             COLUMN_THREE: item.id,
             COLUMN_FOUR: item.key,
-            COLUMN_FIVE: this.txtButton.VIEW
-          };
+            COLUMN_FIVE: this.txtButtons.VIEW
+          }
           this.dataTableList.push(this.dataTable);
         });
 
         this.tableDataToSend = this.dto.createStructTable(
-          this.textEs.TABLE_HEADERS,
+          this.txtEs.TABLE_HEADERS,
           this.dataTableList,
           false,
           true,
@@ -89,24 +86,32 @@ export class ClientesComponent implements OnInit {
         );
 
         this.activeSpinner = false;
-
-      } catch (err) {
+      } catch (error) {
         this.activeSpinner = false;
       }
-    }, errorResponse => {
-      this.activeSpinner = false;
     });
   }
 
-
-  public changePageTable(event: any) {
-    this.getClientList(event, 10);
+   public changePageTable(event: any){
+    this.activeSpinner = true;
+    this.page = event.pageIndex;
+    this.size = event.pageSize;
+    this.dataTableList = [];
+    this.getClientsList(this.page,this.size, '');
   }
 
-  public onUpdateTable(update: boolean): void {
-    if ( !update ) {
-      this.getClientList(0, 10);
+  public OnUpdateTable(update: boolean): void{
+    if ( !update ){
+      this.activeSpinner  = true;
+      this.dataTableList = [];
+      this.getClientsList(this.page, this.size, '');
     }
   }
 
+  public searchValue(event: string){    
+
+      this.dataTableList = [];
+      this.getClientsList(this.page, this.size, event);
+    
+  }
 }

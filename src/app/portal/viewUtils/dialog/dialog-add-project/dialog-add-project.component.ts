@@ -1,25 +1,31 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
-/* Importaciones de formulario */
-import { FormGroup, AbstractControl, Validators, FormBuilder } from '@angular/forms';
-
-/* Importaciones de http */
+/* HTTP */
 import { HttpResponse } from '@angular/common/http';
 
-/* Interfaces */
-import { Client } from 'src/app/data/models/response/clients/ClientsResponse';
+/* CONSTANTS */
+import * as TextEs from '../../../utils/textsConstantsES';
+import { PLUS, SPACE } from 'src/app/portal/utils/constantsApp';
 
-/* Constants */
-import { SPACE, PLUS } from 'src/app/portal/utilis/ConstantsApp';
-import * as TextES from '../../../utilis/TextsConstantsES';
+/* SERVICES */
+import { ClientesService } from 'src/app/data/network/clients/clientes.service';
+import { GeneralFunctionsService } from 'src/app/portal/utils/utilFunctions/general-functions.service';
+import { ProjectListService } from 'src/app/data/network/proyectos/project-list.service';
 
-/* Service */
-import { ClientesApiService } from 'src/app/data/network/clientes/clientes-api.service';
-import { NewProject, ObjectNewProject } from 'src/app/data/models/request/projects/ProjectsRequest';
-import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
-import { ProjectListServiceService } from 'src/app/data/network/proyectos/project-list-service.service';
+/* INTERFACES */
+import { Client } from 'src/app/data/models/response/clients/clients';
+import { ObjectNewProject, NewProject } from 'src/app/data/models/request/projects/projects';
+
+/* FORMULARIO */
+import { FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import { ProjectDetail } from 'src/app/data/models/response/projects/projects';
+
+
+/* ANGULAR MATERIAL */
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProjectDetail } from 'src/app/data/models/response/projects/Projects';
+
+
+
 
 @Component({
   selector: 'app-dialog-add-project',
@@ -28,100 +34,110 @@ import { ProjectDetail } from 'src/app/data/models/response/projects/Projects';
 })
 export class DialogAddProjectComponent implements OnInit {
 
-  // Texts
-  public textES = TextES.DIALOG_PROJECTS;
-  public textButtons = TextES.BUTTONS;
-  public txtAddButton: string;
-  public txtError = TextES.ERROR_MESSAGE;
+  //TEXTOS
+  public textEs = TextEs.DIALOG_ADD_PROJECT;
+  public errorMessages = TextEs.ERROR_MESSAGE;
 
-  // Lista
+  //BUTTONS
+  public btnText = TextEs.BUTTONS;
+  public addMore: string;
+
+  //LISTA
   public clientList: Client[];
   public addProjectList = [];
   private responseList = [];
 
-  // Form
+  //FORM 
   public addProjectForm: FormGroup;
-  public clientSelected: AbstractControl;
+  public clientSelect: AbstractControl;
   public projectName: AbstractControl;
 
-  // Flags
-  public flagLengthList = false;
-  public flagActiveSendProjects = true;
+  //FLAG
   private count = 0;
+  public activeButtonSendProjects = true;
+  public activeButton = false;
 
-  constructor( private clientApi: ClientesApiService,
-               private utilities: GeneralFunctionsService,
-               private formBuilder: FormBuilder,
-               private projectService: ProjectListServiceService,
-               private dialog: MatDialogRef<DialogAddProjectComponent>,
-               @Inject(MAT_DIALOG_DATA) private dataReceived: any ) {
+  constructor( private clientApi: ClientesService,
+                private utilities: GeneralFunctionsService,
+                private formBuilder: FormBuilder,
+                private projectsService: ProjectListService,
+                private dialog: MatDialogRef<DialogAddProjectComponent>,
+                @Inject(MAT_DIALOG_DATA) private dataRecived: any) {
 
-    this.txtAddButton = PLUS + SPACE + this.textButtons.ADD_MORE;
-
+    this.addMore = PLUS + SPACE + this.btnText.ADD;
     this.addProjectForm = this.formBuilder.group({
-      clientSelectedGroup : ['', Validators.required],
-      projectName : ['', Validators.compose( [ Validators.required,
-                                               Validators.pattern('[a-z A-Z]{1,50}') ] ) ]
+      clientSelect: ['', Validators.required],
+      projectName: ['', Validators.compose( [Validators.required, 
+                                             Validators.pattern('[a-z A-Z ñÑ]{1,50}')] )]
     });
 
-    this.clientSelected = this.addProjectForm.controls.clientSelectedGroup;
+    this.clientSelect = this.addProjectForm.controls.clientSelect;
     this.projectName = this.addProjectForm.controls.projectName;
-  }
+    
+   }
 
   ngOnInit(): void {
     this.getClientsList();
   }
 
-  private getClientsList() {
-
-    this.clientApi.getClientsListApi().subscribe( (data: HttpResponse<Client[]>) => {
+  private getClientsList(){
+    this.clientApi.getclientsList().subscribe( (data:HttpResponse<Client[]>) => {
       this.clientList = data.body;
     }, errorResponse => {
-      console.error('Error en el respuesta ', errorResponse);
+      
     });
-
   }
 
-  public addNewProject() {
+  public addNewProject(){
     this.count++;
+    if(this.count > 0 && this.count <= 4 ){
+    const newProject: ObjectNewProject = {
+     clientId: this.clientSelect.value.id,
+     clientName: this.clientSelect.value.name,
+     newProject: {
+        key: this.utilities.generateProjectKey(this.projectName.value),
+        name: this.projectName.value,
+        description: this.clientSelect.value.name + SPACE + this.projectName.value,
+     }
+    };
 
-    if ( this.count > 0 && this.count <= 5 ) {
+    this.addProjectList.push(newProject);
 
-      const newProject: ObjectNewProject = {
-        clientId: this.clientSelected.value.id,
-        clientName: this.clientSelected.value.name,
-        newProject: {
-          key: this.utilities.generateProjectKey(this.projectName.value),
-          name: this.projectName.value,
-          description: this.clientSelected.value.name + SPACE + this.projectName.value
-        }
-      };
-
-      this.addProjectList.push(newProject);
-
-      this.addProjectForm.reset();
-      this.flagLengthList = false;
-      this.flagActiveSendProjects = false;
-    } else {
-      this.flagLengthList = true;
-      this.utilities.onAlertMessage(this.txtError.PROJECTS_LIST_COMPLETE, this.textButtons.OK);
+    this.addProjectForm.reset();
+    this.activeButtonSendProjects = false
+    this.activeButton = false;
+    }else{
+      this.activeButton = true;
+      this.utilities.onAlertMessage(this.errorMessages.PROJECT_LIST_COMPLETE, this.btnText.OK);
     }
+    this.addMore = (this.addProjectList.length === 0) ? PLUS + SPACE + this.btnText.ADD : PLUS + SPACE + this.btnText.ADD_MORE;
   }
 
+  public createNewProject(){
 
-  public createNewProjects() {
+    this.addProjectList.forEach( (item: ObjectNewProject, position: number, array: ObjectNewProject[]) => {
+          this.projectsService.postProject(item.clientId, item.newProject).subscribe( (data: ProjectDetail) => {
+      try{
+        this.responseList.push(data);
+      }catch(err){
 
-    this.addProjectList.forEach(
-      (item: ObjectNewProject, position: number, array: ObjectNewProject[]) => {
-        this.projectService.postCreateProject(item.clientId, item.newProject).subscribe( (data: ProjectDetail) => {
-          try {
-            this.responseList.push(data);
-          } catch (err) {
-          }
-        }, errorResponse => {
-        } );
-      });
+      }
+    }, errorResponse => {
+
+    });
+    });
 
     this.dialog.close(this.responseList);
   }
+
+  public removeProject(pos: number){
+    if(this.addProjectList.length > 1){
+      this.addProjectList.splice(pos, 1)
+    }else{
+      this.addProjectList = [];
+    }
+
+    this.addMore = (this.addProjectList.length === 0) ? PLUS + SPACE + this.btnText.ADD : PLUS + SPACE + this.btnText.ADD_MORE;
+  }
+
 }

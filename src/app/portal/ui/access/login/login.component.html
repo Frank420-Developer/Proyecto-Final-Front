@@ -1,34 +1,37 @@
-<div class="principal-background" >
-
-    <div class="general-container" >
-        <img src="{{ logoNaAtTech }}" alt="logo NAATTech">
-
-        <!-- Comntenedor de inicio de sesion -->
-        <div class="secundary-background card-container">
-
-            <h2> {{ texts.TITLE }} </h2>
-            <p class="txt-description center-txt txt-color-description" > {{ texts.DESCRIPTION }} </p>
-
-            <!-- Login Form -->
+<div class="principal-background">
+    <div class="general-container">
+        
+        <img src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+    
+        <!-- Contenedor -->
+        <div class="secondary-background card-container">
+            <h2 class="center-txt txt-title-color"> {{ texts.TITLE }} </h2>
+            <p class="txt-description txt-color-description center-txt"> {{ texts.DESCRIPTION }} </p>
+    
+    
+            <!-- LOGIN FORM -->
             <div class="grid-container">
-                <form class="grid-container" [formGroup]="loginForm" >
-                    <mat-form-field>
-                        <label> {{ inputText.USER_EMAIL }}</label>
-                        <input matInput [formControl]="email" (blur)="validateEmailFormt()" (keyUp.enter)="validateEmailFormt()" >
+                <form [formGroup]="loginForm" class="grid-container">
+                    <mat-form-field class="input-search">
+                        <label class="txt-description" for="email"> {{ txtInputs.USER_EMAIL }} </label>
+                        <input matInput [formControl]="email" type="email" name="email" (blur)="validateEmailFormat()" (keyup)="validateEmailFormat()">
                     </mat-form-field>
-
-                    <mat-form-field>
-                        <label> {{ inputText.USER_PASSWORD }}</label>
-                        <input matInput [formControl]="password" type="password" >
+    
+                    <mat-form-field class="input-search">
+                        <label class="txt-description" for="pass"> {{ txtInputs.USER_PASSWORD }} </label>
+                        <input matInput [formControl]="password" type="password" name="pass">
                     </mat-form-field>
                 </form>
-
-                <button mat-raised-button [disabled]="!loginForm.valid"  > 
-                    {{ buttonText.LOGIN_ACTION }} 
-                </button>
-                <button mat-stroked-button (click)="doLogin()" > Sign In with Google </button>
+            </div>
+    
+            <div>
+                <button mat-raised-button [disabled]="!loginForm.valid" (click)="loginWithoutGoogleApi()"> {{ txtButtons.LOGIN_ACTION }}</button>
+                <button mat-stroked-button (click)="doLogin()"> Sign In with Google </button>
             </div>
         </div>
     </div>
-
 </div>
+
+
+
+<!--100113038197-6igeai7v21jecg5nna3h7k4gccjsqf1i.apps.googleusercontent.com-->

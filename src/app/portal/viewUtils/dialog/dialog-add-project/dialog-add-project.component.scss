@@ -1,8 +1,8 @@
-@import '../../../../../theme.scss';
+@import "../../../../../theme.scss";
 
-/* Buttons */
+/* BUTTONS */
 .mat-raised-button {
-    background: $color-gradient-button;
-    width: 200px;
-    font-family: 'SFUIDisplayRegular', sans-serif;
+  background: $color-gradient;
+  width: 200px;
+  font-family: "SFUIDisplayRegular", sans-serif;
 }

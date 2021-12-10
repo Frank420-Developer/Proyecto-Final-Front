@@ -5,15 +5,15 @@
 export const environment = {
   production: false,
 
-  // baseUrl: 'https://activity-record.com/',
+  //baseUrl: 'https://activity-record.com/',
   baseUrl: 'http://3.238.21.227:8080/',
 
   endPoint: {
-    login: 'login',
+    login: 'auth/login',
     refreshToken: 'auth/refresh',
     projects: '/projects',
-    notificationToSend: 'toSend',
-    notificationSent: 'sent'
+    notificationsToSend: 'toSend',
+    notificationsSent: 'sent',
   },
 
   msPath: {
@@ -22,8 +22,8 @@ export const environment = {
     activities: 'activities/',
     workTeam: 'workteam/',
     users: 'users/',
-    notification: 'notification/',
-    authentication: 'auth/'
+    notifications: 'notifications/',
+    authentication: 'auth/',
   }
 };
 

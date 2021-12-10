@@ -1,45 +1,90 @@
-<app-general-header [dataInput]="dataToSend" ></app-general-header>
 
-<p class="txt-title-table" >
-    {{ textEs.TITLE_TABLE_ONE }}
+<app-general-headers [dataInput]="dataToSend"></app-general-headers>
+<p class="txt-title-table">
+    {{ txtEs.TITLE_TABLE_ONE }}
+</p>
+<app-general-table [dataInput]="dataTableToSend" (changePage)="changePageTable($event)" ></app-general-table>
+
+<p >
+    
 </p>
 
-<app-general-table 
-    [dataInput]="tableDataToSend" (changePage)="changePageTable($event)" >
-</app-general-table>
 
+<!--TABLE
 <div>
+    <table mat-table [dataSource]="dataTableList2" class="table-container">
+
+        <ng-container matColumnDef="{{ txtEs.TABLE_HEADERS_TWO[0] }}">
+            <th mat-header-cell *matHeaderCellDef> {{ txtEs.TABLE_HEADERS_TWO[0] }} </th>
+            <td mat-cell *matCellDef="let item"> {{ item.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="{{ txtEs.TABLE_HEADERS_TWO[1] }}">
+            <th mat-header-cell *matHeaderCellDef> {{ txtEs.TABLE_HEADERS_TWO[1] }} </th>
+            <td mat-cell *matCellDef="let item"> {{ item.description }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="{{ txtEs.TABLE_HEADERS_TWO[2] }}">
+            <th mat-header-cell *matHeaderCellDef> {{ txtEs.TABLE_HEADERS_TWO[2] }} </th>
+            <td mat-cell *matCellDef="let item">{{ item.addedBy }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="{{ txtEs.TABLE_HEADERS_TWO[3] }}">
+            <th mat-header-cell *matHeaderCellDef> {{ txtEs.TABLE_HEADERS_TWO[3] }} </th>
+            <td mat-cell *matCellDef="let item" > {{ utilities.getFormatDate(item.sent) + ' ' + '|' + ' ' + utilities.getFormatHour(item.sent)}}  </td>
+        </ng-container>
+
+        <ng-container matColumnDef="{{ txtEs.TABLE_HEADERS_TWO[4] }}">
+            <th mat-header-cell *matHeaderCellDef> {{ txtEs.TABLE_HEADERS_TWO[4] }} </th>
+            <td mat-cell *matCellDef="let item"> {{ txtButtons.DELETE_INACTIVE }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="txtEs.TABLE_HEADERS_TWO"></tr>
+        <tr mat-row *matRowDef="let row; columns: txtEs.TABLE_HEADERS_TWO;"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="lengthDataTable" (page)="changePageTable($event)"
+        showFirstLastButtons>
+
+    </mat-paginator>
+</div>
+-->
+
+
+<div style="height: 400px; overflow: auto;">
     <table>
-        <caption class="txt-title-table m-tb-20" > 
-            {{ textEs.TITLE_TABLE_TWO }} 
+        <caption class="txt-title-table m-tb-20">
+            {{ txtEs.TITLE_TABLE_TWO }}
         </caption>
+
         <thead>
             <tr>
-                <th scope="tableHead" class="p-tb-20" *ngFor="let title of textEs.TABLE_HEADERS_TWO" >
-                    {{ title }}
+                <th scope="tableHead" *ngFor="let item of txtEs.TABLE_HEADERS_TWO">
+                    {{ item }}
                 </th>
+            
             </tr>
         </thead>
-        
+
         <tbody>
-            <tr *ngFor="let item of dataTableListLocal" >
-                <td > 
-                    <p> {{ item.COLUMN_ONE }} </p>
+            <tr *ngFor="let item of dataTableList2">
+                <td>
+                    <p>{{ item.COLUMN_ONE }}</p>
                 </td>
                 <td>
-                    <p> {{ item.COLUMN_TWO }} </p>
+                    <p>{{ item.COLUMN_TWO }}</p>
                 </td>
                 <td>
-                    <p> {{ item.COLUMN_THREE }} </p>
+                    <p>{{ item.COLUMN_THREE }}</p>
                 </td>
                 <td>
-                    <p> {{ item.COLUMN_FOUR }} </p>
+                    <p>{{ item.COLUMN_FOUR }}</p>
                 </td>
                 <td>
-                    <p> {{ item.COLUMN_FIVE }} </p>
+                    <p class="txt-accent">{{ item.COLUMN_FIVE }}</p>
                 </td>
             </tr>
         </tbody>
     </table>
-    
 </div>

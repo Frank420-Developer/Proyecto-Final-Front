@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-/* Models */
-import { HeaderModel } from 'src/app/data/models/local/InputsModels';
+/* MODELS */
+import { HeaderModel } from 'src/app/data/models/local/inputsModels';
 
-/* Constants & utils */
-import { NEWS, BUTTONS, INPUTS } from 'src/app/portal/utilis/TextsConstantsES';
-import { PLUS, SPACE } from 'src/app/portal/utilis/ConstantsApp';
+/* CONSTANTS & UTILS*/
+import * as TextES from '../../../utils/textsConstantsES';
+import { PLUS, SPACE } from 'src/app/portal/utils/constantsApp';
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
-import { DialogAddNewsComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-news/dialog-add-news.component';
+import { DialogAddNewsComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-news/dialog-add-news/dialog-add-news.component';
 
 @Component({
   selector: 'app-noticias',
@@ -16,21 +16,21 @@ import { DialogAddNewsComponent } from 'src/app/portal/viewUtils/dialog/dialog-a
 })
 export class NoticiasComponent implements OnInit {
 
-  // Text
-  public textEs = NEWS;
+  //TEXTOS
+  public txtEs = TextES.NEWS;
+  public txtTabs = TextES.NEWS.TABS;
+  public txtButtons = TextES.BUTTONS
+  public txtInputs = TextES.INPUTS
+
   public dataToSend: HeaderModel;
 
-  constructor( private dto: GeneralStructsService ) { }
+  constructor( private dto: GeneralStructsService) { }
 
   ngOnInit(): void {
-    this.dataToSend = this.dto.createStructHeader(
-      this.textEs.TITLE,
-      INPUTS.SEARCH + SPACE + INPUTS.SEARCH_NEWS,
-      PLUS + SPACE + BUTTONS.ADD_NEWS,
-      true,
-      true,
-      DialogAddNewsComponent
-      );
+     this.dataToSend = this.dto.createHeaderStruct(this.txtEs.TITLE, this.txtInputs.SEARCH + SPACE+ this.txtInputs.NEWS, PLUS + SPACE + this.txtButtons.ADD_NOTICE, true, true, DialogAddNewsComponent);
   }
 
+  public searchValueEnter(event: string){
+    console.log(event);
+  }
 }

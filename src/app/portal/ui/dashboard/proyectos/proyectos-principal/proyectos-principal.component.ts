@@ -1,27 +1,30 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-/* Importaciones para consumo de servicio */
+
+/* SERVICE CONSUME */
 import { HttpParams } from '@angular/common/http';
 
-/* Importaciones de formulario */
+/* IMPORTACIONES DE FORMULARIO */
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 
-/* Importación de servicios */
-import { ProjectListServiceService } from 'src/app/data/network/proyectos/project-list-service.service';
+/* IMPORTACION DE SERVICIOS */
+import { ProjectListService } from 'src/app/data/network/proyectos/project-list.service';
 
-/* Importacion de interfaces */
-import { ProjectList, ProjectDetail } from '../../../../../data/models/response/projects/Projects';
-import { UpdateProjectDetail } from 'src/app/data/models/request/projects/ProjectsRequest';
 
-/* Importanción de constantes */
-import * as TextsES from '../../../../utilis/TextsConstantsES';
-import * as AppConst from '../../../../utilis/ConstantsApp';
+/* INTERFACES  */
+import { ProjectDetail, ProjectList } from 'src/app/data/models/response/projects/projects';
+import { UpdateProjectDetail, ProjectListPaginator } from 'src/app/data/models/request/projects/projects';
 
-/* Dialogs */
+/*  CONSTANTS */
+import * as TextES from '../../../../utils/textsConstantsES';
+import * as AppConst from '../../../../utils/constantsApp';
+
+/* DIALOGS */
 import { DialogAddProjectComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-project/dialog-add-project.component';
 
-/* Angular Material */
+/* ANGULAR MATERIAL */
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-proyectos-principal',
@@ -29,153 +32,150 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./proyectos-principal.component.scss']
 })
 export class ProyectosPrincipalComponent implements OnInit {
+
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  // Listas para tabla
-  public projectList: ProjectList[];
+  //LISTAS PARA LA TABLA
+  public projectList:ProjectList[];
   public headersList: string[];
 
-  // Textos
-  public textEs = TextsES.PROJECTS;
-  private textStatus = TextsES.STATUS;
-  public buttonsText = TextsES.BUTTONS;
-  private textLabel = TextsES.INPUTS;
+  //TEXTOS
+  public textEs = TextES.PROJECTS;
+  private textStatus =TextES.STATUS;
+  public buttonsText = TextES.BUTTONS;
+  private textLabel = TextES.INPUTS;
   public searchLabel: string;
 
-  // Form
+  //FORM
   public searchGroupForm: FormGroup;
-  public searchInput: AbstractControl;
+  public searchInput: AbstractControl; 
 
-  // Table
-  public lenghtDataTable: number;
-  private pageTable = 0;
-
-  // Flags
+  //TABLE
+  public lengthDataTable:number;
+  public pageTable = 0;
+  public sizeTable = 5;
   public activeSpinner = true;
+  //public paginatorData: ProjectListPaginator = { page: 0, size: 15};
+  
+  
 
-  constructor( private projectService: ProjectListServiceService,
+  constructor( private projectService: ProjectListService, 
                private formBuilder: FormBuilder,
-               private dialogController: MatDialog, ) {
-
+               private dialogController: MatDialog,
+               private router: Router) {
     this.headersList = this.textEs.TABLE_HEADERS;
-    this.searchLabel = this.textLabel.SEARCH + ' ' + this.textLabel.SEARCH_PROJECT;
+    this.searchLabel = this.textLabel.SEARCH + ' ' + this.textLabel.PROJECTS;
 
     this.searchGroupForm = this.formBuilder.group({
       searchInput: ['', Validators.required ]
     });
 
     this.searchInput = this.searchGroupForm.controls.searchInput;
-  }
+   }
 
   ngOnInit(): void {
-
-    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable, '');
+    this.getProjectList(AppConst.CLIENT_ID, this.pageTable, this.sizeTable, '');
+    //this.changePageTable(this.paginatorData);
+    //this.paginator.firstPage();
   }
 
-  public changePageTable( event: any ) {
-    this.pageTable = event.pageIndex;
-    this.projectList = [];
-    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable, '');
-  }
-
-  private getProjectList(clientID: string, page: number, name: string) {
+  private getProjectList(clientId: string, pageTable:number, sizeTable:number, name: string){
     const paramsRequest = new HttpParams()
-                          .set('page', page.toString() )
-                          .set('size', '10')
+                          .set('page', pageTable.toString())
+                          .set('size', sizeTable.toString())
                           .set('name', name);
 
-    this.projectService.getListProjects(clientID, paramsRequest).subscribe( (data) => {
-      try {
-        this.lenghtDataTable = parseInt(data.headers.get('total-elements'), 10);
+    this.projectService.getListProjects(clientId, paramsRequest).subscribe( (data) => { 
+      try{
+        
+        this.projectList = data.body as ProjectList[];
+        this.lengthDataTable = parseInt(data.headers.get('total-elements'), 10);
 
-        /*this.projectList = data.body;
-        data.body.forEach( (item: ProjectList, position: number, array: ProjectList[]) => {
-          this.getProjectDetail(clientID, data.body[position].id, position);
-        });*/
-        this.projectList = (data.body as ProjectList[]);
-
-        this.projectList.forEach( (item: ProjectList, position: number, array: ProjectList[]) => {
-          this.getProjectDetail(clientID, this.projectList[position].id, position);
+        this.projectList.forEach( (item:ProjectList, position: number, array: ProjectList[]) => {
+          this.getProjectDetail(clientId, data.body[position].id, position);
         });
 
         this.activeSpinner = false;
-
-      } catch (err) {
+      }catch(err){
         this.activeSpinner = false;
       }
     }, errorResponse => {
-      console.error('Error en el respuesta ', errorResponse);
       this.activeSpinner = false;
     });
   }
 
-  private getProjectDetail( clientID: string, id: string, position: number ) {
-    this.projectService.getProjectDetail(clientID, id).subscribe( (data: ProjectDetail) => {
+  private getProjectDetail (clientId : string , id: string, position: number){
+    this.projectService.getProjectDetail(clientId,id).subscribe( (data: ProjectDetail) => {
       try {
         this.projectList[position].detail = data;
         this.projectList[position].enabled = data.enabled;
 
-        if ( data.enabled ) {
+        if(data.enabled){
           this.projectList[position].status = this.textStatus.ACTIVE;
           this.projectList[position].action = this.buttonsText.ACTIONS_INACTIVE;
-        } else {
+        }else{
           this.projectList[position].status = this.textStatus.INACTIVE;
           this.projectList[position].action = this.buttonsText.ACTIONS_ACTIVE;
         }
-
       } catch (err) {
+        
       }
     }, errorResponse => {
-      console.error('Error en el respuesta ', errorResponse);
+      
+      
     } );
   }
 
-
-  public changeStatusColor( status: boolean ) {
-    if ( status ) {
+  public changeStatusColor( status: boolean ){
+    if(status){
       return {
         statusActive: true
       };
-    } else {
-      return {
+    }else{
+      return{
         statusInactive: true
       };
     }
   }
 
-
-  public changeStatus(item: ProjectList) {
+  public changeStatus( item:ProjectList ){
     const bodyService: UpdateProjectDetail = {
       key: item.key,
       name: item.name,
       description: item.description,
-      enabled: !item.enabled
+      enabled: !item.enabled,
     };
-
-    this.projectService.putProjectDetail(AppConst.CLIENT_ID, item.id, bodyService).subscribe(
-      (data: ProjectDetail) => {
-        this.getProjectList(AppConst.CLIENT_ID, this.pageTable, '');
+    this.activeSpinner = true;
+    this.projectService.putProjectDetail(AppConst.CLIENT_ID, item.id, bodyService).subscribe( ( data: ProjectDetail ) => {
+      this.getProjectList(AppConst.CLIENT_ID, this.pageTable, this.sizeTable, '');
     });
   }
 
-
-  public openDialog() {
-
+  public openDialog(){
     const openDialog = this.dialogController.open(DialogAddProjectComponent, {
       disableClose: true,
       width: '635px',
       data: this.projectList
-    } );
-
-    openDialog.afterClosed().subscribe( (result: ProjectDetail[]) => {
-      this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', this.pageTable, '');
     });
 
+    openDialog.afterClosed().subscribe( (result:ProjectDetail[]) => {
+      this.activeSpinner = true;
+      this.getProjectList(AppConst.CLIENT_ID, this.pageTable, this.sizeTable, '');
+    });
   }
 
-
-  public searchValueEnter(): void {
-    this.getProjectList('fe3f7dbf-7515-45c2-9d31-f8a7658cdb16', 0, this.searchInput.value);
+  public changePageTable( event: any ){
+    this.activeSpinner = true;
+    //this.paginatorData.page = (event.pageIndex === undefined) ? this.paginatorData.page : event.//pageIndex;
+    //this.paginatorData.size = (event.pageSize === undefined) ? this.paginatorData.size : event.pageSize;
+    this.pageTable = event.pageIndex;
+    this.sizeTable = event.pageSize;
+    //this.getProjectList(AppConst.CLIENT_ID, this.paginatorData);
+    this.getProjectList(AppConst.CLIENT_ID, this.pageTable, this.sizeTable, '');
   }
 
+  public searchValue(){
+    this.getProjectList(AppConst.CLIENT_ID, this.pageTable, this.sizeTable, this.searchInput.value);
+  }
 }

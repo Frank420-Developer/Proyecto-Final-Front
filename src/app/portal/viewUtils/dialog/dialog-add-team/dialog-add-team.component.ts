@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 
-/* Importaciones de formularios */
-import { Validators, FormBuilder, FormGroup, AbstractControl, FormControl } from '@angular/forms';
+/* CONSTANTS & UTILITIES */
+import { BUTTONS, DIALOG_ADD_WORKTEAMS, ERROR_MESSAGE } from 'src/app/portal/utils/textsConstantsES';
 
-/* Models */
-import { StructDataTableModel } from 'src/app/data/models/local/TableModels';
+/* FORMULARIO */
+import { FormGroup, AbstractControl, FormBuilder, Validators, FormControl} from '@angular/forms';
+import { ProjectDetail } from 'src/app/data/models/response/projects/projects';
+
+/* MODELS */
+import { StructDataTableModel } from 'src/app/data/models/local/tableModels';
 
 /* RxJS */
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
-/* Importación de constantes, utlidades */
-import { DIALOG_WORK_TEAMS, ERROR_MESSAGE, BUTTONS } from 'src/app/portal/utilis/TextsConstantsES';
+/* ANGULAR MATERIAL */
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-/* Importacion de mocks */
-import { COLLABORATORS_LIST_MOCK } from 'src/app/data/models/local/GeneralMocks';
-import { LIST_WORK_TEAMS } from 'src/app/portal/utilis/ConstantsApp';
-
-/* Importaciones de angular material */
-import { MatDialogRef } from '@angular/material/dialog';
+/* MOCKS */
+import { COLLABORATORS_LIST_MOCK } from 'src/app/data/models/local/general-mocks';
+import { LIST_WORK_TEAMS } from 'src/app/portal/utils/constantsApp';
 
 @Component({
   selector: 'app-dialog-add-team',
@@ -27,129 +28,130 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogAddTeamComponent implements OnInit {
 
-  // Textos
-  public textES = DIALOG_WORK_TEAMS;
-  public txtError = ERROR_MESSAGE;
-  public textButtons = BUTTONS;
+  //TEXTOS
+  public txtEs = DIALOG_ADD_WORKTEAMS;
+  public btnText = BUTTONS;
+  public errorMessages = ERROR_MESSAGE;
 
-  // Form
+   //FORM 
   public addForm: FormGroup;
   public area: AbstractControl;
-  public emailLead: AbstractControl;
+  public emaillead: AbstractControl;
   public activities: AbstractControl;
 
-  // Autocomplete
-  public collaboratorsAutoComplete = new FormControl();
+  //AUTOCOMPLETE
+  public collaboratorsAutocomplete = new FormControl();
   public filteredList: Observable<string[]>;
 
-  // List
-  public addedCollaborator: string[];
-  public addedActivities: string[];
+  //Lists
+  public collaboratorsAdded: string[];
+  public activitiesAdded: string[];
 
-  // Table
-  private dataTableLocal: StructDataTableModel;
+  //TABLE
+  public dataTableLocal: StructDataTableModel;
 
-  constructor( private fromBuild: FormBuilder,
-               private dialog: MatDialogRef<DialogAddTeamComponent> ) {
+  constructor( private formBuilder: FormBuilder,
+              private dialog: MatDialogRef<DialogAddTeamComponent>) { 
 
-    // Construccion del formulario
-    this.addForm = this.fromBuild.group({
-      area: ['', Validators.compose( [ Validators.required, Validators.pattern('[a-z A-Z Ññ]{3,30}') ] ) ],
-      emailLead: ['', Validators.compose( [ Validators.required, Validators.email ] ) ],
-      activities: ['', Validators.compose( [
-        Validators.required, Validators.pattern('[a-z A-Z Ññ]{3,30}')
-      ] ) ],
+    //Construccion del formulario
+    this.addForm = this.formBuilder.group({
+      area: ['', Validators.compose([Validators.required, Validators.pattern('[a-z A-Z Ññ]{3,30}') ])],
+      emaillead: ['', Validators.compose([Validators.required, Validators.email])],
+      activities: ['', Validators.compose([Validators.required, Validators.pattern('[a-z A-Z Ññ]{3,30}') ])],
     });
 
     this.area = this.addForm.controls.area;
-    this.emailLead = this.addForm.controls.emailLead;
+    this.emaillead = this.addForm.controls.emaillead;
     this.activities = this.addForm.controls.activities;
+
+
   }
 
   ngOnInit(): void {
-    this.addedCollaborator = [];
-    this.addedActivities = [];
+    this.collaboratorsAdded =[];
+    this.activitiesAdded = [];
 
-    this.filteredList = this.collaboratorsAutoComplete.valueChanges.pipe(
+    this.filteredList = this.collaboratorsAutocomplete.valueChanges.pipe(
       startWith(''),
-      map( value => this.filter(value) )
+      map( value => this.filter(value))
     );
-
   }
 
-
   /**
-   * @description Método que nos ayuda a filtrar el contenido de una lista. Es usado para el AutoComplete.
-   * @param collaborator (string) Valor que se usa para buscar dentro de la lista.
-   * @returns (string[]) lista filtrada.
+   * @description Método que nos ayuda a filtrar el contenido de una lista. Es usado para el autocomplete
+   * @param collaborator (string) Valor que se usa para buscar dentro de la lista
+   * @returns (string[]) lista filtrada
    */
-  private filter(collaborator: string): string[] {
+  private filter(collaborator: string): string[]{
     const value = collaborator.toLowerCase();
 
     return COLLABORATORS_LIST_MOCK.filter( filterOption => filterOption.toLowerCase().includes(value) );
   }
 
-
   /**
-   * @description Método encaragdo de agregar un colaborador a la lista.
+   * @description Método encargado de agregar un colaborador a la lista
    */
-  public addCollaborator(): void {
-    this.addedCollaborator.push(this.collaboratorsAutoComplete.value);
+  public addCollaborators():void{
+    this.collaboratorsAdded.push(this.collaboratorsAutocomplete.value);
+    console.log(this.collaboratorsAdded.length);
+    this.collaboratorsAutocomplete.setValue('');
   }
 
-
   /**
-   * @description Método encaragdo de agregar una actividad a la lista.
+   * @description Método encargado de agregar una actividad a la lista
    */
-  public addActivity(): void {
-    this.addedActivities.push(this.activities.value);
+  public addActivity(): void{
+    this.activitiesAdded.push(this.activities.value)
+    console.log(this.activitiesAdded.length);
+    this.activities.reset();
   }
 
-
   /**
-   * @description Método para la eliminación de elementos de nuestra lista.
-   * @param position (number) Posición del elemento a eliminar.
+   * @description Método que servira para la eliminacion de nuestra lista de colaboradores
+   * @param position (number) Posicion del elemento a eliminar
    */
-  public removeCollaborator(position: number): void {
-    if ( this.addedCollaborator.length > 1 ) {
-      this.addedCollaborator.splice(position, 1);
-    } else {
-      this.addedCollaborator = [];
-    }
-  }
-
-
-  /**
-   * @description Método para la eliminación de elementos de nuestra lista.
-   * @param position (number) Posición del elemento a eliminar.
-   */
-  public removeActivity(position: number): void {
-    if ( this.addedActivities.length > 1 ) {
-      this.addedActivities.splice(position, 1);
-    } else {
-      this.addedActivities = [];
+  public removeCollaborator(position: number): void{
+    if(this.collaboratorsAdded.length > 1){
+      this.collaboratorsAdded.splice(position, 1);
+    }else{
+      this.collaboratorsAdded =[];
     }
   }
 
   /**
-   * @description Método encargado de agregar datos a nuestra lista de equipos de trabajo
+   * @description Método que servira para la eliminacion de nuestra lista de actividades
+   * @param position (number) Posicion del elemento a eliminar
    */
-  public addValues(): void {
+  public removeActivity(position: number): void{
+    if(this.activitiesAdded.length > 1){
+      this.activitiesAdded.splice(position, 1);
+    }else{
+      this.activitiesAdded =[];
+    }
+  }
 
-    const valuesList = (localStorage.getItem(LIST_WORK_TEAMS) === null) ? [] : JSON.parse(localStorage.getItem(LIST_WORK_TEAMS));
+  /**
+   * @description Método para agregar los valores a la tabla
+   */
+  public addValues(): void{
+
+    console.log(localStorage.getItem(LIST_WORK_TEAMS));
+    const valuesList = (localStorage.getItem(LIST_WORK_TEAMS) !== null) ? JSON.parse(localStorage.getItem(LIST_WORK_TEAMS)) : [];
 
     this.dataTableLocal = {
       COLUMN_ONE: this.area.value,
-      COLUMN_TWO: this.emailLead.value,
-      COLUMN_THREE: this.addedCollaborator.length.toString(),
-      COLUMN_FOUR: this.addedActivities.length.toString(),
-      COLUMN_FIVE: this.textButtons.VIEW
+      COLUMN_TWO: this.emaillead.value,
+      COLUMN_THREE: this.collaboratorsAdded.length.toString(),
+      COLUMN_FOUR: this.activitiesAdded.length.toString(),
+      COLUMN_FIVE: this.btnText.VIEW
     };
 
     valuesList.push(this.dataTableLocal);
-    localStorage.setItem(LIST_WORK_TEAMS, valuesList);
+    console.log(valuesList);
+    localStorage.setItem(LIST_WORK_TEAMS, JSON.stringify(valuesList));
     this.dialog.close();
 
   }
+
 
 }

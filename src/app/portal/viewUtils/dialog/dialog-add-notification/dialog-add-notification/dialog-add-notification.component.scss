@@ -1,0 +1,16 @@
+@import "../../../../../../theme.scss";
+
+/* BUTTONS */
+.mat-raised-button {
+  background: $color-gradient;
+  width: 200px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+}
+
+table {
+  margin: 0 !important;
+}
+
+.w-150 {
+  width: 180px !important;
+}

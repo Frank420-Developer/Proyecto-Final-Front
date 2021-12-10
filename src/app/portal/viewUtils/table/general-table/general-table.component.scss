@@ -1,10 +1,10 @@
-@import '../../../../../theme.scss';
+@import "../../../../../theme.scss";
 
 .img-news {
-    box-sizing: border-box;
-    height: 106px;
-    width: 106px;
-    border: 1px solid $color-backgroud-border;
-    border-radius: 4px;
-    background-color: $color-background-secundary;
+  box-sizing: border-box;
+  height: 106px;
+  width: 106px;
+  border: 1px solid $color-background-border;
+  border-radius: 4px;
+  background-color: $color-secondary-background;
 }

@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
-/* Models */
-import { HeaderModel } from 'src/app/data/models/local/InputsModels';
-import { DataTableModel, StructDataTableModel } from 'src/app/data/models/local/TableModels';
-import { NotificationToSendModel, NotificationSentModel } from 'src/app/data/models/response/notifications/NotificationsResponse';
+/* MODELS */
+import { HeaderModel } from 'src/app/data/models/local/inputsModels';
+import { DataTableModel, StructDataTableModel } from 'src/app/data/models/local/tableModels';
+import { NotificationsSentModel, NotificationsToSendModel } from 'src/app/data/models/response/notifications/notifications';
 
-/* Constants & utils */
-import { NOTIFICATIONS, BUTTONS } from 'src/app/portal/utilis/TextsConstantsES';
-import { DIALOG_WIDTH_L, LIST_NOTIFICATIONS_TO_SEND, LIST_SENT_NOTIFICATIONS, PIPE, SPACE } from 'src/app/portal/utilis/ConstantsApp';
-
+/* CONSTANTS & UTILS*/
+import * as TextES from '../../../utils/textsConstantsES';
+import { DIALOG_WIDTH_MD, LIST_NOTIFICATIONS_TO_SEND, LIST_SENT_NOTIFICATIONS, PIPE, PLUS, SPACE } from 'src/app/portal/utils/constantsApp';
 import { GeneralStructsService } from 'src/app/data/dto/general-structs.service';
-import { GeneralFunctionsService } from 'src/app/portal/utilis/utilFunctions/general-functions.service';
+import { GeneralFunctionsService } from 'src/app/portal/utils/utilFunctions/general-functions.service';
 
-/* Importación de servicios */
-import { NotificationsApiService } from 'src/app/data/network/notifications/notifications-api.service';
+/* SERVICE */
+import { NotificationsService } from 'src/app/data/network/notifications/notifications.service';
 
-/* Importación de Mocks */
-import { NOTIFICATION_TO_SEND, NOTIFICATION_SENT } from 'src/app/data/models/local/TableMocks';
-import { DialogAddNotificationComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
+/* MOCKS */
+import { NOTIFICATION_TO_SEND, NOTIFICATIONS_SENT } from 'src/app/data/models/local/table-mocks';
+import { DialogAddNotificationComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification/dialog-add-notification.component';
 
 @Component({
   selector: 'app-notificaciones',
@@ -26,111 +25,99 @@ import { DialogAddNotificationComponent } from 'src/app/portal/viewUtils/dialog/
 })
 export class NotificacionesComponent implements OnInit {
 
-  // Text
-  public textEs = NOTIFICATIONS;
-  private txtButton = BUTTONS;
 
-  // Inputs
+  //TEXTOS
+  public txtEs = TextES.NOTIFICATIONS;
+  public txtButtons = TextES.BUTTONS;
+
+  //INPUTS
   public dataToSend: HeaderModel;
-  public tableDataToSend: DataTableModel;
+  public dataTableToSend: DataTableModel;
 
-  // Table
+  public dataTableToSend2: DataTableModel
+
+  //TABLE ONE
   private dataTableList: StructDataTableModel[];
   private dataTable: StructDataTableModel;
 
-  public dataTableListLocal: StructDataTableModel[];
-  private dataTableLocal: StructDataTableModel;
-
+  //TABLE TWO
+  public dataTableList2: StructDataTableModel[];
+  private dataTable2: StructDataTableModel;
+  public lengthDataTable:number;
 
   constructor( private dto: GeneralStructsService,
-               private api: NotificationsApiService,
-               private utilities: GeneralFunctionsService, ) {
-
-    // Inicializaciones
+                private api: NotificationsService,
+                public utilities: GeneralFunctionsService ) {
+      
     this.dataTableList = [];
-    this.dataTableListLocal = [];
-    this.validateNotificationToSend();
-    this.validateNotificationSent();
+    this.dataTableList2 = [];
+    this.validateNotificationsToSend();
+    this.validateNotificationsSent();
     this.getNotificationsToSend(0, 10);
     this.getNotificationsSent(0, 10);
   }
 
   ngOnInit(): void {
-    this.dataToSend = this.dto.createStructHeader(
-      this.textEs.TITLE,
-      SPACE,
-      this.txtButton.ADD_NOTIFICATION,
-      false,
-      true,
-      DialogAddNotificationComponent);
+    this.dataToSend = this.dto.createHeaderStruct(this.txtEs.TITLE, SPACE, PLUS + SPACE + this.txtButtons.ADD_NOTIFICATION, false, true, DialogAddNotificationComponent);
   }
 
-
-  /**
-   * @description Método encargado de validar si tenemos información almacenada en localStorage para 
-   * la sección de notificaciones por enviar.
-   */
-  private validateNotificationToSend() {
-    if ( localStorage.getItem(LIST_NOTIFICATIONS_TO_SEND) === null ) {
-      localStorage.setItem(LIST_NOTIFICATIONS_TO_SEND, JSON.stringify(NOTIFICATION_TO_SEND) );
-    }
-  }
-
-  /**
-   * @description Método encargado de validar si tenemos información almacenada en localStorage para 
-   * la sección de notificaciones enviadas.
-   */
-  private validateNotificationSent() {
-    if ( localStorage.getItem(LIST_SENT_NOTIFICATIONS) === null ) {
-      localStorage.setItem(LIST_SENT_NOTIFICATIONS, JSON.stringify(NOTIFICATION_SENT));
-    }
-  }
-
-
-  private getNotificationsToSend(page: number, size: number) {
-
-    NOTIFICATION_TO_SEND.forEach( (item: NotificationToSendModel) => {
+  private getNotificationsToSend(page: number, size: number){
+    NOTIFICATION_TO_SEND.forEach( (item: NotificationsToSendModel) =>{
       this.dataTable = {
         COLUMN_ONE: item.title,
         COLUMN_TWO: item.description,
-        COLUMN_THREE: this.utilities.getFormatDate(item.programmed) + PIPE + this.utilities.getFormatHour(item.programmed),
+        COLUMN_THREE: this.utilities.getFormatDate(item.programmed) + SPACE + PIPE + SPACE + this.utilities.getFormatHour(item.programmed),
         COLUMN_FOUR: item.concurrent,
-        COLUMN_FIVE: this.txtButton.VIEW,
-        COLUMN_SIX: this.txtButton.DELETE_INACTIVE,
-      };
+        COLUMN_FIVE: this.txtButtons.VIEW,
+        COLUMN_SIX: this.txtButtons.DELETE_INACTIVE,
+      }
       this.dataTableList.push(this.dataTable);
     });
-
-    this.tableDataToSend = this.dto.createStructTable(
-      this.textEs.TABLE_HEADERS,
+    this.dataTableToSend = this.dto.createStructTable(
+      this.txtEs.TABLE_HEADERS,
       this.dataTableList,
       false,
       true,
       true,
       parseInt('10', 10),
-      true
+      true,
     );
-
   }
 
-
-  private getNotificationsSent(page: number, size: number) {
-
-    NOTIFICATION_SENT.forEach( (item: NotificationSentModel) => {
-      this.dataTableLocal = {
+  private getNotificationsSent(page: number, size: number){
+    NOTIFICATIONS_SENT.forEach( (item:NotificationsSentModel) =>{
+      this.dataTable2 = {
         COLUMN_ONE: item.title,
         COLUMN_TWO: item.description,
         COLUMN_THREE: item.addedBy,
-        COLUMN_FOUR: this.utilities.getFormatDate(item.sent) + PIPE + this.utilities.getFormatHour(item.sent),
-        COLUMN_FIVE: this.txtButton.DELETE_INACTIVE
-      };
-      this.dataTableListLocal.push(this.dataTableLocal);
+        COLUMN_FOUR: this.utilities.getFormatDate(item.sent) + SPACE + PIPE + SPACE + this.utilities.getFormatHour(item.sent),
+        COLUMN_FIVE: this.txtButtons.DELETE_INACTIVE,
+      }
+      this.dataTableList2.push(this.dataTable2);
     });
-
   }
 
-  public changePageTable(page: number) {
-    this.getNotificationsToSend(page, 10);
+
+  /**
+   * @description Método para verificar si el localStorage tiene informacion almacenada para la seccion de notificaciones por enviar
+   */
+  private validateNotificationsToSend(){
+    if(localStorage.getItem(LIST_NOTIFICATIONS_TO_SEND) === null){
+      localStorage.setItem(LIST_NOTIFICATIONS_TO_SEND, JSON.stringify(NOTIFICATION_TO_SEND));
+    }
+  }
+
+  /**
+   * @description Método para verificar si el localStorage tiene informacion almacenada para la seccion de notificaciones enviadas
+   */
+  private validateNotificationsSent(){
+    if(localStorage.getItem(LIST_SENT_NOTIFICATIONS) === null){
+      localStorage.setItem(LIST_SENT_NOTIFICATIONS, JSON.stringify(NOTIFICATIONS_SENT));
+    }
+  }
+
+  public changePageTable(event: any){
+    
   }
 
 }

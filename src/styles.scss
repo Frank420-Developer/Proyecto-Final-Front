@@ -1,62 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
-@import './theme.scss';
+@import "./theme.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'SFUIDisplayRegular', sans-serif; }
-
-/* Texts */
-h1 {
-  font-size: 35px;
-  letter-spacing: 0;
-  line-height: 41px;
-  color: $color-text-title;
-  margin: 0px;
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "SFUIDisplayRegular", sans-serif;
 }
 
-h3 {
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 17px;
-    text-align: center;
-    color: $color-text-title;
+/*  ..::   TEXTS COLORS ::..   */
+h1 {
+  line-height: 41px;
+  font-size: 35px;
+  letter-spacing: 0;
+  color: $color-texts-title;
+  margin-top: 0px;
 }
 
 h2 {
-    font-size: 20px;
-    letter-spacing: 0;
-    line-height: 36px;
-}
-
-.txt-title-dialog {
-    color: $color-text-title;
-    font-size: 24px;
-    letter-spacing: 0;
-    line-height: 29px;
-    text-align: center;
-}
-
-.txt-description {
-    font-size: 14px;
-    letter-spacing: 0;
-    line-height: 17px;
-}
-
-.txt-list {
-  color: $color-text-title;
-  font-size: 16px;
+  font-size: 20px;
   letter-spacing: 0;
-  line-height: 19px;
+  line-height: 36px;
 }
-
-.txt-title-table {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: 0;
-    line-height: 22px;
-    color: $color-text-title;
-    text-align: left;
+h3 {
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17px;
+  color: $color-texts-title;
+  margin: 0;
 }
-
 .txt-upload {
   font-size: 8px;
   letter-spacing: 0;
@@ -65,354 +40,385 @@ h2 {
   color: $color-text-description;
 }
 
-.txt-bold {
-    font-weight: bold;
+.txt-description {
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 17px;
 }
-
 .center-txt {
-    text-align: center;
+  text-align: center;
 }
-
 .left-txt {
-    text-align: left;
+  text-align: left;
+}
+.txt-title-dialog {
+  font-size: 24px;
+  letter-spacing: 0;
+  color: $color-texts-title;
+  line-height: 29px;
+  text-align: center;
+}
+.txt-title-table {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 22px;
+  color: $color-texts-title;
+  text-align: left;
+}
+.txt-list {
+  color: $color-texts-title;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19px;
 }
 
-/* Colors */
-.txt-color-title {
-    color: $color-text-title;
+/* COLORS */
+.txt-title-color {
+  color: $color-texts-title;
 }
-
 .txt-color-description {
-    color: $color-text-description;
+  color: $color-text-description;
 }
-
 .mat-header-cell {
-    color: $color-text-description;
+  color: $color-text-description;
 }
 
 .mat-cell {
-    color: $color-text-title;
+  color: $color-texts-title;
 }
 
 td.mat-cell {
-    border-bottom-color: $color-inactive;
+  border-bottom-color: $color-inactive;
 }
 
 .txt-accent {
-    color: $color-accent;
+  color: $color-accent;
 }
 
-/* Background */
+/*  ..::   BUTTONS ::..   */
+.close-modal-style {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.mat-button[disabled][disabled] {
+  color: $color-inactive;
+}
+
+/*  ..::   BACKGROUND STYLES ::..   */
 .principal-background {
-    background-color: $color-background-principal;
-    height: 100vh;
+  background-color: $color-background-principal;
+  height: 100vh;
 }
 
 .principal-background-general {
-    background-color: $color-background-principal;
+  background-color: $color-background-principal;
 }
 
-.secundary-background {
-    background-color: $color-background-secundary;
+.secondary-background {
+  background-color: $color-secondary-background;
 }
 
 .mat-table {
-    background-color: $color-background-secundary;
-    width: 100%;
-    font-family: 'SFUIDisplayRegular', sans-serif;
+  background-color: $color-secondary-background;
+  width: -webkit-fill-available;
+  color: $color-text-description;
+  font-family: "SFUIDisplayRegular", sans-serif;
 }
-
 .mat-dialog-container {
-    background: $color-background-secundary;
-    position: relative;
+  background-color: $color-secondary-background;
+  position: relative;
+  padding: 0px 24px !important;
 }
 
-/* Tables */
-table {
-    margin: 10px 16px;
-    padding-left: 20px;
-    width: 100%;
-    background-color: $color-background-secundary;
-    border-spacing: 0;
-}
-
-.table-container {
-    background-color: $color-background-secundary;
-    max-height: 674px;
-    overflow: auto;
-}
-
-th {
-    color: $color-text-description;
-    font-family: "SFUIDisplayRegular", sans-serif;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: left;
-    padding-left: 24px;
-}
-
-td {
-    color: $color-text-title;
-    font-size: 14px;
-    border-bottom: 1px solid $color-inactive;
-}
-
-td.mat-cell, td {
-    padding: 20px 0px!important;
-}
-
-.mat-paginator {
-    background: $color-background-secundary;
-    color: $color-text-title;
-}
-
-.mat-icon-button[disabled][disabled] {
-    color: $color-inactive;
-}
-
-.mat-icon-button {
-    color: $color-accent;
-}
-
-/* Selects */
-.mat-select-value, .mat-option, .mat-option.mat-active {
-    color: $color-text-title;
-    font-family: 'SFUIDisplayRegular', sans-serif;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 18px;
-}
-
-.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
-    color: $color-accent;
-}
-
-.mat-select-panel {
-    background: $color-background-secundary;
-}
-
-.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
-    background: $color-background-principal;
-}
-
-.mat-select-arrow, .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
-    color: $color-accent;
-}
-
-.mat-form-field.mat-focused .mat-form-field-ripple {
-    background-color: transparent;
-}
-
-.mat-form-field-appearance-legacy .mat-form-field-infix {
-    padding: 0px 10px;
-}
-
-.mat-form-field-infix {
-    border-top: 0px;
-}
-
-/* Inputs */
+/* INPUTS  */
 .input-search {
-    display: flex;
-    align-items: center;
-    background-color: $color-background-secundary;
-    font-family: 'SFUIDisplayRegular', sans-serif;
-    box-sizing: border-box;
-    height: 40px;
-    width: 215px;
-    border: 1px solid $color-radius;
-    border-radius: 4px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  background-color: $color-secondary-background;
+  border-radius: 4px;
+  border: 1px solid #f2f2f2;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
 }
-
-input::placeholder, input, .mat-input-element {
-    border: none;
-    outline: none;
-    color: $color-inactive!important;
-    margin: auto 10px!important;
+input::placeholder,
+input,
+.mat-input-element {
+  border-style: none;
+  outline-style: none;
+  color: $color-inactive !important;
+  margin: auto 10px;
 }
-
 input {
-    width: 100%;
+  width: 100%;
 }
-
 .mat-error {
-    margin-top: 8px;
+  margin-top: 30px;
 }
-
-.general-input-container {
-    margin-top: 40px;
-    margin-bottom: 20px;
+mat-paginator .mat-select-value {
+  width: 60% !important;
 }
-
 .inputs-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
-
+.general-inputs-container {
+  margin: 40px 0px 20px;
+}
+.line {
+  border-top: 1px solid $color-inactive;
+  display: flex;
+  width: 100%;
+  align-self: center;
+}
 input[type="file"] {
-    display: none;
+  display: none;
 }
-.input-draganddrop-zone {
-    border: 2.13px dashed $color-backgroud-border-accent;
-    height: 100%;
-    display: grid;
-    align-content: center;
-}
-
-/* Autocomplete */
-.mat-autocomplete-panel {
-    background-color: $color-background-secundary;
+.input-drag-and-drop-zone {
+  border: 2.13px dashed $color-background-border-accent;
+  height: 100%;
+  display: grid;
+  align-content: center;
 }
 
-/* Containers */
+/* CONTAINERS */
 .add-dialog-button-container {
-    margin: 20px;
-    display: grid;
-    justify-items: center;
+  display: grid;
+  justify-content: center;
+  margin: 20px;
 }
-.added-items-container {
-    background-color: $color-background-principal;
-    padding-left: 14px;
-    padding-right: 14px;
+.items-added {
+  background-color: $color-background-principal;
+  padding: 0px 14px;
 }
-.three-comlumns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.three-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
-
 .dropzone-container {
-    background: rgba($color: $color-background-accent, $alpha: 0.05);
-    padding: 10px;
+  background: rgba($color: $color-background-accent, $alpha: 0.05);
+  padding: 10px;
 }
-
 .img-sm-container {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
-
 .img-l-container {
-    width: 525px;
-    height: 160px;
+  width: 525px;
+  height: 160px;
 }
 
-/* Buttons */
-.close-modal-style {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+/* AUTOCOMPLETE */
+.mat-autocomplete-panel {
+  background: $color-secondary-background;
 }
 
-.mat-button[disabled][disabled] {
-    color: $color-inactive;
+/* SELECT */
+.mat-select-value,
+.mat-option,
+.mat-option.mat-active {
+  color: $color-texts-title;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 18px;
+}
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: $color-accent;
+}
+.mat-select-panel {
+  background: $color-secondary-background;
+}
+.mat-primary .mat-option.mat-selected:not(.mat-option-multiple) {
+  background-color: $color-background-principal;
+}
+.mat-select-arrow,
+.mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+  color: $color-accent;
+}
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: transparent;
+}
+.mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0px 10px;
+}
+.mat-form-field-infix {
+  margin-top: 0px;
+  border-top: 0;
+}
+.mat-form-field {
+  display: flex !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-wrapper {
+  padding-bottom: 0px;
+  width: 100%;
+}
+.mat-form-field-wrapper {
+  display: flex !important;
+}
+.mat-select {
+  padding: 10px 0px;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: transparent;
+  display: none;
 }
 
-/* Tabs */
+/* TABLES */
+td,
+th,
+td.mat-cell {
+  padding: 20px 0px !important;
+}
+.mat-paginator {
+  background-color: $color-secondary-background;
+  color: $color-texts-title;
+}
+.mat-icon-button[disabled][disabled] {
+  color: $color-inactive;
+}
+.mat-icon-button {
+  color: $color-accent;
+}
+table {
+  //margin: 10px 16px;
+  padding-left: 20px;
+  width: -webkit-fill-available;
+  background-color: $color-secondary-background;
+  border-spacing: 0;
+}
+.table-container {
+  overflow: auto;
+  max-height: 600px;
+}
+th {
+  font-family: "SFUIDisplayRegular", sans-serif;
+  text-align: left;
+  color: $color-text-description;
+  font-size: 12px;
+  font-weight: 500;
+  padding-left: 24px;
+}
+td {
+  color: $color-texts-title;
+  font-size: 14px;
+  border-bottom: 1px solid $color-inactive;
+}
+tr:last-child td {
+  border-bottom: none;
+}
+
+/*  TABS  */
 .mat-tab-label {
-    color: $color-inactive;
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 19px;
-    text-align: center;
-    font-family: 'SFUIDisplayRegular', sans-serif;
-    height: 32px!important;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 19px;
+  text-align: center;
+  color: $color-inactive;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  height: 32px !important;
 }
 
 .mat-tab-label-active {
-    color: $color-text-white;
-    background-color: $color-background-tabs;
-    border-radius: 5px;
+  color: $color-text-white;
+  background-color: $color-background-tabs;
+  border-radius: 5px;
 }
 
-/* 
-    Menu 
-*/
+/* MENU   */
 .mat-menu-panel {
-    background: $color-background-secundary;
+  background: $color-secondary-background;
+}
+
+/* CALENDAR */
+.mat-calendar {
+  font-family: "SFUIDisplayRegular", sans-serif;
+}
+.mat-datepicker-content {
+  background-color: $color-secondary-background;
+}
+.mat-calendar-body-label,
+.mat-calendar-header {
+  color: $color-texts-title;
+}
+.mat-calendar-body-cell-content {
+  color: $color-text-description !important;
+}
+.mat-datepicker-content .mat-calendar-next-button,
+.mat-datepicker-content .mat-calendar-previous-button {
+  color: $color-accent;
+}
+.mat-calendar-body-selected {
+  background-color: $color-accent;
+  color: $color-text-white !important;
+}
+.mat-calendar-controls {
+  margin: 0 !important;
+}
+/*
+  DIMENS
+*/
+.m-tb-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.p-tb-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.m-t-20 {
+  margin-top: 20px;
 }
 
 /*
-    Dimens
-*/
-.m-tb-20 {
-    margin: 20px 0px;
-}
-
-.m-t-20 {
-    margin-top: 20px;
-}
-
-.p-tb-20 {
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-/* 
-    Spinner/Loader/Progress
+  SPINNER
 */
 .spinner-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba($color: $color-inactive, $alpha: 0.7);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba($color: $color-inactive, $alpha: 0.4);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* 
-    DatePicker
-*/
-.mat-calendar {
-    font-family: 'SFUIDisplayRegular', sans-serif;
-}
-.mat-datepicker-content {
-    background-color: $color-background-secundary;
-    color: $color-text-title;
-}
-
-.mat-calendar-body-label {
-    color: $color-text-title;
-}
-
-.mat-calendar-body-cell-content {
-    color: $color-text-description;
-}
-
-.mat-datepicker-content .mat-calendar-next-button, .mat-datepicker-content .mat-calendar-previous-button {
-    color: $color-accent;
-}
-
-.mat-calendar-body-selected {
-    background-color: $color-accent;
-    color: $color-text-white;
-}
-
-.mat-calendar-table {
-    width: 90%!important;
-}
-
-/* 
-    Fonts 
+    FONTS 
 */
 @font-face {
-    font-family: SFUIDisplayRegular;
-    src: url("./assets/fonts/SF-UI-Display-Regular.ttf") format("truetype");
+  font-family: SFUIDisplayRegular;
+  src: url("./assets/fonts/SF-UI-Display-Regular.ttf") format("truetype");
 }
-
 
 @media only screen and (min-width: 360px), (max-width: 600px) {
-    h1 {
-        font-size: 12px;
-    }
+  /* ERROR MESSAGE */
+  .invalid-size {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    color: $color-accent;
+    font-size: 12px;
+  }
 }
 
-@media (min-width: 601px) and (max-width: 1023) {
-    h1 {
-        font-size: 20px;
-    }
-
+@media (min-width: 601px) and (max-width: 1023px) {
+  /* ERROR MESSAGE */
+  .invalid-size {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    color: $color-accent;
+    font-size: 20px;
+  }
 }

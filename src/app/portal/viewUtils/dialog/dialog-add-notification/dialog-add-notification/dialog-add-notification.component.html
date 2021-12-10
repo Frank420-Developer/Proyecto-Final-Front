@@ -1,0 +1,71 @@
+<div class="dialog">
+
+    <span class="close-modal-style">
+        <mat-icon [mat-dialog-close]="true" mat-dialog-close class="txt-accent">close</mat-icon>
+    </span>
+    <p class="txt-title-dialog">
+        {{ txtEs.TITLE }}
+    </p>
+
+    <!--INPUTS-->
+    <div>
+        <form [formGroup]="addForm">
+            <p class="txt-description txt-color-description"> {{ txtEs.HEADLINE }} </p>
+            <mat-form-field class="input-search">
+                <input matInput [formControl]="headline" type="text">
+                <mat-error *ngIf="!headline.valid && headline.value !== ''">
+                    {{ errorMessages.INPUT_INVALID_FORMAT }}
+                </mat-error>
+            </mat-form-field>
+
+            <p class="txt-description txt-color-description"> {{ txtEs.DESCRIPTION }} </p>
+            <mat-form-field class="input-search">
+                <textarea matInput [formControl]="description" type="text"></textarea>
+                <mat-error *ngIf="!description.valid && description.value !== ''">
+                    {{ errorMessages.INPUT_INVALID_FORMAT }}
+                </mat-error>
+            </mat-form-field>
+
+            <div class="three-columns">
+                <div class="w-150">
+                    <p class="txt-description txt-color-description"> {{ txtEs.TYPE }} </p>
+                    <mat-form-field class="input-search">
+                        <mat-select matInput [formControl]="typeSelect" name="typeSelect">
+                            <mat-option (blur)="checkType()" *ngFor="let typeSelect of notificationType" [value]="typeSelect">
+                                {{ typeSelect }}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="!typeSelect.valid && typeSelect.value !== ''">
+                            {{ errorMessages.INPUT_INVALID_FORMAT }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="w-150" *ngIf="hideDatePicker">
+                    <p class="txt-description txt-color-description"> {{ txtEs.DATE }} </p>
+                    <mat-form-field class="input-search">
+                        <input 
+                            matInput 
+                            [min]="minDate" 
+                            [matDatepicker]="picker" 
+                            disabled
+                            [formControl]="dateImplementation" 
+                            (dateInput)="getNotificationDate($event)">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class="w-150">
+                    <p class="txt-description txt-color-description"> {{ txtEs.HOUR }} </p>
+                    <mat-form-field class="input-search">
+                        <input matInput [formControl]="hourImplementation" type="time">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="add-dialog-button-container">
+        <button width="300px" mat-raised-button (click)="sendData()" [disabled]="!addForm.valid"> {{
+            txtButtons.ADD }} </button>
+    </div>
+</div>

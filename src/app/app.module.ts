@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-/* Conexiones a internet */
+/* CONEXIONES A INTERNET  */
 import { HttpClientModule } from '@angular/common/http';
 
-/* Angular Material */
+/* ANGULAR MATERIAL */
 import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSidenavModule } from '@angular/material/sidenav'; 
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,12 +26,13 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
 /* Importacion de elementos para Form */
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+/* SOCIAL LOGIN */
 
 
-/* Components */
+/* COMPONENTS */
 import { LoginComponent } from './portal/ui/access/login/login.component';
 import { PrincipalComponent } from './portal/ui/dashboard/principal/principal.component';
 import { ProyectosComponent } from './portal/ui/dashboard/proyectos/proyectos.component';
@@ -39,22 +40,22 @@ import { EquiposComponent } from './portal/ui/dashboard/equipos/equipos.componen
 import { ActividadesComponent } from './portal/ui/dashboard/actividades/actividades.component';
 import { NoticiasComponent } from './portal/ui/dashboard/noticias/noticias.component';
 import { ClientesComponent } from './portal/ui/dashboard/clientes/clientes.component';
-import { UsuariosComponent } from './portal/ui/dashboard/usuarios/usuarios.component';
 import { NotificacionesComponent } from './portal/ui/dashboard/notificaciones/notificaciones.component';
-import { DetallesProyectoComponent } from './portal/ui/dashboard/proyectos/detalles-proyecto/detalles-proyecto.component';
+import { UsuariosComponent } from './portal/ui/dashboard/usuarios/usuarios.component';
+import { DetalleProyectoComponent } from './portal/ui/dashboard/proyectos/detalle-proyecto/detalle-proyecto.component';
 import { DialogAddProjectComponent } from './portal/viewUtils/dialog/dialog-add-project/dialog-add-project.component';
 import { GeneralTableComponent } from './portal/viewUtils/table/general-table/general-table.component';
 import { SimpleTableComponent } from './portal/viewUtils/table/simple-table/simple-table.component';
-import { GeneralHeaderComponent } from './portal/viewUtils/headers/general-header/general-header.component';
+import { GeneralHeadersComponent } from './portal/viewUtils/headers/general-headers/general-headers.component';
 import { DialogAddTeamComponent } from './portal/viewUtils/dialog/dialog-add-team/dialog-add-team.component';
-import { ActivadasComponent } from './portal/ui/dashboard/noticias/activadas/activadas.component';
-import { BorradoresComponent } from './portal/ui/dashboard/noticias/borradores/borradores.component';
-import { SuspendidasComponent } from './portal/ui/dashboard/noticias/suspendidas/suspendidas.component';
-import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client.component';
-import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification.component';
-import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-news/dialog-add-news.component';
+import { ActiveNewsComponent } from './portal/ui/dashboard/noticias/active-news/active-news.component';
+import { DraftsNewsComponent } from './portal/ui/dashboard/noticias/drafts-news/drafts-news.component';
+import { SuspendsNewsComponent } from './portal/ui/dashboard/noticias/suspends-news/suspends-news.component';
+import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client/dialog-add-client.component';
+import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification/dialog-add-notification.component';
+import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-news/dialog-add-news/dialog-add-news.component';
 import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and-drop-zone.directive';
-import { SecondHeaderComponent } from './portal/viewUtils/headers/second-header/second-header.component';
+import { SecondHeadersComponent } from './portal/viewUtils/headers/second-headers/second-headers.component';
 import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/proyectos-principal/proyectos-principal.component';
 
 @NgModule({
@@ -67,23 +68,23 @@ import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/pro
     ActividadesComponent,
     NoticiasComponent,
     ClientesComponent,
-    UsuariosComponent,
     NotificacionesComponent,
-    DetallesProyectoComponent,
+    UsuariosComponent,
+    DetalleProyectoComponent,
     DialogAddProjectComponent,
     GeneralTableComponent,
     SimpleTableComponent,
-    GeneralHeaderComponent,
+    GeneralHeadersComponent,
     DialogAddTeamComponent,
-    ActivadasComponent,
-    BorradoresComponent,
-    SuspendidasComponent,
+    ActiveNewsComponent,
+    DraftsNewsComponent,
+    SuspendsNewsComponent,
     DialogAddClientComponent,
     DialogAddNotificationComponent,
     DialogAddNewsComponent,
     DragAndDropZoneDirective,
-    SecondHeaderComponent,
-    ProyectosPrincipalComponent
+    SecondHeadersComponent,
+    ProyectosPrincipalComponent,
   ],
   imports: [
     FormsModule,
@@ -110,8 +111,7 @@ import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/pro
     MatNativeDateModule,
   ],
   entryComponents: [
-    DialogAddProjectComponent, // se deja como referencia de implementacion para versiones
-    // anteriores de angular (en la version 9 ya está deprecado).
+    DialogAddProjectComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

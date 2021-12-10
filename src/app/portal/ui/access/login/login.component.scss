@@ -1,43 +1,37 @@
-@import '../../../../../theme.scss';
-
-/* Containers */
+@import "../../../../../theme.scss";
+/* CONTAINERS */
 .general-container {
-    display: grid;
-    justify-items: center;
+  display: grid;
+  justify-items: center;
 }
 
 .card-container {
-    padding: 25px 30px;
+  padding: 25px 30px;
 }
-
 .grid-container {
-    display: grid;
+  display: grid;
+  gap: 20px;
+  padding: 20px 0px;
 }
-
-/* Texts */
-h2 {
-    margin: 20px 16px 10px;
-    color: $color-text-title;
-    text-align: center;
-}
-
-.txt-description {
-    margin: 0px 16px;
-}
-
-/* Images */
+/* IMAGES */
 img {
-    margin: 247px 0px 40px 0px;
+  margin: 180px 0px 40px 0px;
 }
 
-/* Buttons */
+/* TEXTOS */
+h2 {
+  margin: 20px 16px 10px;
+}
+.txt-description {
+  margin: 0px 16px;
+}
+
+/* BUTTONS */
 button {
-    width: 227px;
-    margin: 33px 105px 0px;
+  width: 227px;
 }
-
 .mat-raised-button {
-    background: $color-gradient-button;
-    width: 200px;
-    font-family: 'SFUIDisplayRegular', sans-serif;
+  background: $color-gradient;
+  width: 200px;
+  font-family: "SFUIDisplayRegular", sans-serif;
 }

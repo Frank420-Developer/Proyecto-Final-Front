@@ -1,44 +1,40 @@
-@import '../../../../../../theme.scss';
+@import "../../../../../../theme.scss";
 
+/* CONTAINER  */
+th {
+  padding-top: 35px !important;
+}
 .header-proyectos-container {
-    display: grid;
-    grid-template-columns: 50% 25% 25%;
-    margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+  margin-bottom: 30px;
+  gap: 20px;
 }
 
-/* Texts */
-.btn-action {
-    color: $color-accent;
-}
-
-/*
-::placeholder {
-    color: $color-inactive;
-}*/
-
-/* Button color */
-/*
-Segmento de código para forzar la aplicación de un estilo
-::ng-deep .mat-raised-button {
-    background: $color-gradient-button!important;
-}*/
-.mat-raised-button {
-    background: $color-gradient-button;
-    width: 200px;
-    font-family: 'SFUIDisplayRegular', sans-serif;
-}
-
-.mat-icon {
-    color: $color-accent;
-    margin: 9px 10px;
-}
-
-
-/* Status color */
+/* STATUS COLORS */
 .statusActive {
-    color: $color-status-active;
+  color: $color-status-active;
 }
 
 .statusInactive {
-    color: $color-status-inactive;
+  color: $color-status-inactive;
+}
+
+/* TEXTS COLORS */
+.btn-action {
+  color: $color-accent;
+}
+a {
+  text-decoration: none;
+}
+
+/* BUTTONS */
+.mat-raised-button {
+  background: $color-gradient;
+  width: 200px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+}
+.mat-icon {
+  color: $color-accent;
+  margin: 10px 9px;
 }

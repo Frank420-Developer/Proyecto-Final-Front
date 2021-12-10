@@ -1,0 +1,52 @@
+<div class="dialog">
+
+    <span class="close-modal-style">
+        <mat-icon [mat-dialog-close]="true" mat-dialog-close class="txt-accent">close</mat-icon>
+    </span>
+    <p class="txt-title-dialog">
+        {{ txtEs.TITLE }}
+    </p>
+
+    <!--INPUTS-->
+    <div>
+        <form [formGroup]="addForm">
+            <p class="txt-description txt-color-description"> {{ txtEs.CLIENT_NAME }} </p>
+            <mat-form-field class="input-search">
+                <input matInput [formControl]="clientName" type="text">
+                <mat-error *ngIf="!clientName.valid && clientName.value !== ''">
+                    {{ errorMessages.INPUT_INVALID_FORMAT }}
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </div>
+
+
+    <!--BTN AGREGAR MAS-->
+    <div style="display: flex;">
+        <button [disabled]="!clientName.valid" *ngIf="addList.length <= 4" (click)="addNew()"
+            class="txt-accent txt-description" mat-button>
+            {{ addMore }}
+        </button>
+        <div class="line"></div>
+    </div>
+
+    <!--ADDLIST-->
+    <div *ngIf="addList.length !== 0">
+        <p class="txt-description txt-title-color">
+            {{ txtEs.CLIENT_NAME }}
+        </p>
+    </div>
+    <div class="inputs-container" *ngFor="let item of addList; let pos = index">
+        <div>
+            <p class="txt-description txt-color-description"> {{ item.name }} </p>
+        </div>
+        <button mat-icon-button matSuffix style="position: absolute; right: 0;" (click)="removeItem(pos)">
+            <mat-icon> close </mat-icon>
+        </button>
+    </div>
+
+    <div class="add-dialog-button-container">
+        <button [disabled]="addList.length === 0" (click)="createNewItem()" width="300px" mat-raised-button> {{
+            txtButtons.ADD }} </button>
+    </div>
+<div>

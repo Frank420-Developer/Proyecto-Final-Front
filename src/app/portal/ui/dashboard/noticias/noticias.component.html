@@ -1,12 +1,13 @@
-<app-general-header [dataInput]="dataToSend" ></app-general-header>
+<app-general-headers [dataInput]="dataToSend"  (searchValue)="searchValueEnter($event)"></app-general-headers>
+
 <mat-tab-group mat-align-tabs="start">
-    <mat-tab label="{{ textEs.TABS.ACTIVE }}">
-        <app-activadas></app-activadas>
+    <mat-tab label=" {{ txtTabs.ACTIVES }} ">
+        <app-active-news></app-active-news>
     </mat-tab>
-    <mat-tab label="{{ textEs.TABS.DRAFTS }}">
-        <app-borradores></app-borradores>
+    <mat-tab label=" {{ txtTabs.DRAFTS }} ">
+        <app-drafts-news></app-drafts-news>
     </mat-tab>
-    <mat-tab label="{{ textEs.TABS.SUSPENDED }}">
-        <app-suspendidas></app-suspendidas>
+    <mat-tab label=" {{ txtTabs.SUSPENDS }} ">
+        <app-suspends-news></app-suspends-news>
     </mat-tab>
 </mat-tab-group>
