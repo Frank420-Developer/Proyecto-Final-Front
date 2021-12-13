@@ -36,6 +36,16 @@ export class GeneralFunctionsService {
     return hourSplitFormat[0] + COLONS + hourSplitFormat[1];
   }
 
+  /**
+   * @description Método que nos ayudará a obtener el primer nombre del usuario o su apellido paterno
+   * @param name (string) Nombre(s) o apellidos del usuario
+   * @returns (string) Primer nombre o apellido paterno del usaurio
+   */
+  public getNameOrLastName(name: string): string{
+    const nameSplit = name.split(' ');
+    return nameSplit[0];
+  }
 
+  
 
 }

@@ -7,6 +7,15 @@ import * as TextsES from '../../../utils/textsConstantsES';
 /* ROUTER */
 import { Router } from '@angular/router';
 
+/* GOOGLE SESSION */
+import { SocialAuthService, SocialUser } from 'angularx-social-login';
+import { SPACE, USER_INFO } from 'src/app/portal/utils/constantsApp';
+import { UserInfoModel } from 'src/app/data/models/response/login/login';
+
+
+/* SERVICES */
+import { GeneralFunctionsService } from 'src/app/portal/utils/utilFunctions/general-functions.service';
+
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.component.html',
@@ -16,11 +25,11 @@ export class PrincipalComponent implements OnInit {
 
   /* IMAGE */
   public logoNaatTech = Images.LOGO_NAAT_TECH;
-  public userProfile = Images.USER_PROFILE;
+  public userProfile: string;
 
   /* TEXTS ESP */
   public mensajeBievenida = TextsES.MENU.WELCOME_TITLE;
-  public userName = TextsES.MENU.DEFAULT_USER;
+  public userName: string;
   public iconExpand = TextsES.MENU.ICON_EXPAND;
   public items = TextsES.MENU.ITEMS;
   public errorMessages = TextsES.ERROR_MESSAGE;
@@ -28,17 +37,57 @@ export class PrincipalComponent implements OnInit {
   /* BUTTONS */
   public txtButtons = TextsES.BUTTONS;
 
+  /* DATA RECIEVED */
+  private getDataStoraged: UserInfoModel;
+
   /* WINDOS */
   public windowSize: any;
 
-  constructor( private router:Router) { }
+  /* AUTH */
+  public user: SocialUser;
+
+  constructor( private router:Router,
+                private authService:SocialAuthService,
+                private utilities: GeneralFunctionsService) { }
 
   ngOnInit(): void {
+
+    this.validateActiveSession();
+
+    this.authService.authState.subscribe( (userResponse: SocialUser) =>{
+      console.log(userResponse);
+      this.user = userResponse;
+    });
+
+
+  }
+
+  private validateActiveSession(){
+    this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
+
+    if( this.getDataStoraged === null || this.getDataStoraged === undefined ){
+      this.router.navigate(['login']);
+    }else{
+      this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
+      this.userProfile = this.getDataStoraged.photo
+    }
   }
 
   public logoutSession(){
-    localStorage.clear();
-    this.router.navigate(['login'])
+    this.authService.signOut().then( (salida: any) =>{
+      try {    
+        console.log('salida exitosa ',salida);
+        
+        localStorage.clear();
+        this.router.navigate(['login']);
+      } catch (error) {
+        console.log('error en la respuesta ',error);
+        
+      }
+    }).catch(
+      err => console.log('Error en la promesa', err)
+    );
+
   }
 
   public verifyScreen(){

@@ -25,7 +25,7 @@
             </div>
     
             <div>
-                <button mat-raised-button [disabled]="!loginForm.valid" (click)="loginWithoutGoogleApi()"> {{ txtButtons.LOGIN_ACTION }}</button>
+                <button mat-raised-button [disabled]="!loginForm.valid"> {{ txtButtons.LOGIN_ACTION }}</button>
                 <button mat-stroked-button (click)="doLogin()"> Sign In with Google </button>
             </div>
         </div>

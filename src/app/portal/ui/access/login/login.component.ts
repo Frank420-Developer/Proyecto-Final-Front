@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
+/* HTTP */
+import { HttpParams, HttpResponse } from '@angular/common/http';
+
 /* NAVIGATION */
 import { Router } from '@angular/router';
 
 /* CONSTANT AND UTILITIES */
 import * as Images from '../../../utils/imagesRoutes';
 import * as TextsES from '../../../utils/textsConstantsES';
+import { USER_INFO } from 'src/app/portal/utils/constantsApp';
 
 /* FORM */
 import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/forms';
@@ -14,12 +18,15 @@ import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/fo
 import { LoginsServiceService } from 'src/app/data/network/login/logins-service.service';
 import { UsersService } from 'src/app/data/network/users/users.service';
 
+/* GOOGLE AUTHENTICATION */
+import { SocialAuthService, SocialUser, GoogleLoginProvider} from 'angularx-social-login';
 
 /* MODELS */
 import { LoginRequest, RefreshTokenRequest } from 'src/app/data/models/request/login/login';
-import { LoginResponse, RefreshTokenResponse } from 'src/app/data/models/response/login/login';
-import { HttpParams, HttpResponse } from '@angular/common/http';
+import { LoginResponse, LoginWithGoogleModel, RefreshTokenResponse, UserInfoModel } from 'src/app/data/models/response/login/login';
 import { UsersListResponse } from 'src/app/data/models/response/users/users';
+import { map, tap } from 'rxjs/operators';
+
 
 
 @Component({
@@ -42,10 +49,17 @@ export class LoginComponent implements OnInit {
   public email: AbstractControl;
   public password: AbstractControl;
 
+  /* DATA RECIEVED */
+  public getDataStoraged: UserInfoModel;
+
+  /* AUTH */
+  public user: SocialUser;
+
   constructor(  private router: Router,
                 private formBuilder: FormBuilder,
                 private api: LoginsServiceService,
-                private apiUsers: UsersService) {
+                private apiUsers: UsersService,
+                private authService: SocialAuthService) {
 
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
@@ -57,11 +71,50 @@ export class LoginComponent implements OnInit {
     this.password.disable();
   }
   ngOnInit(): void {
+    this.validateActiveSession();
+    this.authService.authState.subscribe( (userResponse: SocialUser) =>{
+      this.user = userResponse;
+    });
+  }
+
+  private validateActiveSession(){
+    
+    this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
+
+    if( this.getDataStoraged !== null ){
+      this.router.navigate(['dashboard/proyectos']);
+    }
+  }
+
+  private validateSessionActiveGoogle(){
+    this.authService.authState.pipe(
+      map( (socialUser: SocialUser ) => !!socialUser ),
+      tap( (isActiveSession: boolean) =>{
+        if ( !isActiveSession) {
+          console.log('NO HAY SESSION ACTIVA');
+          
+        }
+      })
+    )
   }
 
   public doLogin():void{
     this.loginForm.reset();
-    this.router.navigate(['dashboard'])
+    // this.router.navigate(['dashboard'])
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then( (info: LoginWithGoogleModel) =>{
+      
+      const userInfo: UserInfoModel = {
+        email: info.email,
+        name: info.firstName,
+        lastName: info.lastName,
+        photo: info.photoUrl
+      };
+
+      localStorage.setItem(USER_INFO, JSON.stringify(userInfo));
+      this.postLogin(info.authToken);
+      console.log(info);
+      this.router.navigate(['dashboard'])
+    });
   }
 
   public validateEmailFormat(){
@@ -72,9 +125,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private postLogin(){
+  private postLogin(token: string){
     const body: LoginRequest = {
-      authorizationCode: ''
+      authorizationCode: token
     };
 
     this.api.postLogin(body).subscribe( (dataResponse: LoginResponse) =>{
@@ -100,22 +153,5 @@ export class LoginComponent implements OnInit {
     }, errorResponse => {});
   }
 
-  public loginWithoutGoogleApi(){
-    const params = new HttpParams()
-                      .set('email', this.email.value);
-    this.apiUsers.getUsersList(params).subscribe( (data: HttpResponse<UsersListResponse[]>) =>{
-      try {
-        if(data.body.length > 0){
-          console.log('entro al if');
-          
-          this.doLogin();
-        }else{
-          console.log('entro al else');
-          this.loginForm.reset();
-        }
-      } catch (error) {
-        
-      }
-    });
-  }
+
 }

@@ -25,12 +25,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 /* Importacion de elementos para Form */
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-/* SOCIAL LOGIN */
-
+/* SOCIAL LOGIN - Módulos para la autenticación con Google */
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 /* COMPONENTS */
 import { LoginComponent } from './portal/ui/access/login/login.component';
@@ -109,11 +110,28 @@ import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/pro
     MatAutocompleteModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    SocialLoginModule,
+    MatGridListModule,
   ],
   entryComponents: [
     DialogAddProjectComponent
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '100113038197-6igeai7v21jecg5nna3h7k4gccjsqf1i.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

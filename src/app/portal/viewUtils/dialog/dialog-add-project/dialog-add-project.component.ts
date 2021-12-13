@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 
 /* HTTP */
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpParams, HttpResponse } from '@angular/common/http';
 
 /* CONSTANTS */
 import * as TextEs from '../../../utils/textsConstantsES';
@@ -11,10 +11,11 @@ import { PLUS, SPACE } from 'src/app/portal/utils/constantsApp';
 import { ClientesService } from 'src/app/data/network/clients/clientes.service';
 import { GeneralFunctionsService } from 'src/app/portal/utils/utilFunctions/general-functions.service';
 import { ProjectListService } from 'src/app/data/network/proyectos/project-list.service';
+import { ErrorManagerService } from 'src/app/portal/utils/utilFunctions/error-manager.service';
 
 /* INTERFACES */
 import { Client } from 'src/app/data/models/response/clients/clients';
-import { ObjectNewProject, NewProject } from 'src/app/data/models/request/projects/projects';
+import { ObjectNewProject } from 'src/app/data/models/request/projects/projects';
 
 /* FORMULARIO */
 import { FormGroup, AbstractControl, FormBuilder, Validators} from '@angular/forms';
@@ -23,6 +24,7 @@ import { ProjectDetail } from 'src/app/data/models/response/projects/projects';
 
 /* ANGULAR MATERIAL */
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 
 
 
@@ -60,6 +62,7 @@ export class DialogAddProjectComponent implements OnInit {
   constructor( private clientApi: ClientesService,
                 private utilities: GeneralFunctionsService,
                 private formBuilder: FormBuilder,
+                private errorManager: ErrorManagerService,
                 private projectsService: ProjectListService,
                 private dialog: MatDialogRef<DialogAddProjectComponent>,
                 @Inject(MAT_DIALOG_DATA) private dataRecived: any) {
@@ -81,7 +84,8 @@ export class DialogAddProjectComponent implements OnInit {
   }
 
   private getClientsList(){
-    this.clientApi.getclientsList().subscribe( (data:HttpResponse<Client[]>) => {
+    const params = new HttpParams().set('size','50')
+    this.clientApi.getclientsList(params).subscribe( (data:HttpResponse<Client[]>) => {
       this.clientList = data.body;
     }, errorResponse => {
       
@@ -119,15 +123,16 @@ export class DialogAddProjectComponent implements OnInit {
           this.projectsService.postProject(item.clientId, item.newProject).subscribe( (data: ProjectDetail) => {
       try{
         this.responseList.push(data);
+
+        this.dialog.close(this.responseList);
       }catch(err){
-
       }
-    }, errorResponse => {
-
+    }, (errorResponse: HttpErrorResponse) => {
+      this.errorManager.validateErrorResponse(errorResponse.error);
     });
     });
 
-    this.dialog.close(this.responseList);
+    
   }
 
   public removeProject(pos: number){

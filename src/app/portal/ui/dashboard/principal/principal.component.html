@@ -4,24 +4,28 @@
         <img class="img-small-logo" src="{{ logoNaatTech }}" alt="logo de NA-AT Tech">
 
         <!-- PROFILE IMAGE & WELCOME-->
-        <div class="profile-container">
-            <img class="user-profile" src=" {{ userProfile }}" alt="user image">
-            <div style="display: flex; flex-direction: column;">
-                <p class="txt-description txt-title-color"> {{ mensajeBievenida }} </p>
-                <p class="txt-description txt-title-color txt-container"> {{ userName }}
-                    <button mat-button [matMenuTriggerFor]="menu">
-                        <mat-icon class="icon-accent-color"> {{ iconExpand }} </mat-icon>
-                    </button>
-
-                    <mat-menu #menu="matMenu">
-                        <button mat-menu-item class="txt-title-color" (click)="logoutSession()">
-                            <mat-icon class="icon-accent-color">logout</mat-icon>
-                            {{ txtButtons.LOGOUT }}
+        <mat-grid-list cols="3" class="mt-50">
+            <mat-grid-tile>
+                <img class="user-profile" src="{{userProfile}}" alt="user image">
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="2">
+                <div>
+                    <p class="m-0 txt-description txt-title-color"> {{ mensajeBievenida }} </p>
+                    <p class="m-0 txt-description txt-title-color txt-container"> {{ userName }}
+                        <button mat-button [matMenuTriggerFor]="menu">
+                            <mat-icon class="icon-accent-color"> {{ iconExpand }} </mat-icon>
                         </button>
-                    </mat-menu>
-                </p>
-            </div>
-        </div>
+                    
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item class="txt-title-color" (click)="logoutSession()">
+                                <mat-icon class="icon-accent-color">logout</mat-icon>
+                                {{ txtButtons.LOGOUT }}
+                            </button>
+                        </mat-menu>
+                    </p>
+                </div>
+            </mat-grid-tile>
+        </mat-grid-list>
 
         <!--  ITEMS -->
         <ul>
