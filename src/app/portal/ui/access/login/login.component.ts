@@ -111,7 +111,7 @@ export class LoginComponent implements OnInit {
       };
 
       localStorage.setItem(USER_INFO, JSON.stringify(userInfo));
-      this.postLogin(info.authToken);
+      //this.postLogin(info.authToken);
       console.log(info);
       this.router.navigate(['dashboard'])
     });
@@ -125,33 +125,33 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  private postLogin(token: string){
-    const body: LoginRequest = {
-      authorizationCode: token
-    };
+  // private postLogin(token: string){
+  //   const body: LoginRequest = {
+  //     authorizationCode: token
+  //   };
 
-    this.api.postLogin(body).subscribe( (dataResponse: LoginResponse) =>{
-      try {
-        this.postRefreshToken(dataResponse.refreshToken);
-      } catch (error) {
+  //   this.api.postLogin(body).subscribe( (dataResponse: LoginResponse) =>{
+  //     try {
+  //       this.postRefreshToken(dataResponse.refreshToken);
+  //     } catch (error) {
         
-      }
-    }, errorResponse => {});
-  }
+  //     }
+  //   }, errorResponse => {});
+  // }
 
-  private postRefreshToken(token: string){
-    const body: RefreshTokenRequest = {
-      refreshToken: token
-    };
+  // private postRefreshToken(token: string){
+  //   const body: RefreshTokenRequest = {
+  //     refreshToken: token
+  //   };
 
-    this.api.postRefreshToken(body).subscribe( (dataResponse: RefreshTokenResponse) =>{
-      try {
-        //
-      } catch (error) {
+  //   this.api.postRefreshToken(body).subscribe( (dataResponse: RefreshTokenResponse) =>{
+  //     try {
+  //       //
+  //     } catch (error) {
         
-      }
-    }, errorResponse => {});
-  }
+  //     }
+  //   }, errorResponse => {});
+  // }
 
 
 }

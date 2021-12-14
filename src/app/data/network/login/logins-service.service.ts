@@ -28,21 +28,21 @@ export class LoginsServiceService {
 
   constructor( private http: HttpClient ) { }
 
-  public postLogin(authToken: LoginRequest):Observable<LoginResponse>{
+  // public postLogin(authToken: LoginRequest):Observable<LoginResponse>{
 
-    return this.http.post<LoginResponse>(this.microservicePath.authentication + this.endPoints.login, authToken)
-    .pipe( timeout(TIME_OUT) )
-    .pipe( map (response => {
-      return response;
-    }));
-  }
+  //   return this.http.post<LoginResponse>(this.microservicePath.authentication + this.endPoints.login, authToken)
+  //   .pipe( timeout(TIME_OUT) )
+  //   .pipe( map (response => {
+  //     return response;
+  //   }));
+  // }
 
-  public postRefreshToken(token: RefreshTokenRequest):Observable<RefreshTokenResponse>{
+  // public postRefreshToken(token: RefreshTokenRequest):Observable<RefreshTokenResponse>{
     
-    return this.http.post<RefreshTokenResponse>(this.microservicePath.authentication + this.endPoints.refreshToken, token)
-    .pipe( timeout(TIME_OUT) )
-    .pipe( map (response => {
-      return response;
-    }));
-  }
+  //   return this.http.post<RefreshTokenResponse>(this.microservicePath.authentication + this.endPoints.refreshToken, token)
+  //   .pipe( timeout(TIME_OUT) )
+  //   .pipe( map (response => {
+  //     return response;
+  //   }));
+  // }
 }

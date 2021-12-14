@@ -4,44 +4,24 @@ export const LOGIN = {
 };
 
 export const MENU = {
-    WELCOME_TITLE: 'Hola,',
-    DEFAULT_USER: 'Andrea Reyes',
+    WELCOME_TITLE: 'Bienvenid@,',
+    DEFAULT_USER: '',
     ICON_EXPAND: 'expand_more',
     ITEMS: [
         {
-            TITLE: 'Proyectos',
+            TITLE: 'Crear Firma',
             PATH_PAGE: 'proyectos',
-            ICON_ITEM: 'description',
+            ICON_ITEM: 'history_edu',
         },
         {
-            TITLE: 'Equipos de trabajo',
+            TITLE: 'Procesos',
             PATH_PAGE: 'equipos',
-            ICON_ITEM: 'groups'  
+            ICON_ITEM: 'fact_check'  
         },
         {
-            TITLE: 'Actividades',
+            TITLE: 'Permisos',
             PATH_PAGE: 'actividades',
-            ICON_ITEM: 'list'  
-        },
-        {
-            TITLE: 'Noticias',
-            PATH_PAGE: 'noticias',
-            ICON_ITEM: 'newspaper'  
-        },
-        {
-            TITLE: 'Clientes',
-            PATH_PAGE: 'clientes',
-            ICON_ITEM: 'crop_free'  
-        },
-        {
-            TITLE: 'Usuarios',
-            PATH_PAGE: 'usuarios',
-            ICON_ITEM: 'account_circle'  
-        },
-        {
-            TITLE: 'Notificaciones',
-            PATH_PAGE: 'notificaciones',
-            ICON_ITEM: 'sms'  
+            ICON_ITEM: 'settings'  
         }
     ]
 };

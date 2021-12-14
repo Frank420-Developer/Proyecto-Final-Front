@@ -3,10 +3,17 @@
 .general-container {
   display: grid;
   justify-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 .card-container {
-  padding: 25px 30px;
+  padding: 10px 30px 25px;
+  text-align: center;
+  margin: auto;
 }
 .grid-container {
   display: grid;
@@ -14,9 +21,6 @@
   padding: 20px 0px;
 }
 /* IMAGES */
-img {
-  margin: 180px 0px 0px;
-}
 
 /* TEXTOS */
 h2 {
@@ -36,4 +40,5 @@ button {
   margin: 40px 20px 0px;
   font-family: "SFUIDisplayRegular", sans-serif;
   color: $color-text-white;
+  border-radius: 100px;
 }
