@@ -1,5 +1,5 @@
 export const LOGIN = {
-    TITLE: 'Fábrica de Talento',
+    TITLE: 'Firma Autografa Digital',
     DESCRIPTION: 'Inicia sesión con tu cuenta NAAT'
 };
 

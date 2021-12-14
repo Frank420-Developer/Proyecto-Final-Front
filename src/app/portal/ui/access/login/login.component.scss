@@ -15,7 +15,7 @@
 }
 /* IMAGES */
 img {
-  margin: 180px 0px 40px 0px;
+  margin: 180px 0px 0px;
 }
 
 /* TEXTOS */
@@ -30,8 +30,10 @@ h2 {
 button {
   width: 227px;
 }
-.mat-raised-button {
+.mat-stroked-button {
   background: $color-gradient;
   width: 200px;
+  margin: 40px 20px 0px;
   font-family: "SFUIDisplayRegular", sans-serif;
+  color: $color-text-white;
 }

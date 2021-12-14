@@ -1,7 +1,7 @@
 <div class="principal-background">
     <div class="general-container">
         
-        <img src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+        <img width="150px" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
     
         <!-- Contenedor -->
         <div class="secondary-background card-container">
@@ -9,7 +9,7 @@
             <p class="txt-description txt-color-description center-txt"> {{ texts.DESCRIPTION }} </p>
     
     
-            <!-- LOGIN FORM -->
+            <!-- LOGIN FORM 
             <div class="grid-container">
                 <form [formGroup]="loginForm" class="grid-container">
                     <mat-form-field class="input-search">
@@ -23,9 +23,10 @@
                     </mat-form-field>
                 </form>
             </div>
-    
+        -->
+
             <div>
-                <button mat-raised-button [disabled]="!loginForm.valid"> {{ txtButtons.LOGIN_ACTION }}</button>
+                <!-- <button mat-raised-button [disabled]="!loginForm.valid"> {{ txtButtons.LOGIN_ACTION }}</button> -->
                 <button mat-stroked-button (click)="doLogin()"> Sign In with Google </button>
             </div>
         </div>
