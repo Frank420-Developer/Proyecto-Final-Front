@@ -10,17 +10,17 @@ export const MENU = {
     ITEMS: [
         {
             TITLE: 'Crear Firma',
-            PATH_PAGE: 'proyectos',
+            PATH_PAGE: 'crearFirma',
             ICON_ITEM: 'history_edu',
         },
         {
             TITLE: 'Procesos',
-            PATH_PAGE: 'equipos',
+            PATH_PAGE: 'procesos',
             ICON_ITEM: 'fact_check'  
         },
         {
             TITLE: 'Permisos',
-            PATH_PAGE: 'actividades',
+            PATH_PAGE: 'permisos',
             ICON_ITEM: 'settings'  
         }
     ]

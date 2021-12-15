@@ -16,7 +16,7 @@ import { NotificationsService } from 'src/app/data/network/notifications/notific
 
 /* MOCKS */
 import { NOTIFICATION_TO_SEND, NOTIFICATIONS_SENT } from 'src/app/data/models/local/table-mocks';
-import { DialogAddNotificationComponent } from 'src/app/portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification/dialog-add-notification.component';
+
 
 @Component({
   selector: 'app-notificaciones',
@@ -58,7 +58,7 @@ export class NotificacionesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataToSend = this.dto.createHeaderStruct(this.txtEs.TITLE, SPACE, PLUS + SPACE + this.txtButtons.ADD_NOTIFICATION, false, true, DialogAddNotificationComponent);
+    this.dataToSend = this.dto.createHeaderStruct(this.txtEs.TITLE, SPACE, PLUS + SPACE + this.txtButtons.ADD_NOTIFICATION, false, true, '');
   }
 
   private getNotificationsToSend(page: number, size: number){

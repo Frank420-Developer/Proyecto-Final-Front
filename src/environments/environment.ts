@@ -6,14 +6,11 @@ export const environment = {
   production: false,
 
   //baseUrl: 'https://activity-record.com/',
-  baseUrl: 'http://3.238.21.227:8080/',
+  // baseUrl: 'http://3.238.21.227:8080/',
+  
 
   endPoint: {
-    login: 'auth/login',
-    refreshToken: 'auth/refresh',
-    projects: '/projects',
-    notificationsToSend: 'toSend',
-    notificationsSent: 'sent',
+    login: 'localhost:8080/login',
   },
 
   msPath: {

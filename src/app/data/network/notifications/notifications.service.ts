@@ -31,30 +31,30 @@ export class NotificationsService {
    * @param paramsRequest (HttpParams) parametros solicitados por el servicio [page,size]
    * @returns (NotificationsToSendModel[]) listado de notificaciones por enviar
    */
-  public getNotificationsToSendList(paramsRequest: HttpParams): Observable<HttpResponse<NotificationsToSendModel[]>>{
-    return this.http.get<NotificationsToSendModel[]>(this.micriservicePath + this.endsPoints.notificationsToSend, {
-      params: paramsRequest,
-      observe: 'response'
-    })
-    .pipe(timeout(TIME_OUT))
-    .pipe(map(response => {
-      return response;
-    }));
-  }
+  // public getNotificationsToSendList(paramsRequest: HttpParams): Observable<HttpResponse<NotificationsToSendModel[]>>{
+  //   return this.http.get<NotificationsToSendModel[]>(this.micriservicePath + this.endsPoints.notificationsToSend, {
+  //     params: paramsRequest,
+  //     observe: 'response'
+  //   })
+  //   .pipe(timeout(TIME_OUT))
+  //   .pipe(map(response => {
+  //     return response;
+  //   }));
+  // }
 
-  /**
-   * @description Método que realiza la peticion http al servicio para el listado de las notificaciones enviadas
-   * @param paramsRequest (HttpParams) parametros solicitados por el servicio [page,size]
-   * @returns (NotificationsSentModel[]) listado de notificaciones enviadas
-   */
-  public getNotificationsSentList(paramsRequest: HttpParams): Observable<HttpResponse<NotificationsSentModel[]>>{
-    return this.http.get<NotificationsSentModel[]>(this.micriservicePath + this.endsPoints.notificationsSent, {
-      params: paramsRequest,
-      observe: 'response'
-    })
-    .pipe(timeout(TIME_OUT))
-    .pipe(map(response => {
-      return response;
-    }));
-  }
+  // /**
+  //  * @description Método que realiza la peticion http al servicio para el listado de las notificaciones enviadas
+  //  * @param paramsRequest (HttpParams) parametros solicitados por el servicio [page,size]
+  //  * @returns (NotificationsSentModel[]) listado de notificaciones enviadas
+  //  */
+  // public getNotificationsSentList(paramsRequest: HttpParams): Observable<HttpResponse<NotificationsSentModel[]>>{
+  //   return this.http.get<NotificationsSentModel[]>(this.micriservicePath + this.endsPoints.notificationsSent, {
+  //     params: paramsRequest,
+  //     observe: 'response'
+  //   })
+  //   .pipe(timeout(TIME_OUT))
+  //   .pipe(map(response => {
+  //     return response;
+  //   }));
+  // }
 }

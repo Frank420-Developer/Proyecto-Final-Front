@@ -36,56 +36,26 @@ import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, Social
 /* COMPONENTS */
 import { LoginComponent } from './portal/ui/access/login/login.component';
 import { PrincipalComponent } from './portal/ui/dashboard/principal/principal.component';
-import { ProyectosComponent } from './portal/ui/dashboard/proyectos/proyectos.component';
-import { EquiposComponent } from './portal/ui/dashboard/equipos/equipos.component';
-import { ActividadesComponent } from './portal/ui/dashboard/actividades/actividades.component';
-import { NoticiasComponent } from './portal/ui/dashboard/noticias/noticias.component';
-import { ClientesComponent } from './portal/ui/dashboard/clientes/clientes.component';
 import { NotificacionesComponent } from './portal/ui/dashboard/notificaciones/notificaciones.component';
-import { UsuariosComponent } from './portal/ui/dashboard/usuarios/usuarios.component';
-import { DetalleProyectoComponent } from './portal/ui/dashboard/proyectos/detalle-proyecto/detalle-proyecto.component';
-import { DialogAddProjectComponent } from './portal/viewUtils/dialog/dialog-add-project/dialog-add-project.component';
 import { GeneralTableComponent } from './portal/viewUtils/table/general-table/general-table.component';
 import { SimpleTableComponent } from './portal/viewUtils/table/simple-table/simple-table.component';
 import { GeneralHeadersComponent } from './portal/viewUtils/headers/general-headers/general-headers.component';
-import { DialogAddTeamComponent } from './portal/viewUtils/dialog/dialog-add-team/dialog-add-team.component';
-import { ActiveNewsComponent } from './portal/ui/dashboard/noticias/active-news/active-news.component';
-import { DraftsNewsComponent } from './portal/ui/dashboard/noticias/drafts-news/drafts-news.component';
-import { SuspendsNewsComponent } from './portal/ui/dashboard/noticias/suspends-news/suspends-news.component';
-import { DialogAddClientComponent } from './portal/viewUtils/dialog/dialog-add-client/dialog-add-client/dialog-add-client.component';
-import { DialogAddNotificationComponent } from './portal/viewUtils/dialog/dialog-add-notification/dialog-add-notification/dialog-add-notification.component';
-import { DialogAddNewsComponent } from './portal/viewUtils/dialog/dialog-add-news/dialog-add-news/dialog-add-news.component';
 import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and-drop-zone.directive';
 import { SecondHeadersComponent } from './portal/viewUtils/headers/second-headers/second-headers.component';
-import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/proyectos-principal/proyectos-principal.component';
+import { CrearFirmaComponent } from './portal/ui/dashboard/crear-firma/crear-firma.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    ProyectosComponent,
-    EquiposComponent,
-    ActividadesComponent,
-    NoticiasComponent,
-    ClientesComponent,
     NotificacionesComponent,
-    UsuariosComponent,
-    DetalleProyectoComponent,
-    DialogAddProjectComponent,
     GeneralTableComponent,
     SimpleTableComponent,
     GeneralHeadersComponent,
-    DialogAddTeamComponent,
-    ActiveNewsComponent,
-    DraftsNewsComponent,
-    SuspendsNewsComponent,
-    DialogAddClientComponent,
-    DialogAddNotificationComponent,
-    DialogAddNewsComponent,
     DragAndDropZoneDirective,
     SecondHeadersComponent,
-    ProyectosPrincipalComponent,
+    CrearFirmaComponent,
   ],
   imports: [
     FormsModule,
@@ -114,7 +84,7 @@ import { ProyectosPrincipalComponent } from './portal/ui/dashboard/proyectos/pro
     MatGridListModule,
   ],
   entryComponents: [
-    DialogAddProjectComponent
+    
   ],
   providers: [
     {

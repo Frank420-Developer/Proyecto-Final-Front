@@ -16,15 +16,12 @@ import { FormGroup, FormBuilder, AbstractControl, Validators } from '@angular/fo
 
 /* SERVICES */
 import { LoginsServiceService } from 'src/app/data/network/login/logins-service.service';
-import { UsersService } from 'src/app/data/network/users/users.service';
 
 /* GOOGLE AUTHENTICATION */
 import { SocialAuthService, SocialUser, GoogleLoginProvider} from 'angularx-social-login';
 
 /* MODELS */
-import { LoginRequest, RefreshTokenRequest } from 'src/app/data/models/request/login/login';
-import { LoginResponse, LoginWithGoogleModel, RefreshTokenResponse, UserInfoModel } from 'src/app/data/models/response/login/login';
-import { UsersListResponse } from 'src/app/data/models/response/users/users';
+import { LoginResponseWithFad, LoginWithGoogleModel, UserInfoModel } from 'src/app/data/models/response/login/login';
 import { map, tap } from 'rxjs/operators';
 
 
@@ -58,7 +55,6 @@ export class LoginComponent implements OnInit {
   constructor(  private router: Router,
                 private formBuilder: FormBuilder,
                 private api: LoginsServiceService,
-                private apiUsers: UsersService,
                 private authService: SocialAuthService) {
 
     this.loginForm = this.formBuilder.group({
@@ -82,7 +78,7 @@ export class LoginComponent implements OnInit {
     this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
 
     if( this.getDataStoraged !== null ){
-      this.router.navigate(['dashboard/proyectos']);
+      this.router.navigate(['dashboard']);
     }
   }
 
@@ -109,6 +105,9 @@ export class LoginComponent implements OnInit {
         lastName: info.lastName,
         photo: info.photoUrl
       };
+    this.api.postLoginAuthWithFad().subscribe( (data: LoginResponseWithFad) => {
+      console.log(data);
+    });
 
       localStorage.setItem(USER_INFO, JSON.stringify(userInfo));
       //this.postLogin(info.authToken);

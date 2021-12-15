@@ -3,11 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 /* IMPORTACIONES DE FORMULARIO */
 import { Validators, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
 
-/* IMPORTACION DE SERVICIOS */
-import { ProjectListService } from 'src/app/data/network/proyectos/project-list.service';
-
-/* INTERFACES  */
-import { ProjectDetail, ProjectList } from 'src/app/data/models/response/projects/projects';
 import { SecondHeaderModel } from 'src/app/data/models/local/inputsModels';
 
 /* TEXTOS */
