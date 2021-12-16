@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeneralHeadersComponent } from './general-headers.component';
+import { DetalleProcesoComponent } from './detalle-proceso.component';
 
-describe('GeneralHeadersComponent', () => {
-  let component: GeneralHeadersComponent;
-  let fixture: ComponentFixture<GeneralHeadersComponent>;
+describe('DetalleProcesoComponent', () => {
+  let component: DetalleProcesoComponent;
+  let fixture: ComponentFixture<DetalleProcesoComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeneralHeadersComponent ]
+      declarations: [ DetalleProcesoComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeneralHeadersComponent);
+    fixture = TestBed.createComponent(DetalleProcesoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

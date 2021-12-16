@@ -105,14 +105,23 @@ export class LoginComponent implements OnInit {
         lastName: info.lastName,
         photo: info.photoUrl
       };
+      
     this.api.postLoginAuthWithFad().subscribe( (data: LoginResponseWithFad) => {
-      console.log(data);
+      try {
+        let accessToken = data.access_token;
+      localStorage.setItem("access_token", JSON.stringify(accessToken))
+      console.log("data:  " + accessToken);
+      } catch (error) {
+        
+      }
+    }, errorResponse => {
+      console.log(errorResponse);
+      
+      this.router.navigate(['iniciarSesion']);
     });
-
-      localStorage.setItem(USER_INFO, JSON.stringify(userInfo));
-      //this.postLogin(info.authToken);
-      console.log(info);
-      this.router.navigate(['dashboard'])
+    localStorage.setItem(USER_INFO, JSON.stringify(userInfo));  
+    this.router.navigate(['dashboard'])
+    
     });
   }
 

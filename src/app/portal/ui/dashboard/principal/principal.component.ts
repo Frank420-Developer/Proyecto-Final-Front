@@ -55,7 +55,6 @@ export class PrincipalComponent implements OnInit {
     this.validateActiveSession();
 
     this.authService.authState.subscribe( (userResponse: SocialUser) =>{
-      console.log(userResponse);
       this.user = userResponse;
     });
 
@@ -66,10 +65,10 @@ export class PrincipalComponent implements OnInit {
     this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
 
     if( this.getDataStoraged === null || this.getDataStoraged === undefined ){
-      this.router.navigate(['login']);
+      this.router.navigate(['iniciarSesion']);
     }else{
       this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
-      this.userProfile = this.getDataStoraged.photo
+      this.userProfile=this.getDataStoraged.photo
     }
   }
 
@@ -79,7 +78,7 @@ export class PrincipalComponent implements OnInit {
         console.log('salida exitosa ',salida);
         
         localStorage.clear();
-        this.router.navigate(['login']);
+        this.router.navigate(['iniciarSesion']);
       } catch (error) {
         console.log('error en la respuesta ',error);
         
@@ -98,5 +97,9 @@ export class PrincipalComponent implements OnInit {
     }
 
     return true
+  }
+
+  public navigate(ruta: string){
+    this.router.navigate([ruta]);
   }
 }

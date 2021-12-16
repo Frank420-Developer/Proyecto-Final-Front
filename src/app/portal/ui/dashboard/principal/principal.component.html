@@ -31,7 +31,7 @@
                     <!--  ITEMS -->
                     <ul>
                         <li *ngFor="let item of items">
-                            <a [routerLink]="item.PATH_PAGE ">
+                            <a (click)="navigate(item.PATH_PAGE)">
                                 <span>
                                     <mat-icon> {{ item.ICON_ITEM }} </mat-icon>
                                 </span>

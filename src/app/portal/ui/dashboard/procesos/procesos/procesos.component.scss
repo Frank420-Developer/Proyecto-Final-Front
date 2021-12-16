@@ -1,0 +1,18 @@
+@import "../../../../../../theme.scss";
+.mat-raised-button {
+  background: $color-gradient;
+  width: 70px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  color: $color-text-white;
+}
+.table-container {
+  padding: 0px 50px;
+}
+.txt-title {
+  color: $color-accent;
+  font-size: 34px;
+  padding-top: 20px;
+}
+th {
+  font-size: 16px;
+}

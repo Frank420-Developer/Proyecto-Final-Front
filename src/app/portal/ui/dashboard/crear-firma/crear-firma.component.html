@@ -1,1 +1,43 @@
-<h1 style="color: black;">HOLAAAAAAAA</h1>
+<div *ngIf="activeSpinner" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+<div style="display: flex; justify-content: space-between; padding: 10px 30px;">
+    <div>
+        <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+    </div>
+    <div>
+        <img class="img-user" src="{{imgUser}}" alt="user image">
+    </div>
+</div>
+
+<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: grid;">
+    <div style="margin: auto; width: 250px;">
+        <form [formGroup]="addForm">
+            <p class="txt-subtitle txt-color-description center-txt"> {{ textES.TITLE }} </p>
+            <mat-form-field class="input-search">
+                <label class="txt-description txt-color-labels" for="name">{{ textES.LABELS.NOMBRE}}</label>
+                <input matInput [formControl]="name" type="text" name="name">
+                <mat-error *ngIf="!name.valid && name.value !== '' ">
+                    {{ txtError.INVALID_NAME_INPUT }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-search">
+                <label class="txt-description txt-color-labels" for="email">{{ textES.LABELS.EMAIL}}</label>
+                <input matInput [formControl]="email" type="text" name="email">
+                <mat-error *ngIf="!email.valid && email.value !== '' ">
+                    {{ txtError.INVALID_EMAIL_INPUT }}
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="input-search">
+                <label class="txt-description txt-color-labels" for="phone">{{ textES.LABELS.PHONE}}</label>
+                <input matInput [formControl]="phone" type="text" name="phone">
+                <mat-error *ngIf="!phone.valid && phone.value !== '' ">
+                    {{ txtError.INVALID_PHONE_INPUT }}
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <div>
+            <button mat-raised-button [disabled]="!addForm.valid" (click)="postCreateSign()">Enviar</button>
+        </div>
+    </div>
+</div>

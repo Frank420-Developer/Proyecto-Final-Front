@@ -1,0 +1,49 @@
+<div *ngIf="activeSpinner" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+<div style="display: flex; justify-content: space-between; padding:30px;">
+    <div>
+        <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+    </div>
+    <div>
+        <h1 class="txt-title">Detalle del Proceso </h1>
+    </div>
+    <div>
+        <img class="img-user" src="{{imgUser}}" alt="user image">
+    </div>
+</div>
+
+<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: grid;">
+    <div style="margin: auto;">
+        <div class="containerDetail">
+            <div class="flex">
+                <p class="txt-accent">{{ detalle.ID_CLIENT }}</p>
+                <p>{{ contratDetail.idRequisitionClient }}</p>
+            </div>
+            <div class="flex">
+                <p class="txt-accent"> {{ detalle.CONTRACT_NAME }}</p>
+                <p>{{ contratDetail.contractName }}</p>
+            </div>
+            <div class="flex">
+                <p class="txt-accent">{{ detalle.OWNER_NAME }}</p>
+                <p>{{ contratDetail.ownerName }}</p>
+            </div>
+            <div class="flex">
+                <p class="txt-accent">{{ detalle.SIGNERS_TITLE }}</p>
+                <div *ngFor="let item of contratDetail.signers">
+                    <p>{{ item.signerName }}</p>
+                    <p>{{ item.mail }}</p>
+                    <p>{{ item.phone }}</p>
+                </div>
+            </div>
+            <div class="flex">
+                <p class="txt-accent">{{ detalle.STATUS }}</p>
+                <p>{{ contratDetail.status }}</p>
+            </div>
+
+            <div style="display: flex; justify-content: center; padding: 20px 0px 0px;">
+                <button mat-raised-button>Firmar</button>
+            </div>
+        </div>
+    </div>
+</div>

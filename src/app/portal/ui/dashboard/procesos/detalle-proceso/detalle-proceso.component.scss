@@ -1,0 +1,29 @@
+@import "../../../../../../theme.scss";
+
+.containerDetail {
+  padding: 20px;
+  background-color: $color-background-principal;
+  color: black;
+  box-shadow: 10px 10px 10px 10px $color-background-border;
+  border-radius: 10px;
+  width: 500px;
+}
+.flex {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.txt-title {
+  color: $color-accent;
+  font-size: 34px;
+  padding-top: 20px;
+}
+
+.mat-raised-button {
+  background: $color-gradient;
+  width: 150px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  color: $color-text-white;
+  font-size: 18px;
+}

@@ -26,80 +26,29 @@ export const MENU = {
     ]
 };
 
-export const PROJECTS = {
-    TITLE: 'Proyectos',
+export const CREAR_FIRMA = {
+    TITLE: 'Crear Firma',
+    LABELS: {
+        NOMBRE: 'Nombre',
+        EMAIL: 'Correo',
+        PHONE: 'Telefono' 
+    },
     TABLE_HEADERS: [
-        'Cliente','Proyecto',/*'Horas Invertidas',*/'Detalle','Estatus','Acciones'
-    ],
-    SUBMENU: {
-        TITLE_DETAIL: 'Detalle proyecto',
-        TITLE_ACTIVITY: 'Actividades',
-        CLIENT: 'Cliente',
-        PROJECT: 'Proyecto',
-        HOURS: 'Horas totales',
-        COLLABORATORS: 'Colaboradores',
-        PREVIOUS_PAGE: '../../../proyectosPrincipal',
-        ROUTE_DETAIL: '../detalleProyecto',
-    }
-    
-};
-
-export const PROJECT_DETAIL = {
-    TABLE_HEADERS: [
-        'Colaborador','Área','Actividades','Último registro','Horas','Ver'
+        'ID', 'REQUISITION_ID','TICKET', 'VER'
     ]
 }
 
-export const WORK_TEAM = {
-    TITLE: 'Equipos de Trabajo',
-    TABLE_HEADERS: [
-        'Área','Líder','Colaboradores','Actividades','Detalle'
-    ],
-}
-
-export const ACTIVITIES = {
-    TITLE: 'Actividades',
-    TABLE_HEADERS: [
-        'Colaborador','Área','Proyecto en el mes','Horas en el mes','Detalle'
-    ],
-}
-
-export const NEWS = {
-    TITLE: 'Noticias',
-    TABLE_HEADERS: [
-        'Noticia','Titulo','Autor','Fecha de publicacion','Acciones'
-    ],
-    TABS: {
-        ACTIVES: 'Activas',
-        DRAFTS: 'Borradores',
-        SUSPENDS: 'Suspendidas'
-    }
-}
-
-export const CLIENTES = {
-    TITLE: 'Clientes',
-    TABLE_HEADERS: [
-        'Cliente','Fecha de registro','Agregado por','Proyectos','Detalle'
-    ],
-}
-
-export const USERS = {
-    TITLE: 'Usuarios',
-    TABLE_HEADERS: [
-        'Nombre','Correo','Agregado','Permisos','Status','Acciones'
-    ],
-}
-
-export const NOTIFICATIONS = {
-    TITLE: 'Notificaciones',
-    TITLE_TABLE_ONE: 'POR ENVIAR',
-    TABLE_HEADERS: [
-        'Titulo','Descripción','Programado','Concurrente','Detalles ','Acciones'
-    ],
-    TITLE_TABLE_TWO: 'ENVIADOS',
-    TABLE_HEADERS_TWO: [
-        'Titulo','Descripción','Agregado por', 'Enviado','Acciones'
-    ],
+export const DETALLE_FIRMA = {
+    ID_CLIENT: 'Cliente Id',
+    CONTRACT_NAME: 'Nombre del Contrato',
+    OWNER_NAME: 'Nombre del propietario',
+    SIGNERS_TITLE: 'Firmantes',
+    SIGNERS: {
+        NAME: 'Nombre',
+        MAIL: 'Correo',
+        PHONE: 'Teléfono'
+    },
+    STATUS: 'Status'
 }
 
 export const BUTTONS ={
@@ -136,57 +85,16 @@ export const INPUTS = {
     NEWS: 'noticia',
 };
 
-export const DIALOG_ADD_PROJECT = {
-    TITLE: 'Agregar proyecto',
-    CLIENT: 'Cliente',
-    PROJECT_NAME: 'Nombre del proyecto'
-};
 
-export const DIALOG_ADD_WORKTEAMS = {
-    TITLE: 'Agregar equipo de trabajo',
-    SECOND_TITLE_COLLABORATORS: 'Colaboradores',
-    AREA: 'Área',
-    EMAIL_LEADER: 'Correo electrónico del líder',
-    ADD_COLLABORATORS: 'Agrega los colaboradores',
-    ADD_ACTIVITIES: 'Agrega las actividades',
-    COLLABORATORS_ADDED: 'Colaboradores agregados',
-    ACTIVITIES_ADDED: 'Actividades agregadas'
-}
-
-export const DIALOG_ADD_CLIENT = {
-    TITLE: 'Agregar cliente',
-    CLIENT_NAME: 'Cliente',
-    
-}
-
-export const DIALOG_ADD_NOTIFICATION = {
-    TITLE: 'Agregar notificacion',
-    HEADLINE: 'Título (16 caracteres máximo)',
-    DESCRIPTION: 'Descripción (27 caracteres máximo)',
-    TYPE: 'Tipo',
-    DATE: 'Fecha',
-    HOUR: 'Hora',
-    
-}
-
-export const DIALOG_ADD_NEW = {
-    TITLE: 'Agregar noticia',
-    HEADLINE: 'Título',
-    DESCRIPTION: 'Descripción',
-    IMG_THUMB_TITLE: 'Thumb',
-    IMG_PRINCIPAL_TITLE: 'Imagen principal',
-    IMG_DESCRIPTION_UPLOAD: 'Sube ',
-    IMG_UPLOAD: 'o arrastra la imagen formato .PNG .JPG',
-    IMG_SIZE_SM: '166px de ancho máximo',
-    IMG_SIZE_L:'656px de ancho máximo'
-    
-}
 
 export const ERROR_MESSAGE = {
-    PROJECT_LIST_COMPLETE: 'No se pueden añadir más de 5 proyectos',
-    INPUT_INVALID_FORMAT: 'No se permite el uso de caracteres especiales y/o números',
-    INVALID_FILE_FORMAT: 'Formato de archivo invalido, sólo se permite la carga de imagenes JPG o PNG',
-    BAD_REQUEST: 'Hubo una falla al conectarse al servidor, por favor, vuelve a intentar.',
-    BAD_INSERT: 'Lo sentimos, no se pudo agregar el elemento de forma satisfactoria.',
-    INVALID_SCREEN: 'El formato de pantalla no es válido para la visualización del contenido, prueba en un dispositivo diferente!',
+    // PROJECT_LIST_COMPLETE: 'No se pueden añadir más de 5 proyectos',
+    // INPUT_INVALID_FORMAT: 'No se permite el uso de caracteres especiales y/o números',
+    // INVALID_FILE_FORMAT: 'Formato de archivo invalido, sólo se permite la carga de imagenes JPG o PNG',
+    // BAD_REQUEST: 'Hubo una falla al conectarse al servidor, por favor, vuelve a intentar.',
+    // BAD_INSERT: 'Lo sentimos, no se pudo agregar el elemento de forma satisfactoria.',
+    // INVALID_SCREEN: 'El formato de pantalla no es válido para la visualización del contenido, prueba en un dispositivo diferente!',
+    INVALID_NAME_INPUT: 'El nombre no cumple con la longuitud requerida',
+    INVALID_EMAIL_INPUT: 'Debe ingresar un email valido',
+    INVALID_PHONE_INPUT: 'El numero no cumple con las caracteristicas solicitadas'
 };

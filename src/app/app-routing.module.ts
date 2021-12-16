@@ -4,47 +4,47 @@ import { Routes, RouterModule } from '@angular/router';
 /* UI Component */
 import { LoginComponent } from './portal/ui/access/login/login.component';
 import { CrearFirmaComponent } from './portal/ui/dashboard/crear-firma/crear-firma.component';
+import { PermisosComponent } from './portal/ui/dashboard/permisos/permisos/permisos.component';
 import { PrincipalComponent } from './portal/ui/dashboard/principal/principal.component';
+import { DetalleProcesoComponent } from './portal/ui/dashboard/procesos/detalle-proceso/detalle-proceso.component';
+import { ProcesosComponent } from './portal/ui/dashboard/procesos/procesos/procesos.component';
 
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: 'iniciarSesion',
     component: LoginComponent
   },
   {
     path: 'dashboard',
     component: PrincipalComponent,
-    children: [
-          {
-          path: 'crearFirma',
-          component: CrearFirmaComponent,
-          },
-          {
-            path: 'procesos',
-            component: PrincipalComponent,
-          },
-          {
-            path: 'permisos',
-            component: PrincipalComponent,
-          },
-          // {
-          //   path: '',
-          //   redirectTo: 'crearFirma',
-          //   pathMatch: 'full'
-          // },
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
-    ]
+  },
+  {
+  path: 'crearFirma',
+  component: CrearFirmaComponent,
+  },
+  {
+    path: 'procesos',
+    component: ProcesosComponent,
+  },
+  {
+    path: 'detalleProceso/:id',
+    component: DetalleProcesoComponent
+  },
+  {
+    path: 'permisos',
+    component: PermisosComponent,
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
+{
+  path: '',
+  redirectTo: 'iniciarSesion',
+  pathMatch: 'full'
+},
 ];
 
 @NgModule({

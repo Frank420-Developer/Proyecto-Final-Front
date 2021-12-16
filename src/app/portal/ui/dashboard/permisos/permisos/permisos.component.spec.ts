@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SecondHeadersComponent } from './second-headers.component';
+import { PermisosComponent } from './permisos.component';
 
-describe('SecondHeadersComponent', () => {
-  let component: SecondHeadersComponent;
-  let fixture: ComponentFixture<SecondHeadersComponent>;
+describe('PermisosComponent', () => {
+  let component: PermisosComponent;
+  let fixture: ComponentFixture<PermisosComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SecondHeadersComponent ]
+      declarations: [ PermisosComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SecondHeadersComponent);
+    fixture = TestBed.createComponent(PermisosComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

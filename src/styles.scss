@@ -40,6 +40,12 @@ h3 {
   color: $color-text-description;
 }
 
+.txt-subtitle {
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 17px;
+}
+
 .txt-description {
   font-size: 16px;
   letter-spacing: 0;
@@ -157,7 +163,7 @@ input {
   width: 100%;
 }
 .mat-error {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 mat-paginator .mat-select-value {
   width: 60% !important;
@@ -253,6 +259,7 @@ input[type="file"] {
 }
 .mat-form-field {
   display: flex !important;
+  margin: 25px 0px 0px;
 }
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
   padding-bottom: 0px;
@@ -273,7 +280,7 @@ input[type="file"] {
 td,
 th,
 td.mat-cell {
-  padding: 20px 0px !important;
+  padding: 20px 30px 20px 0px !important;
 }
 .mat-paginator {
   background-color: $color-secondary-background;
@@ -360,6 +367,16 @@ tr:last-child td {
 .mat-calendar-controls {
   margin: 0 !important;
 }
+
+/* IMAGES */
+.img-fad {
+  width: 100px;
+}
+.img-user {
+  width: 70px;
+  border-radius: 50%;
+}
+
 /*
   DIMENS
 */
@@ -390,7 +407,7 @@ tr:last-child td {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba($color: $color-inactive, $alpha: 0.4);
+  background-color: rgba($color: $color-accent, $alpha: 0.4);
   z-index: 99999;
   display: flex;
   align-items: center;

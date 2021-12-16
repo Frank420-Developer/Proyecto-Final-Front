@@ -36,26 +36,26 @@ import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, Social
 /* COMPONENTS */
 import { LoginComponent } from './portal/ui/access/login/login.component';
 import { PrincipalComponent } from './portal/ui/dashboard/principal/principal.component';
-import { NotificacionesComponent } from './portal/ui/dashboard/notificaciones/notificaciones.component';
 import { GeneralTableComponent } from './portal/viewUtils/table/general-table/general-table.component';
 import { SimpleTableComponent } from './portal/viewUtils/table/simple-table/simple-table.component';
-import { GeneralHeadersComponent } from './portal/viewUtils/headers/general-headers/general-headers.component';
 import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and-drop-zone.directive';
-import { SecondHeadersComponent } from './portal/viewUtils/headers/second-headers/second-headers.component';
 import { CrearFirmaComponent } from './portal/ui/dashboard/crear-firma/crear-firma.component';
+import { ProcesosComponent } from './portal/ui/dashboard/procesos/procesos/procesos.component';
+import { PermisosComponent } from './portal/ui/dashboard/permisos/permisos/permisos.component';
+import { DetalleProcesoComponent } from './portal/ui/dashboard/procesos/detalle-proceso/detalle-proceso.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    NotificacionesComponent,
     GeneralTableComponent,
     SimpleTableComponent,
-    GeneralHeadersComponent,
     DragAndDropZoneDirective,
-    SecondHeadersComponent,
     CrearFirmaComponent,
+    ProcesosComponent,
+    PermisosComponent,
+    DetalleProcesoComponent,
   ],
   imports: [
     FormsModule,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 /* HTTP */
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 /* RxJS */
 import { map, timeout } from 'rxjs/operators'
@@ -13,8 +13,7 @@ import { environment } from 'src/environments/environment';
 
 
 /* MODELS */
-import { LoginResponse, LoginResponseWithFad, RefreshTokenResponse } from '../../models/response/login/login';
-import { LoginRequest, RefreshTokenRequest } from '../../models/request/login/login';
+import { LoginResponseWithFad } from '../../models/response/login/login';
 
 @Injectable({
   providedIn: 'root'
@@ -22,34 +21,24 @@ import { LoginRequest, RefreshTokenRequest } from '../../models/request/login/lo
 export class LoginsServiceService {
 
   /* URL & ENDPOINT */
-  private microservicePath = environment.endPoint;
+  private microservicePath = environment;
 
 
   constructor( private http: HttpClient ) { }
 
-  // public postLogin(authToken: LoginRequest):Observable<LoginResponse>{
-
-  //   return this.http.post<LoginResponse>(this.microservicePath.authentication + this.endPoints.login, authToken)
-  //   .pipe( timeout(TIME_OUT) )
-  //   .pipe( map (response => {
-  //     return response;
-  //   }));
-  // }
-
-  // public postRefreshToken(token: RefreshTokenRequest):Observable<RefreshTokenResponse>{
-    
-  //   return this.http.post<RefreshTokenResponse>(this.microservicePath.authentication + this.endPoints.refreshToken, token)
-  //   .pipe( timeout(TIME_OUT) )
-  //   .pipe( map (response => {
-  //     return response;
-  //   }));
-  // }
-
   public postLoginAuthWithFad(): Observable<LoginResponseWithFad>{
-    return this.http.post<LoginResponseWithFad>(this.microservicePath.login, '')
-    .pipe( timeout(TIME_OUT) )
+
+    let headers = new HttpHeaders();               
+      headers.append('Content-Type', 'application/x-www-form-urlencoded');
+      headers.append('Access-Control-Allow-Origin', '*')
+      headers.append('Access-Control-Allow-Headers', 'Content-Type')
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT')
+
+    return this.http.post<LoginResponseWithFad>(this.microservicePath.baseUrl + this.microservicePath.endPoint.login, headers)
     .pipe( map( response => {
       return response;
     }));
   }
+
+  
 }

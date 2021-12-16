@@ -1,0 +1,13 @@
+@import "../../../../../theme.scss";
+.mat-raised-button {
+  background: $color-gradient;
+  width: 200px;
+  margin: 40px 20px 0px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  color: $color-text-white;
+  border-radius: 100px;
+}
+
+.txt-color-labels {
+  color: rgba($color: $color-accent, $alpha: 0.7);
+}

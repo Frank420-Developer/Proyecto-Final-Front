@@ -51,8 +51,7 @@ export interface UserInfoModel {
     photo: string,
 }
 
-
 export interface LoginResponseWithFad {
-    access_token: string;
-    token_type: string;
+    access_token: string
 }
+
