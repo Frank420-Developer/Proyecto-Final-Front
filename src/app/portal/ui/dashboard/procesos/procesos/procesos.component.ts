@@ -37,14 +37,22 @@ export class ProcesosComponent implements OnInit {
   public page = 0;
   public size = 5;
 
+  public flag = false;
+
   constructor( private api: GetContratsService,
               private router: Router) { }
 
-  ngOnInit(): void {
+  ngAfterContentInit(): void {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
     this.getAllContrats(this.page, this.size);
-    // this.userInfo = JSON.parse(localStorage.getItem(USER_INFO));
-    // this.imgUser = this.userInfo.photo;
-    // this.username = this.userInfo.name;
+  }
+  
+  ngOnInit(): void {
+    
+    this.userInfo = JSON.parse(localStorage.getItem(USER_INFO));
+    this.imgUser = this.userInfo.photo;
+    this.username = this.userInfo.name;
   }
 
   public getAllContrats(page: number, size: number){
@@ -57,6 +65,7 @@ export class ProcesosComponent implements OnInit {
         //   this.emptyList = "lista vacia"
         // }
         this.contratList = data;
+        this.flag = (this.contratList === null || this.contratList === undefined) ? false : true;
       } catch (error) {
         
       }

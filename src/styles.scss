@@ -103,17 +103,14 @@ td.mat-cell {
 }
 
 /*  ..::   BUTTONS ::..   */
-.close-modal-style {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
 .mat-button[disabled][disabled] {
   color: $color-inactive;
 }
 
 /*  ..::   BACKGROUND STYLES ::..   */
+.background-accent {
+  background-color: rgba($color: #000, $alpha: 0.06);
+}
 .principal-background {
   background-color: $color-background-principal;
   height: 100vh;
@@ -193,35 +190,15 @@ input[type="file"] {
 }
 
 /* CONTAINERS */
-.add-dialog-button-container {
-  display: grid;
-  justify-content: center;
-  margin: 20px;
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
 }
-.items-added {
-  background-color: $color-background-principal;
-  padding: 0px 14px;
-}
-.three-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
-.dropzone-container {
-  background: rgba($color: $color-background-accent, $alpha: 0.05);
-  padding: 10px;
-}
-.img-sm-container {
-  width: 100px;
-  height: 100px;
-}
-.img-l-container {
-  width: 525px;
-  height: 160px;
-}
-
-/* AUTOCOMPLETE */
-.mat-autocomplete-panel {
-  background: $color-secondary-background;
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 /* SELECT */
@@ -322,52 +299,9 @@ tr:last-child td {
   border-bottom: none;
 }
 
-/*  TABS  */
-.mat-tab-label {
-  font-size: 16px;
-  letter-spacing: 0;
-  line-height: 19px;
-  text-align: center;
-  color: $color-inactive;
-  font-family: "SFUIDisplayRegular", sans-serif;
-  height: 32px !important;
-}
-
-.mat-tab-label-active {
-  color: $color-text-white;
-  background-color: $color-background-tabs;
-  border-radius: 5px;
-}
-
 /* MENU   */
 .mat-menu-panel {
   background: $color-secondary-background;
-}
-
-/* CALENDAR */
-.mat-calendar {
-  font-family: "SFUIDisplayRegular", sans-serif;
-}
-.mat-datepicker-content {
-  background-color: $color-secondary-background;
-}
-.mat-calendar-body-label,
-.mat-calendar-header {
-  color: $color-texts-title;
-}
-.mat-calendar-body-cell-content {
-  color: $color-text-description !important;
-}
-.mat-datepicker-content .mat-calendar-next-button,
-.mat-datepicker-content .mat-calendar-previous-button {
-  color: $color-accent;
-}
-.mat-calendar-body-selected {
-  background-color: $color-accent;
-  color: $color-text-white !important;
-}
-.mat-calendar-controls {
-  margin: 0 !important;
 }
 
 /* IMAGES */

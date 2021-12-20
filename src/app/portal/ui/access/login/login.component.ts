@@ -72,27 +72,28 @@ export class LoginComponent implements OnInit {
       this.user = userResponse;
     });
   }
+ 
 
-  private validateActiveSession(){
+  // private validateActiveSession(){
     
-    this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
+  //   this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
 
-    if( this.getDataStoraged !== null ){
-      this.router.navigate(['dashboard']);
-    }
-  }
+  //   if( this.getDataStoraged !== null ){
+  //     this.router.navigate(['dashboard']);
+  //   }
+  // }
 
-  private validateSessionActiveGoogle(){
-    this.authService.authState.pipe(
-      map( (socialUser: SocialUser ) => !!socialUser ),
-      tap( (isActiveSession: boolean) =>{
-        if ( !isActiveSession) {
-          console.log('NO HAY SESSION ACTIVA');
+  // private validateSessionActiveGoogle(){
+  //   this.authService.authState.pipe(
+  //     map( (socialUser: SocialUser ) => !!socialUser ),
+  //     tap( (isActiveSession: boolean) =>{
+  //       if ( !isActiveSession) {
+  //         console.log('NO HAY SESSION ACTIVA');
           
-        }
-      })
-    )
-  }
+  //       }
+  //     })
+  //   )
+  // }
 
   public doLogin():void{
     this.loginForm.reset();
@@ -109,8 +110,7 @@ export class LoginComponent implements OnInit {
     this.api.postLoginAuthWithFad().subscribe( (data: LoginResponseWithFad) => {
       try {
         let accessToken = data.access_token;
-      localStorage.setItem("access_token", JSON.stringify(accessToken))
-      console.log("data:  " + accessToken);
+      localStorage.setItem("access_token", JSON.stringify(accessToken));
       } catch (error) {
         
       }
@@ -123,6 +123,17 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['dashboard'])
     
     });
+  }
+
+  public doLoginWithOutGoogle(): void{
+    const userInfo: UserInfoModel = {
+        email: 'fvera@na-at.com.mx',
+        name: 'Francisco Javier',
+        lastName: 'Vera Bocanegra',
+        photo: 'https://lh3.googleusercontent.com/a-/AOh14GiwHAasr-POWY_KJjOHV9cruOKPwhT0bhZV2Mfp=s96-c'
+      };
+    localStorage.setItem(USER_INFO, JSON.stringify(userInfo));  
+    this.router.navigate(['dashboard'])
   }
 
   public validateEmailFormat(){

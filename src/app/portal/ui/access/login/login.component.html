@@ -8,32 +8,12 @@
             <img width="150px" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
             <h2 class="center-txt txt-title-color"> {{ texts.TITLE }} </h2>
             <p class="txt-description txt-color-description center-txt"> {{ texts.DESCRIPTION }} </p>
-    
-    
-            <!-- LOGIN FORM 
-            <div class="grid-container">
-                <form [formGroup]="loginForm" class="grid-container">
-                    <mat-form-field class="input-search">
-                        <label class="txt-description" for="email"> {{ txtInputs.USER_EMAIL }} </label>
-                        <input matInput [formControl]="email" type="email" name="email" (blur)="validateEmailFormat()" (keyup)="validateEmailFormat()">
-                    </mat-form-field>
-    
-                    <mat-form-field class="input-search">
-                        <label class="txt-description" for="pass"> {{ txtInputs.USER_PASSWORD }} </label>
-                        <input matInput [formControl]="password" type="password" name="pass">
-                    </mat-form-field>
-                </form>
-            </div>
-        -->
-
-            <div>
-                <!-- <button mat-raised-button [disabled]="!loginForm.valid"> {{ txtButtons.LOGIN_ACTION }}</button> -->
+            <div class="ocultar">
                 <button mat-stroked-button (click)="doLogin()"> Sign In with Google </button>
+            </div>
+            <div class="mostrar">
+                <button mat-stroked-button (click)="doLoginWithOutGoogle()"> Sign In with your NA-AT account </button>
             </div>
         </div>
     </div>
 </div>
-
-
-
-<!--100113038197-6igeai7v21jecg5nna3h7k4gccjsqf1i.apps.googleusercontent.com-->

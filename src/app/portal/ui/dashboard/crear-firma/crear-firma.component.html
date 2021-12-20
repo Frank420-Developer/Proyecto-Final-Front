@@ -1,17 +1,22 @@
 <div *ngIf="activeSpinner" class="spinner-container">
     <mat-spinner></mat-spinner>
 </div>
-<div style="display: flex; justify-content: space-between; padding: 10px 30px;">
-    <div>
-        <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+<div class="background-accent header-container">
+    <div style="display: flex;">
+        <div style="display: flex;align-items: center; gap: 20px;">
+            <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+            <a style="font-size: 30px; cursor: pointer;" (click)="back()">
+                <mat-icon>arrow_back</mat-icon>
+            </a>
+        </div>
     </div>
-    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end;">
+    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end; align-items: center;">
         <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
         <img class="img-user" src="{{imgUser}}" alt="user image">
     </div>
 </div>
 
-<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: grid;">
+<div style="display: flex; width: 100%; margin-top: 100px;">
     <div style="margin: auto; ">
         <form [formGroup]="addForm">
             <p class="txt-subtitle txt-color-description center-txt"> {{ textES.TITLE }} </p>

@@ -12,6 +12,7 @@
   color: $color-accent;
   font-size: 34px;
   padding-top: 20px;
+  text-align: center;
 }
 th {
   font-size: 16px;
@@ -23,4 +24,17 @@ a {
 
 .mat-icon {
   color: $color-inactive;
+  font-size: 30px;
+}
+@media (min-width: 0px) and (max-width: 450px) {
+  //   .txt-title {
+  //     font-size: 20px !important;
+  //   }
+  .img-user,
+  .img-fad {
+    width: 50px;
+  }
+  .logo-container {
+    gap: 5px;
+  }
 }

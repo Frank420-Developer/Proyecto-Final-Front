@@ -36,7 +36,7 @@ export class GetContratsService {
       
     const options = {headers: headers}
 
-    return this.http.get<GetAllContratsResponse[]>(this.microservicePath.baseUrl + this.microservicePath.msPath.procesos, options)
+    return this.http.get<GetAllContratsResponse[]>('fad/'+this.microservicePath.msPath.procesos, options)
     .pipe( map(response =>{
       return response;
     }));
@@ -44,7 +44,7 @@ export class GetContratsService {
 
   public getContratDetail(id: string): Observable<GetContratDetail>{
 
-      return this.http.get<GetContratDetail>(this.microservicePath.baseUrl + this.microservicePath.msPath.detalle + id, {
+      return this.http.get<GetContratDetail>('fad/'+this.microservicePath.msPath.detalle + id, {
         // headers: this.headers
       })
       .pipe( map(response =>{

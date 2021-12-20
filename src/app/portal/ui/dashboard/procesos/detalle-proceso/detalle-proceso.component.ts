@@ -34,6 +34,7 @@ export class DetalleProcesoComponent implements OnInit {
   
     // Flags
   public activeSpinner = true;
+  public flag= false;
 
   constructor( private api: GetContratsService,
                 private route: ActivatedRoute,
@@ -47,6 +48,7 @@ export class DetalleProcesoComponent implements OnInit {
     this.username = this.userInfo.name;
 
     this.ticket = localStorage.getItem('ticket');
+    
   }
 
   public getContratDetail(){
@@ -55,6 +57,7 @@ export class DetalleProcesoComponent implements OnInit {
         this.contratDetail = data;   
         
         this.activeSpinner = false;
+        this.flag = (this.contratDetail === null || this.contratDetail === undefined) ? false : true;
       } catch (error) {
         this.activeSpinner = false;
       }

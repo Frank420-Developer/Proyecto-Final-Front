@@ -51,7 +51,9 @@ export class PrincipalComponent implements OnInit {
                 private utilities: GeneralFunctionsService) { }
 
   ngOnInit(): void {
-
+    this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
+this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
+this.userProfile=this.getDataStoraged.photo
     //this.validateActiveSession();
   }
 
@@ -61,8 +63,8 @@ export class PrincipalComponent implements OnInit {
   //   if( this.getDataStoraged === null || this.getDataStoraged === undefined ){
   //     this.router.navigate(['iniciarSesion']);
   //   }else{
-  //     this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
-  //     this.userProfile=this.getDataStoraged.photo
+      //  this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
+      //  this.userProfile=this.getDataStoraged.photo
   //   }
   // }
 

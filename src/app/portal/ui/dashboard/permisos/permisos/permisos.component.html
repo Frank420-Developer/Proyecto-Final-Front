@@ -1,1 +1,44 @@
-<p>permisos works!</p>
+<div class="background-accent header-container">
+    <div style="display: flex;">
+        <div class="logo-container">
+            <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+            <a style="font-size: 30px; cursor: pointer;" (click)="back()">
+                <mat-icon>arrow_back</mat-icon>
+            </a>
+        </div>
+    </div>
+    
+    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end; align-items: center;">
+        <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
+        <img class="img-user" src="{{imgUser}}" alt="user image">
+    </div>
+</div>
+
+<div>
+    <h1 class="txt-title">Permisos</h1>
+</div>
+
+<div style="width: 100%; display: flex;">
+    <div style="display: flex; margin: 100px auto 0px; flex-direction: column;">
+        <form [formGroup]="form">
+            <section class="example-section">
+                <mat-slide-toggle [formControl]="camera" mat-input class="example-margin" [color]="" [checked]="true" [disabled]="">
+                    permitir cámara
+                </mat-slide-toggle>
+            </section>
+            <section class="example-section">
+                <mat-slide-toggle [formControl]="microphone" mat-input class="example-margin" [color]="" [checked]="microphone_checked" [disabled]="">
+                    permitir microfono
+                </mat-slide-toggle>
+            </section>
+            <section class="example-section">
+                <mat-slide-toggle [formControl]="location" mat-input class="example-margin" [color]="" [checked]="location_checked" [disabled]="">
+                    permitir ubicación
+                </mat-slide-toggle>
+            </section>
+        </form>
+        <div>
+            <button mat-raised-button (click)="saveSettings()">Guardar cambios</button>
+        </div>
+    </div>
+</div>

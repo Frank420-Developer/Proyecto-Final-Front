@@ -1,0 +1,54 @@
+@import "../../../../../../theme.scss";
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.example-margin {
+  margin: 10px;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: rgba($color: $color-accent, $alpha: 0.9);
+}
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgba($color: $color-accent, $alpha: 0.4);
+}
+
+a {
+  text-decoration: none;
+}
+
+.mat-icon {
+  color: $color-inactive;
+  font-size: 30px;
+}
+@media (min-width: 0px) and (max-width: 450px) {
+  //   .txt-title {
+  //     font-size: 20px !important;
+  //   }
+  .img-user,
+  .img-fad {
+    width: 50px;
+  }
+  .logo-container {
+    gap: 5px;
+  }
+}
+.txt-title {
+  color: $color-accent;
+  font-size: 34px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.mat-raised-button {
+  background: $color-gradient;
+  width: 200px;
+  margin: 40px 20px 0px;
+  font-family: "SFUIDisplayRegular", sans-serif;
+  color: $color-text-white;
+  border-radius: 100px;
+}

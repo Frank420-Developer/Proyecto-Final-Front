@@ -42,3 +42,18 @@ button {
   color: $color-text-white;
   border-radius: 100px;
 }
+
+@media (min-width: 450px) {
+  .mostrar {
+    display: none;
+  }
+}
+
+@media (max-width: 449px) {
+  .ocultar {
+    display: none;
+  }
+  .mostrar {
+    display: block;
+  }
+}

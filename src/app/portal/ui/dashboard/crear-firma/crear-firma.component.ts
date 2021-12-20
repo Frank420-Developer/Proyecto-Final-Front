@@ -88,4 +88,8 @@ export class CrearFirmaComponent implements OnInit {
     
   }
 
+  public back(){
+    this.router.navigate(['../dashboard']);
+  }
+
 }

@@ -1,57 +1,59 @@
 <div *ngIf="activeSpinner" class="spinner-container">
     <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="activeSpinner" class="spinner-container">
-    <mat-spinner></mat-spinner>
-</div>
-<div style="display: flex; justify-content: space-between; padding: 10px 30px;">
-    <div   style="display: flex;align-items: center; gap: 20px;">
-        <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
-        <a style="font-size: 30px; cursor: pointer;" (click)="back()">
-            <mat-icon>arrow_back</mat-icon>
-        </a>
+
+    <div class="background-accent header-container">
+        <div style="display: flex;align-items: center; gap: 20px;">
+            <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+            <a style="font-size: 30px; cursor: pointer;" (click)="back()">
+                <mat-icon>arrow_back</mat-icon>
+            </a>
+        </div>
+        <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end; align-items: center;">
+            <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
+            <img class="img-user" src="{{imgUser}}" alt="user image">
+        </div>
     </div>
+
     <div>
         <h1 class="txt-title">Detalle del Proceso</h1>
     </div>
-    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end;">
-        <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
-        <img class="img-user" src="{{imgUser}}" alt="user image">
-    </div>
-</div>
 
-<div style="display: flex; width: 100%; height: 100vh;">
-    <div style="margin: auto;">
-        <div class="containerDetail">
-            <div class="flex">
-                <p class="txt-accent">{{ detalle.ID_CLIENT }}</p>
-                <p>{{ contratDetail.idRequisitionClient }}</p>
-            </div>
-            <div class="flex">
-                <p class="txt-accent"> {{ detalle.CONTRACT_NAME }}</p>
-                <p>{{ contratDetail.contractName }}</p>
-            </div>
-            <div class="flex">
-                <p class="txt-accent">{{ detalle.OWNER_NAME }}</p>
-                <p>{{ contratDetail.ownerName }}</p>
-            </div>
-            <div class="flex">
-                <p class="txt-accent">{{ detalle.SIGNERS_TITLE }}</p>
-                <div *ngFor="let item of contratDetail.signers">
-                    <p>{{ item.signerName }}</p>
-                    <p>{{ item.mail }}</p>
-                    <p>{{ item.phone }}</p>
+<div *ngIf="flag">
+    <div style="display: flex; width: 100%; margin-top: 100px;">
+        <div style="margin: auto;">
+            <div class="containerDetail">
+                <div class="flex">
+                    <p class="txt-accent">{{ detalle.ID_CLIENT }}</p>
+                    <p>{{ contratDetail.idRequisitionClient }}</p>
                 </div>
+                <div class="flex">
+                    <p class="txt-accent"> {{ detalle.CONTRACT_NAME }}</p>
+                    <p>{{ contratDetail.contractName }}</p>
+                </div>
+                <div class="flex">
+                    <p class="txt-accent">{{ detalle.OWNER_NAME }}</p>
+                    <p>{{ contratDetail.ownerName }}</p>
+                </div>
+                <div class="flex">
+                    <p class="txt-accent">{{ detalle.SIGNERS_TITLE }}</p>
+                    <div *ngFor="let item of contratDetail.signers">
+                        <p>{{ item.signerName }}</p>
+                        <p>{{ item.mail }}</p>
+                        <p>{{ item.phone }}</p>
+                    </div>
+                </div>
+                <div class="flex">
+                    <p class="txt-accent">{{ detalle.STATUS }}</p>
+                    <p>{{ contratDetail.status }}</p>
+                </div>
+    
+                <a style="display: flex; justify-content: center; padding: 20px 0px 0px;"
+                    [routerLink]="['../../firmar', ticket]">
+                    <button mat-raised-button *ngIf="contratDetail.status !== 'SIGNED' ">Firmar</button>
+                </a>
             </div>
-            <div class="flex">
-                <p class="txt-accent">{{ detalle.STATUS }}</p>
-                <p>{{ contratDetail.status }}</p>
-            </div>
-
-            <a style="display: flex; justify-content: center; padding: 20px 0px 0px;"
-            [routerLink]="['../../firmar', ticket]">
-                <button mat-raised-button >Firmar</button>
-            </a>
         </div>
     </div>
+
 </div>

@@ -26,6 +26,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 /* Importacion de elementos para Form */
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -36,9 +38,6 @@ import { SocialLoginModule, SocialAuthServiceConfig, GoogleLoginProvider, Social
 /* COMPONENTS */
 import { LoginComponent } from './portal/ui/access/login/login.component';
 import { PrincipalComponent } from './portal/ui/dashboard/principal/principal.component';
-import { GeneralTableComponent } from './portal/viewUtils/table/general-table/general-table.component';
-import { SimpleTableComponent } from './portal/viewUtils/table/simple-table/simple-table.component';
-import { DragAndDropZoneDirective } from './portal/viewUtils/directivas/drag-and-drop-zone.directive';
 import { CrearFirmaComponent } from './portal/ui/dashboard/crear-firma/crear-firma.component';
 import { ProcesosComponent } from './portal/ui/dashboard/procesos/procesos/procesos.component';
 import { PermisosComponent } from './portal/ui/dashboard/permisos/permisos/permisos.component';
@@ -51,9 +50,6 @@ import { SafePipe } from './portal/viewUtils/safe.pipe';
     AppComponent,
     LoginComponent,
     PrincipalComponent,
-    GeneralTableComponent,
-    SimpleTableComponent,
-    DragAndDropZoneDirective,
     CrearFirmaComponent,
     ProcesosComponent,
     PermisosComponent,
@@ -86,6 +82,7 @@ import { SafePipe } from './portal/viewUtils/safe.pipe';
     MatNativeDateModule,
     SocialLoginModule,
     MatGridListModule,
+    MatSlideToggleModule,
   ],
   entryComponents: [
     

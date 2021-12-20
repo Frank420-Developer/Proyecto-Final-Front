@@ -15,3 +15,23 @@
 form {
   width: 350px;
 }
+a {
+  text-decoration: none;
+}
+
+.mat-icon {
+  color: $color-inactive;
+  font-size: 30px;
+}
+@media (min-width: 0px) and (max-width: 450px) {
+  //   .txt-title {
+  //     font-size: 20px !important;
+  //   }
+  .img-user,
+  .img-fad {
+    width: 50px;
+  }
+  .logo-container {
+    gap: 5px;
+  }
+}
