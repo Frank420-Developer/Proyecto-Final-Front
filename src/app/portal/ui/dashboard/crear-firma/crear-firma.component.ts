@@ -36,8 +36,7 @@ export class CrearFirmaComponent implements OnInit {
 
   public userInfo: UserInfoModel;
   public imgUser: string;
-
-  public createResponse: CreateSignResponse;
+  public username: string;
 
       // Flags
   public activeSpinner = false;
@@ -48,7 +47,7 @@ export class CrearFirmaComponent implements OnInit {
                private router: Router) { 
     this.addForm = this.formBuilder.group({
       name: ['', Validators.compose([Validators.required, Validators.pattern('[a-z A-Z ñÑ]{10,20}')])],
-      email: ['', Validators.compose([Validators.email, Validators.required])],
+      email: ['', Validators.compose([Validators.email, Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")])],
       phone: ['', Validators.compose([Validators.required, Validators.pattern('[0-9]{10,11}')])],
     });
 
@@ -60,6 +59,8 @@ export class CrearFirmaComponent implements OnInit {
   ngOnInit(): void {
     this.userInfo = JSON.parse(localStorage.getItem(USER_INFO));
     this.imgUser = this.userInfo.photo;
+    this.username = this.userInfo.name;
+
   }
 
   public postCreateSign(){
@@ -68,16 +69,22 @@ export class CrearFirmaComponent implements OnInit {
       email: this.email.value,
       phone: '+521'+this.phone.value
     }
+    this.activeSpinner = true;
     this.api.postCreateSign(body).subscribe( (data: CreateSignResponse) =>{
+      this.activeSpinner = false;
       try {
-        console.log(data);
-        this.createResponse = data;
-        this.activeSpinner = true;
-        this.router.navigate(['../dashboard']);
+      
+      this.addForm.reset();
+      
+      window.alert('Creacion exitosa!');
+      this.router.navigate(['../dashboard']);
       } catch (error) {
-        this.activeSpinner = true;
+        this.activeSpinner = false;
       }
     }, errorResponse => {});
+
+    
+    
     
   }
 

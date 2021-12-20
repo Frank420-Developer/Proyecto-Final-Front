@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
     this.password.disable();
   }
   ngOnInit(): void {
-    this.validateActiveSession();
+    //this.validateActiveSession();
     this.authService.authState.subscribe( (userResponse: SocialUser) =>{
       this.user = userResponse;
     });

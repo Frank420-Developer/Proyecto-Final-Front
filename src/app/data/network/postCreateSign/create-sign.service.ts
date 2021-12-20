@@ -32,7 +32,9 @@ export class CreateSignService {
       headers.append('Access-Control-Allow-Headers', 'Content-Type')
       headers.append('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT')
       
-    return this.http.post<CreateSignResponse>(this.microservicePath.baseUrl + this.microservicePath.msPath.crearFirma, body, {headers: headers})
+    return this.http.post<CreateSignResponse>(this.microservicePath.baseUrl + this.microservicePath.msPath.crearFirma, body, {
+      // headers: headers
+    })
     .pipe( map (response => {
       return response;
     }))

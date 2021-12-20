@@ -52,25 +52,19 @@ export class PrincipalComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.validateActiveSession();
-
-    this.authService.authState.subscribe( (userResponse: SocialUser) =>{
-      this.user = userResponse;
-    });
-
-
+    //this.validateActiveSession();
   }
 
-  private validateActiveSession(){
-    this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
+  // private validateActiveSession(){
+  //   this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
 
-    if( this.getDataStoraged === null || this.getDataStoraged === undefined ){
-      this.router.navigate(['iniciarSesion']);
-    }else{
-      this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
-      this.userProfile=this.getDataStoraged.photo
-    }
-  }
+  //   if( this.getDataStoraged === null || this.getDataStoraged === undefined ){
+  //     this.router.navigate(['iniciarSesion']);
+  //   }else{
+  //     this.userName = this.utilities.getNameOrLastName(this.getDataStoraged.name) + SPACE + this.utilities.getNameOrLastName(this.getDataStoraged.lastName);
+  //     this.userProfile=this.getDataStoraged.photo
+  //   }
+  // }
 
   public logoutSession(){
     this.authService.signOut().then( (salida: any) =>{
@@ -80,23 +74,16 @@ export class PrincipalComponent implements OnInit {
         localStorage.clear();
         this.router.navigate(['iniciarSesion']);
       } catch (error) {
+        
         console.log('error en la respuesta ',error);
         
       }
     }).catch(
-      err => console.log('Error en la promesa', err)
+      err => {
+        this.router.navigate(['iniciarSesion']);
+      }
     );
 
-  }
-
-  public verifyScreen(){
-    this.windowSize = window.innerWidth;
-
-    if(this.windowSize < 1024){
-      return false;
-    }
-
-    return true
   }
 
   public navigate(ruta: string){

@@ -7,6 +7,7 @@ import { CrearFirmaComponent } from './portal/ui/dashboard/crear-firma/crear-fir
 import { PermisosComponent } from './portal/ui/dashboard/permisos/permisos/permisos.component';
 import { PrincipalComponent } from './portal/ui/dashboard/principal/principal.component';
 import { DetalleProcesoComponent } from './portal/ui/dashboard/procesos/detalle-proceso/detalle-proceso.component';
+import { FirmaComponent } from './portal/ui/dashboard/procesos/firma/firma.component';
 import { ProcesosComponent } from './portal/ui/dashboard/procesos/procesos/procesos.component';
 
 
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'detalleProceso/:id',
     component: DetalleProcesoComponent
+  },
+  {
+    path: 'firmar/:ticket',
+    component: FirmaComponent,
   },
   {
     path: 'permisos',

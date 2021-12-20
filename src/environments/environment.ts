@@ -7,7 +7,7 @@ export const environment = {
 
   //baseUrl: 'https://activity-record.com/',
   // baseUrl: 'http://3.238.21.227:8080/',
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'http://localhost:8080/fad/',
   
 
   endPoint: {

@@ -27,3 +27,10 @@
   color: $color-text-white;
   font-size: 18px;
 }
+a {
+  text-decoration: none;
+}
+
+.mat-icon {
+  color: $color-inactive;
+}

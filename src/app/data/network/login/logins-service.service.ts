@@ -34,7 +34,10 @@ export class LoginsServiceService {
       headers.append('Access-Control-Allow-Headers', 'Content-Type')
       headers.append('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT')
 
-    return this.http.post<LoginResponseWithFad>(this.microservicePath.baseUrl + this.microservicePath.endPoint.login, headers)
+    return this.http.post<LoginResponseWithFad>(this.microservicePath.baseUrl + this.microservicePath.endPoint.login, 
+      // headers
+      ''
+      )
     .pipe( map( response => {
       return response;
     }));

@@ -5,13 +5,14 @@
     <div>
         <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
     </div>
-    <div>
+    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end;">
+        <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
         <img class="img-user" src="{{imgUser}}" alt="user image">
     </div>
 </div>
 
 <div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: grid;">
-    <div style="margin: auto; width: 250px;">
+    <div style="margin: auto; ">
         <form [formGroup]="addForm">
             <p class="txt-subtitle txt-color-description center-txt"> {{ textES.TITLE }} </p>
             <mat-form-field class="input-search">
@@ -23,7 +24,7 @@
             </mat-form-field>
             <mat-form-field class="input-search">
                 <label class="txt-description txt-color-labels" for="email">{{ textES.LABELS.EMAIL}}</label>
-                <input matInput [formControl]="email" type="text" name="email">
+                <input matInput [formControl]="email" type="email" name="email">
                 <mat-error *ngIf="!email.valid && email.value !== '' ">
                     {{ txtError.INVALID_EMAIL_INPUT }}
                 </mat-error>
@@ -35,9 +36,9 @@
                     {{ txtError.INVALID_PHONE_INPUT }}
                 </mat-error>
             </mat-form-field>
+            <div style="display: flex; justify-content: center; width: 100%;">
+                <button mat-raised-button [disabled]="!addForm.valid" (click)="postCreateSign()">Enviar</button>
+            </div>
         </form>
-        <div>
-            <button mat-raised-button [disabled]="!addForm.valid" (click)="postCreateSign()">Enviar</button>
-        </div>
     </div>
 </div>

@@ -1,19 +1,26 @@
 <div *ngIf="activeSpinner" class="spinner-container">
     <mat-spinner></mat-spinner>
 </div>
-<div style="display: flex; justify-content: space-between; padding:30px;">
-    <div>
+<div *ngIf="activeSpinner" class="spinner-container">
+    <mat-spinner></mat-spinner>
+</div>
+<div style="display: flex; justify-content: space-between; padding: 10px 30px;">
+    <div   style="display: flex;align-items: center; gap: 20px;">
         <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+        <a style="font-size: 30px; cursor: pointer;" (click)="back()">
+            <mat-icon>arrow_back</mat-icon>
+        </a>
     </div>
     <div>
-        <h1 class="txt-title">Detalle del Proceso </h1>
+        <h1 class="txt-title">Detalle del Proceso</h1>
     </div>
-    <div>
+    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end;">
+        <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
         <img class="img-user" src="{{imgUser}}" alt="user image">
     </div>
 </div>
 
-<div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: grid;">
+<div style="display: flex; width: 100%; height: 100vh;">
     <div style="margin: auto;">
         <div class="containerDetail">
             <div class="flex">
@@ -41,9 +48,10 @@
                 <p>{{ contratDetail.status }}</p>
             </div>
 
-            <div style="display: flex; justify-content: center; padding: 20px 0px 0px;">
-                <button mat-raised-button>Firmar</button>
-            </div>
+            <a style="display: flex; justify-content: center; padding: 20px 0px 0px;"
+            [routerLink]="['../../firmar', ticket]">
+                <button mat-raised-button >Firmar</button>
+            </a>
         </div>
     </div>
 </div>

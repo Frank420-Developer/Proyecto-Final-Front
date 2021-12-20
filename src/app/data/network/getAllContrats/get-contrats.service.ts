@@ -18,23 +18,25 @@ export class GetContratsService {
 
    /* URL */
   private microservicePath = environment;
-  private headers = new HttpHeaders();         
+     
       
 
-  constructor( private http: HttpClient ) { 
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      this.headers.append('Access-Control-Allow-Origin', '*')
-      this.headers.append('Access-Control-Allow-Headers', 'Content-Type')
-      this.headers.append('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
+  constructor( private http: HttpClient ) {    
+      
   }
 
-  public getAllContrats(paramsRequest: HttpParams):Observable<HttpResponse<GetAllContratsResponse[]>>{
+  public getAllContrats(paramsRequest: HttpParams):Observable<GetAllContratsResponse[]>{
+ const headers = new HttpHeaders();      
+     headers.set('Content-Type', 'application/x-www-form-urlencoded');
+      headers.append('Access-Control-Allow-Origin', '*')
+      headers.append('Access-Control-Allow-Headers', 'Content-Type')
+      headers.append('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
 
-    return this.http.get<GetAllContratsResponse[]>(this.microservicePath.baseUrl + this.microservicePath.msPath.procesos, {
-      headers: this.headers,
-      params: paramsRequest,
-      observe:'response',
-    })
+      console.log(headers);
+      
+    const options = {headers: headers}
+
+    return this.http.get<GetAllContratsResponse[]>(this.microservicePath.baseUrl + this.microservicePath.msPath.procesos, options)
     .pipe( map(response =>{
       return response;
     }));
@@ -43,7 +45,7 @@ export class GetContratsService {
   public getContratDetail(id: string): Observable<GetContratDetail>{
 
       return this.http.get<GetContratDetail>(this.microservicePath.baseUrl + this.microservicePath.msPath.detalle + id, {
-        headers: this.headers
+        // headers: this.headers
       })
       .pipe( map(response =>{
       return response;

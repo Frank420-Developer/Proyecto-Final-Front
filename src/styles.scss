@@ -41,7 +41,7 @@ h3 {
 }
 
 .txt-subtitle {
-  font-size: 20px;
+  font-size: 24px;
   letter-spacing: 0;
   line-height: 17px;
 }
@@ -99,7 +99,7 @@ td.mat-cell {
 }
 
 .txt-accent {
-  color: $color-accent;
+  color: $color-inactive;
 }
 
 /*  ..::   BUTTONS ::..   */
@@ -260,6 +260,8 @@ input[type="file"] {
 .mat-form-field {
   display: flex !important;
   margin: 25px 0px 0px;
+  width: 100%;
+  height: 60px;
 }
 .mat-form-field-appearance-legacy .mat-form-field-wrapper {
   padding-bottom: 0px;
@@ -407,7 +409,7 @@ tr:last-child td {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba($color: $color-accent, $alpha: 0.4);
+  background-color: rgba($color: $color-background-principal, $alpha: 0.4);
   z-index: 99999;
   display: flex;
   align-items: center;
@@ -420,28 +422,4 @@ tr:last-child td {
 @font-face {
   font-family: SFUIDisplayRegular;
   src: url("./assets/fonts/SF-UI-Display-Regular.ttf") format("truetype");
-}
-
-@media only screen and (min-width: 360px), (max-width: 600px) {
-  /* ERROR MESSAGE */
-  .invalid-size {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
-    color: $color-accent;
-    font-size: 12px;
-  }
-}
-
-@media (min-width: 601px) and (max-width: 1023px) {
-  /* ERROR MESSAGE */
-  .invalid-size {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
-    color: $color-accent;
-    font-size: 20px;
-  }
 }

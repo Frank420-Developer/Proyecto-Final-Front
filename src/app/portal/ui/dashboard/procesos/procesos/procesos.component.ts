@@ -30,8 +30,10 @@ export class ProcesosComponent implements OnInit {
 
   public userInfo: UserInfoModel;
   public imgUser: string;
+  public username: string;
 
   public list: number;
+  public elements: number;
   public page = 0;
   public size = 5;
 
@@ -40,35 +42,40 @@ export class ProcesosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllContrats(this.page, this.size);
-    this.userInfo = JSON.parse(localStorage.getItem(USER_INFO));
-    this.imgUser = this.userInfo.photo;
+    // this.userInfo = JSON.parse(localStorage.getItem(USER_INFO));
+    // this.imgUser = this.userInfo.photo;
+    // this.username = this.userInfo.name;
   }
 
   public getAllContrats(page: number, size: number){
     const params = new HttpParams()
                     .set('page',page.toString())
                     .set('size', size.toString());
-    this.api.getAllContrats(params).subscribe( (data:HttpResponse<GetAllContratsResponse[]>) =>{
+    this.api.getAllContrats(params).subscribe( (data:GetAllContratsResponse[]) =>{
       try {
-        console.log(data.headers);
-        if(data === null){
-          this.emptyList = "lista vacia"
-        }
-        this.contratList = data.body;
-        this.list = parseInt(data.headers.get('Total-Elements'), 10);
-        
-        console.log(this.list);
-        
+        // if(data === null){
+        //   this.emptyList = "lista vacia"
+        // }
+        this.contratList = data;
       } catch (error) {
         
       }
     }, errorResponse =>{});
   }
 
+
   public changePageTable(event: any){
     this.size = event.pageSize;
     this.page = event.pageIndex;
     this.contratList = [];
     this.getAllContrats(this.page, this.size);
+  }
+
+  public guardarTicket(ticket: string){
+    localStorage.setItem("ticket", ticket);
+  }
+
+  public back(){
+    this.router.navigate(['../dashboard']);
   }
 }

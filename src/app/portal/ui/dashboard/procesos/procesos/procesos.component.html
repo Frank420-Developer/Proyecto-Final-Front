@@ -1,12 +1,16 @@
-<div style="display: flex; justify-content: space-between; padding:30px;">
-    <div>
+<div style="display: flex; justify-content: space-between; padding: 10px 30px;">
+    <div style="display: flex;align-items: center; gap: 20px;">
         <img class="img-fad" src=" {{ logoNaatTech }} " alt="logo NA-AT Tech">
+        <a style="font-size: 30px; cursor: pointer;" (click)="back()">
+            <mat-icon>arrow_back</mat-icon>
+        </a>
     </div>
     <div>
         <h1 class="txt-title">Lista de Procesos</h1>
     </div>
-    <div>
-        <img class="img-user" src="{{imgUser}}" alt="user image">
+    <div style="display: grid; grid-template-columns: 50% 50%; justify-items: flex-end;">
+        <!-- <p class="txt-accent" style="text-align: right;"> {{ username }}</p>
+        <img class="img-user" src="{{imgUser}}" alt="user image"> -->
     </div>
 </div>
 <!-- Table -->
@@ -23,7 +27,7 @@
 
         <ng-container matColumnDef="{{ headersList[1] }}">
             <th scope="col" mat-header-cell *matHeaderCellDef> {{ headersList[1] }} </th>
-            <td mat-cell *matCellDef="let item" style="max-width: 500px;">
+            <td mat-cell *matCellDef="let item">
                 <p> {{ item.requisitionId }}</p>
             </td>
         </ng-container>
@@ -38,11 +42,11 @@
         <ng-container matColumnDef="{{ headersList[3] }}">
             <th scope="col" mat-header-cell *matHeaderCellDef> {{ headersList[3] }} </th>
             <td mat-cell *matCellDef="let item">
-                <button mat-raised-button>
-                    <a [routerLink]="['../detalleProceso', item.requisitionId]" style="text-decoration: none; color: white;">
-                        {{ txtButtons.VIEW }}
-                    </a>
-                </button>
+                <a (click)="guardarTicket(item.ticket)" [routerLink]="['../detalleProceso', item.requisitionId]" style="text-decoration: none; color: white;">
+                    <button mat-raised-button>
+                            {{ txtButtons.VIEW }}
+                    </button>
+                </a>
             </td>
         </ng-container>
 
@@ -50,6 +54,3 @@
         <tr mat-row *matRowDef="let row; columns: headersList;"></tr>
     </table>
 </div>
-<mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="list" (page)="changePageTable($event)"
-    showFirstLastButtons>
-</mat-paginator>

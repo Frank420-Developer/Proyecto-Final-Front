@@ -43,6 +43,8 @@ import { CrearFirmaComponent } from './portal/ui/dashboard/crear-firma/crear-fir
 import { ProcesosComponent } from './portal/ui/dashboard/procesos/procesos/procesos.component';
 import { PermisosComponent } from './portal/ui/dashboard/permisos/permisos/permisos.component';
 import { DetalleProcesoComponent } from './portal/ui/dashboard/procesos/detalle-proceso/detalle-proceso.component';
+import { FirmaComponent } from './portal/ui/dashboard/procesos/firma/firma.component';
+import { SafePipe } from './portal/viewUtils/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { DetalleProcesoComponent } from './portal/ui/dashboard/procesos/detalle-
     ProcesosComponent,
     PermisosComponent,
     DetalleProcesoComponent,
+    FirmaComponent,
+    SafePipe,
   ],
   imports: [
     FormsModule,
@@ -95,7 +99,7 @@ import { DetalleProcesoComponent } from './portal/ui/dashboard/procesos/detalle-
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '100113038197-6igeai7v21jecg5nna3h7k4gccjsqf1i.apps.googleusercontent.com'
+              '1083211519138-00b5ui69tc9umhv21otqqi9vtfj2tof0.apps.googleusercontent.com'
             )
           }
         ]
