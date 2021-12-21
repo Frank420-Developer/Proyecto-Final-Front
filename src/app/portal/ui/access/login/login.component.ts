@@ -67,21 +67,21 @@ export class LoginComponent implements OnInit {
     this.password.disable();
   }
   ngOnInit(): void {
-    //this.validateActiveSession();
+    this.validateActiveSession();
     this.authService.authState.subscribe( (userResponse: SocialUser) =>{
       this.user = userResponse;
     });
   }
  
 
-  // private validateActiveSession(){
+  private validateActiveSession(){
     
-  //   this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
+    this.getDataStoraged = JSON.parse(localStorage.getItem(USER_INFO));
 
-  //   if( this.getDataStoraged !== null ){
-  //     this.router.navigate(['dashboard']);
-  //   }
-  // }
+    if( this.getDataStoraged !== null ){
+      this.router.navigate(['dashboard']);
+    }
+  }
 
   // private validateSessionActiveGoogle(){
   //   this.authService.authState.pipe(

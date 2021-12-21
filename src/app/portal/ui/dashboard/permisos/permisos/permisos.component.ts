@@ -73,6 +73,8 @@ export class PermisosComponent implements OnInit {
       localStorage.setItem('location_checked', 'true');
     else
       localStorage.setItem('location_checked', 'false');
+
+    alert('los cambios se guardaron exitosamente!');
     this.router.navigate(['../dashboard']);
   }
 

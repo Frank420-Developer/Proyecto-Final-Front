@@ -1,4 +1,14 @@
+@import "../../../../../../theme.scss";
+
 iframe {
   width: 500px;
   height: 500px;
+}
+a {
+  text-decoration: none;
+}
+
+.mat-icon {
+  color: $color-inactive;
+  font-size: 30px;
 }

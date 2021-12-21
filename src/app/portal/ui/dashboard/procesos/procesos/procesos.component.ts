@@ -32,7 +32,7 @@ export class ProcesosComponent implements OnInit {
   public imgUser: string;
   public username: string;
 
-  public list: number;
+  public lenghtDataTable: number;
   public elements: number;
   public page = 0;
   public size = 5;
@@ -59,13 +59,15 @@ export class ProcesosComponent implements OnInit {
     const params = new HttpParams()
                     .set('page',page.toString())
                     .set('size', size.toString());
-    this.api.getAllContrats(params).subscribe( (data:GetAllContratsResponse[]) =>{
+    this.api.getAllContrats(params).subscribe( (data:HttpResponse<GetAllContratsResponse[]>) =>{
       try {
         // if(data === null){
         //   this.emptyList = "lista vacia"
         // }
-        this.contratList = data;
+        this.contratList = data.body;
         this.flag = (this.contratList === null || this.contratList === undefined) ? false : true;
+        this.lenghtDataTable = parseInt(data.headers.get('total-elements'), 10);
+        
       } catch (error) {
         
       }

@@ -48,7 +48,7 @@ export class DetalleProcesoComponent implements OnInit {
     this.username = this.userInfo.name;
 
     this.ticket = localStorage.getItem('ticket');
-    
+
   }
 
   public getContratDetail(){
@@ -66,5 +66,16 @@ export class DetalleProcesoComponent implements OnInit {
 
   public back(){  
     this.router.navigate(['../../procesos']);
+  }
+
+  public verifyIfIsMobile(): boolean{
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    return true;
+    
+    }
+    else{
+      return false;
+      
+}
   }
 }

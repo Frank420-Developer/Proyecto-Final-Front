@@ -280,7 +280,7 @@ table {
 }
 .table-container {
   overflow: auto;
-  max-height: 600px;
+  max-height: 500px;
 }
 th {
   font-family: "SFUIDisplayRegular", sans-serif;
@@ -348,6 +348,10 @@ tr:last-child td {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $color-accent;
 }
 
 /* 

@@ -1,6 +1,6 @@
-    <div style="position: absolute; top: 0; bottom: 0; left: 0; right: 0; display: grid;">
-        <div style="margin: auto; width: 250px;">
-            <div style="display: flex; justify-content: center;">
+    <div class="principal-container">
+        <div class="info-container">
+            <div class="flex-center">
                 <img class="img-small-logo" src="{{ logoNaatTech }}" alt="logo de NA-AT Tech">
             </div>
             <div>
@@ -16,7 +16,6 @@
                                 <button mat-button [matMenuTriggerFor]="menu">
                                     <mat-icon class="icon-accent-color"> {{ iconExpand }} </mat-icon>
                                 </button>
-                
                                 <mat-menu #menu="matMenu">
                                     <button mat-menu-item class="txt-title-color" (click)="logoutSession()">
                                         <mat-icon class="icon-accent-color">logout</mat-icon>

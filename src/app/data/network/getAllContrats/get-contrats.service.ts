@@ -25,18 +25,17 @@ export class GetContratsService {
       
   }
 
-  public getAllContrats(paramsRequest: HttpParams):Observable<GetAllContratsResponse[]>{
+  public getAllContrats(paramsRequest: HttpParams):Observable<HttpResponse<GetAllContratsResponse[]>>{
  const headers = new HttpHeaders();      
      headers.set('Content-Type', 'application/x-www-form-urlencoded');
       headers.append('Access-Control-Allow-Origin', '*')
       headers.append('Access-Control-Allow-Headers', 'Content-Type')
       headers.append('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
 
-      console.log(headers);
-      
-    const options = {headers: headers}
-
-    return this.http.get<GetAllContratsResponse[]>('fad/'+this.microservicePath.msPath.procesos, options)
+    return this.http.get<GetAllContratsResponse[]>('fad/'+this.microservicePath.msPath.procesos, {
+      headers: headers, params: paramsRequest,
+      observe: 'response'
+    })
     .pipe( map(response =>{
       return response;
     }));

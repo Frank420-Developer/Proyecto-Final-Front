@@ -82,14 +82,11 @@ export class CrearFirmaComponent implements OnInit {
         this.activeSpinner = false;
       }
     }, errorResponse => {});
-
-    
-    
-    
   }
 
   public back(){
     this.router.navigate(['../dashboard']);
   }
+
 
 }

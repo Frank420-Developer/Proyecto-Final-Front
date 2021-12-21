@@ -9,7 +9,7 @@
 }
 
 .txt-color-labels {
-  color: rgba($color: $color-accent, $alpha: 0.7);
+  color: rgba($color: $color-accent, $alpha: 0.5);
 }
 
 form {
@@ -34,4 +34,11 @@ a {
   .logo-container {
     gap: 5px;
   }
+}
+
+.txt-title {
+  color: $color-accent;
+  font-size: 34px;
+  padding-top: 20px;
+  text-align: center;
 }
