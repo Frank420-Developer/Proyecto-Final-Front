@@ -69,15 +69,11 @@ export class PrincipalComponent implements OnInit {
   public logoutSession(){
     this.authService.signOut().then( (salida: any) =>{
       try {    
-        console.log('salida exitosa ',salida);
+        
         
         localStorage.clear();
         this.router.navigate(['iniciarSesion']);
-      } catch (error) {
-        
-        console.log('error en la respuesta ',error);
-        
-      }
+      } catch (error) {}
     }).catch(
       err => {
         this.router.navigate(['iniciarSesion']);

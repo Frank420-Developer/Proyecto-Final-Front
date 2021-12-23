@@ -22,7 +22,6 @@ import { SocialAuthService, SocialUser, GoogleLoginProvider} from 'angularx-soci
 
 /* MODELS */
 import { LoginResponseWithFad, LoginWithGoogleModel, UserInfoModel } from 'src/app/data/models/response/login/login';
-import { map, tap } from 'rxjs/operators';
 
 
 
@@ -83,21 +82,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // private validateSessionActiveGoogle(){
-  //   this.authService.authState.pipe(
-  //     map( (socialUser: SocialUser ) => !!socialUser ),
-  //     tap( (isActiveSession: boolean) =>{
-  //       if ( !isActiveSession) {
-  //         console.log('NO HAY SESSION ACTIVA');
-          
-  //       }
-  //     })
-  //   )
-  // }
 
   public doLogin():void{
     this.loginForm.reset();
-    // this.router.navigate(['dashboard'])
     this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then( (info: LoginWithGoogleModel) =>{
       
       const userInfo: UserInfoModel = {
@@ -115,7 +102,7 @@ export class LoginComponent implements OnInit {
         
       }
     }, errorResponse => {
-      console.log(errorResponse);
+      
       
       this.router.navigate(['iniciarSesion']);
     });
@@ -135,42 +122,5 @@ export class LoginComponent implements OnInit {
     localStorage.setItem(USER_INFO, JSON.stringify(userInfo));  
     this.router.navigate(['dashboard'])
   }
-
-  public validateEmailFormat(){
-    if(this.email.valid){
-      this.password.enable();
-    }else{
-      this.password.disable();
-    }
-  }
-
-  // private postLogin(token: string){
-  //   const body: LoginRequest = {
-  //     authorizationCode: token
-  //   };
-
-  //   this.api.postLogin(body).subscribe( (dataResponse: LoginResponse) =>{
-  //     try {
-  //       this.postRefreshToken(dataResponse.refreshToken);
-  //     } catch (error) {
-        
-  //     }
-  //   }, errorResponse => {});
-  // }
-
-  // private postRefreshToken(token: string){
-  //   const body: RefreshTokenRequest = {
-  //     refreshToken: token
-  //   };
-
-  //   this.api.postRefreshToken(body).subscribe( (dataResponse: RefreshTokenResponse) =>{
-  //     try {
-  //       //
-  //     } catch (error) {
-        
-  //     }
-  //   }, errorResponse => {});
-  // }
-
 
 }

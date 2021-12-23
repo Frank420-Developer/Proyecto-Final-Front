@@ -51,11 +51,11 @@
                 <a style="display: flex; justify-content: center; padding: 20px 0px 0px;"
                     [routerLink]="['../../firmar', ticket]">
                     <button mat-raised-button *ngIf="verifyIfIsMobile() && contratDetail.status !== 'SIGNED' ">Firmar</button>
-                    <div *ngIf="!verifyIfIsMobile() && contratDetail.status !== 'SIGNED' " style="text-align: center;">
-                        <p>IF YOU WANT TO SIGN THIS FILE, </p>
-                        <p> DO IT FROM AN MOBILE ON YOUR FAVOURITE BROWSER </p>
-                    </div>
                 </a>
+                <div *ngIf="!verifyIfIsMobile() && contratDetail.status !== 'SIGNED'" style="text-align: center;">
+                    <p>IF YOU WANT TO SIGN THIS FILE, </p>
+                    <p> DO IT FROM AN MOBILE </p>
+                </div>
             </div>
         </div>
     </div>

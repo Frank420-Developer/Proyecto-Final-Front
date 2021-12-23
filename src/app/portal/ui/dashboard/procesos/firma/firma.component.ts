@@ -31,7 +31,6 @@ export class FirmaComponent implements OnInit {
     
     this.ticket = this.route.snapshot.paramMap.get('ticket');
     this.ruta = "https://uatwebfad4.firmaautografa.com/main?ticket="+this.ticket;
-    console.log(this.ruta);
 
     this.userInfo = JSON.parse(localStorage.getItem(USER_INFO));
     this.imgUser = this.userInfo.photo;
